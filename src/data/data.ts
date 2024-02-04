@@ -9,6 +9,7 @@ import type {
   Team,
   Ticket,
   WelcomeBanner,
+  CallForPapers,
 } from "./data.type";
 
 export const speakers = [
@@ -701,6 +702,12 @@ const welcomeBanner = {
   isEnabled: false,
 } satisfies Readonly<WelcomeBanner>;
 
+const callForPapers = {
+  isEnabled: true,
+  title: "C4P Is Open!",
+  url: "https://google.com",
+} satisfies Readonly<CallForPapers>;
+
 export const DATA: Data = {
   title: "BiznagaFest 2023",
   ticketsUrl:
@@ -788,4 +795,5 @@ export const DATA: Data = {
     },
   ],
   welcomeBanner,
+  callForPapers,
 } as const satisfies Readonly<Data>;

@@ -129,6 +129,12 @@ interface FooterLink {
   href: string;
 }
 
+export interface CallForPapers {
+  isEnabled: boolean;
+  title: string;
+  url: string;
+}
+
 export type Data = {
   title: string;
   date: Date;
@@ -165,4 +171,5 @@ export type Data = {
   footerLinks: ReadonlyArray<FooterLink>;
   raffles: ReadonlyArray<Raffle>;
   welcomeBanner: WelcomeBanner;
+  callForPapers: CallForPapers;
 };
