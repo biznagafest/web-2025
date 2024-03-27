@@ -5,11 +5,11 @@ import Speaker from "../components/Speaker.astro";
 import Sponsor from "../components/Sponsor.astro";
 import If from "../components/utils/If.astro";
 import AnimatedOnViewportEnter from "../components/utils/AnimatedOnViewportEnter.astro";
-import Accordion from "../components/Accordion";
 import TicketSection from "../components/TicketSection";
 import type { Sponsor as ISponsor, SponsorTier } from "../data/data.type";
 import TeamMember from "../components/TeamMember.astro";
 import Notice from "../components/Notice.astro";
+import Accordion from "../components/Accordion.astro";
 
 function formatDate(date: Date) {
   const formatter = new Intl.DateTimeFormat("es-ES", {
@@ -318,7 +318,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
             <h2 class="text-3xl font-bold text-center md:text-left">FAQ</h2>
           </AnimatedOnViewportEnter>
           <div class="block lg:grid lg:grid-cols-[4fr_3fr] px-2 md:px-0">
-            <Accordion data={DATA.faq} client:only />
+            <Accordion data={DATA.faq} />
           </div>
         </div>
       </section>

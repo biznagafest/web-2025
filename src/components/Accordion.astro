@@ -1,0 +1,66 @@
+---
+import type { FAQ } from "../data/data.type";
+
+interface Props {
+  data: ReadonlyArray<FAQ>;
+}
+
+const { data } = Astro.props;
+---
+
+<ul class="flex flex-col gap-4">
+  {
+    data.map((faq: FAQ) => (
+      <li class:list={["flex", "flex-col"]} class="flex flex-col">
+        <header class="rounded-lg flex flex-row justify-between align-middle cursor-pointer gap-x-2 p-4">
+          <span class="text-xl">{faq.title}</span>
+          <span class="grid grid-cols-1 place-content-center">
+            <i class="ph ph-caret-up transition-transform duration-150" />
+          </span>
+        </header>
+        <p class="px-4 mt-2 animate__animated animate__fadeIn">{faq.body}</p>
+      </li>
+    ))
+  }
+</ul>
+
+<script>
+  const tuples = document.querySelectorAll("li");
+
+  tuples.forEach((tuple) => {
+    const header = tuple.querySelector("header");
+    const body = tuple.querySelector("p");
+
+    header?.addEventListener("click", () => {
+      tuple.classList.toggle("active");
+      body?.classList.toggle("hidden");
+
+      tuples.forEach((t) => {
+        if (t !== tuple) {
+          t.classList.remove("active");
+        }
+      });
+    });
+  });
+</script>
+<style>
+  li.active > header {
+    @apply bg-red-100 dark:bg-red-400;
+  }
+
+  li:not(.active) > header {
+    @apply bg-red-50 dark:bg-red-800;
+  }
+
+  li.active i {
+    @apply transform rotate-180;
+  }
+
+  li.active > p {
+    @apply block;
+  }
+
+  li:not(.active) > p {
+    @apply hidden;
+  }
+</style>
