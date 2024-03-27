@@ -9,20 +9,25 @@ interface Props {
 const { member, index, kind } = Astro.props;
 ---
 
-<a href={`/${kind}/${index}#top`} class="w-full max-w-[300px] h-fit block">
-  <span class="flex flex-col align-middle justify-center">
+<span
+  class="w-full max-w-[300px] h-fit flex flex-col align-middle justify-center"
+>
+  <a
+    transition:name={`picture-${kind}-${member.name}`}
+    href={`/${kind}/${index}#top`}
+    class="w-[200px] h-[200px] block rounded-full shadow-md hover:shadow-lg transition-shadow duration-500 ease-in-out overflow-hidden mx-auto"
+  >
     <img
-      transition:name={`picture-${kind}-${member.name}`}
       loading="lazy"
-      class="object-cover h-full shadow-md aspect-square rounded-full"
+      class="object-cover select-none mx-auto aspect-square w-[200px] h-[200px] hover:scale-110 transition-transform duration-500 ease-in-out"
       src={member.picture}
       alt={`Picture of ${member.name}`}
     />
-    <h4
-      transition:name={`name-${kind}-${member.name}`}
-      class="w-full text-2xl font-semibold text-center text-dark-background dark:text-light-background p-2"
-    >
-      {member.name}
-    </h4>
-  </span>
-</a>
+  </a>
+  <h4
+    transition:name={`name-${kind}-${member.name}`}
+    class="w-full text-2xl font-semibold text-center text-dark-background dark:text-light-background p-2"
+  >
+    {member.name}
+  </h4>
+</span>

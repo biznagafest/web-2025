@@ -9,8 +9,9 @@ const { sponsor } = Astro.props;
 ---
 
 <a
+  transition:name={sponsor.name}
   href={sponsor.hasFeaturedPage ? `/sponsor/${sponsor.name}#top` : sponsor.url}
-  class={`transition-all grid place-content-center hover:scale-110 grayscale hover:grayscale-0`}
+  class={`transition-all grid place-content-center hover:scale-105 duration-300 ease-in-out grayscale hover:grayscale-0`}
 >
   <img
     loading="lazy"

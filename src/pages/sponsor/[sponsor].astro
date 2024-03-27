@@ -32,7 +32,11 @@ if (!sponsorData || sponsorData.hasFeaturedPage === false) {
   <main class="flex flex-col gap-6 min-h-screen">
     <header class="bg-green-50 dark:bg-green-800 p-6">
       <div class="md:w-8/12 p-4 md:p-10 mx-auto">
-        <img class="w-full" src={sponsorData.picture} />
+        <img
+          transition:name={sponsorData.name}
+          class="w-full"
+          src={sponsorData.picture}
+        />
       </div>
     </header>
     <If condition={!!sponsorData.descriptionInParagraphs.length}>
@@ -41,7 +45,7 @@ if (!sponsorData || sponsorData.hasFeaturedPage === false) {
       </div>
     </If>
     <div class="mx-auto">
-      <Socials socials={sponsorData.socials} />
+      <Socials socials={sponsorData.socials} size="4xl" />
     </div>
     <If condition={!!sponsorData.jobOffers.length}>
       <h3 class="text-3xl font-bold mx-auto text-center">Ofertas de Trabajo</h3>

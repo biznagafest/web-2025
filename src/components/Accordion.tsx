@@ -18,7 +18,7 @@ const AccordionItem = ({
         <span className="text-xl">{title}</span>
         <span className="grid grid-cols-1 place-content-center">
           <i
-            className={`fa-solid fa-chevron-up transition-transform duration-150 ${
+            className={`ph ph-caret-up transition-transform duration-150 ${
               isOpen ? "rotate-180" : ""
             }`}
           ></i>
