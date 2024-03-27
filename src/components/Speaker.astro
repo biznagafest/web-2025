@@ -12,8 +12,9 @@ const { speaker, index } = Astro.props;
 <div
   class="flex flex-col align-middle justify-center lg:grid lg:grid-cols-[2fr_3fr] lg:gap-5 mx-auto"
 >
-  <a href={`/speaker/${index}`} class="w-[200px] h-[200px] mx-auto">
+  <a href={`/speaker/${index}#top`} class="w-[200px] h-[200px] mx-auto">
     <img
+      transition:name={`picture-speaker-${index}`}
       loading="lazy"
       src={speaker.picture}
       alt=`Picture of ${speaker.name}`
@@ -24,8 +25,9 @@ const { speaker, index } = Astro.props;
   <div
     class="flex flex-col align-middle justify-center gap-1 md:gap-3 py-[0px] text-center lg:text-left"
   >
-    <h3 class="text-2xl font-bold">{speaker.name}</h3>
-
+    <h3 transition:name={`name-speaker-${index}`} class="text-2xl font-bold">
+      {speaker.name}
+    </h3>
     <If condition={speaker.position !== undefined}>
       <span class="text-sm">{speaker.position}</span>
     </If>

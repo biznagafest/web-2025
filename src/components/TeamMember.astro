@@ -9,15 +9,17 @@ interface Props {
 const { member, index, kind } = Astro.props;
 ---
 
-<a href={`/${kind}/${index}`} class="w-full max-w-[300px] h-fit block">
+<a href={`/${kind}/${index}#top`} class="w-full max-w-[300px] h-fit block">
   <span class="flex flex-col align-middle justify-center">
     <img
+      transition:name={`picture-${kind}-${member.name}`}
       loading="lazy"
       class="object-cover h-full shadow-md aspect-square rounded-full"
       src={member.picture}
       alt={`Picture of ${member.name}`}
     />
     <h4
+      transition:name={`name-${kind}-${member.name}`}
       class="w-full text-2xl font-semibold text-center text-dark-background dark:text-light-background p-2"
     >
       {member.name}

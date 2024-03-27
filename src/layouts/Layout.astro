@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
 import Notice from "../components/Notice.astro";
@@ -14,13 +15,14 @@ export interface Props {
 const { title, lang, description } = Astro.props;
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <ViewTransitions />
     <!-- Animate.css CDN -->
     <link
       rel="stylesheet"

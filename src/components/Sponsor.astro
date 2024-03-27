@@ -9,7 +9,7 @@ const { sponsor } = Astro.props;
 ---
 
 <a
-  href={sponsor.hasFeaturedPage ? `/sponsor/${sponsor.name}` : sponsor.url}
+  href={sponsor.hasFeaturedPage ? `/sponsor/${sponsor.name}#top` : sponsor.url}
   class={`transition-all grid place-content-center hover:scale-110 grayscale hover:grayscale-0`}
 >
   <img

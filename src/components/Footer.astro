@@ -24,7 +24,7 @@ import If from "./utils/If.astro";
       DATA.footerLinks.map((link) => (
         <a
           class="grid grid-cols-1 place-content-center font-semibold"
-          href={link.href}
+          href={`${link.href}#top`}
         >
           {link.title}
         </a>
