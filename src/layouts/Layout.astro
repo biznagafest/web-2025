@@ -28,14 +28,14 @@ const { title, lang, description } = Astro.props;
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <!-- Font Awesome CDN -->
+
+    <!-- Phosphor icons CDN -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      type="text/css"
+      href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css"
     />
+
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <style is:global>
@@ -67,46 +67,7 @@ const { title, lang, description } = Astro.props;
     class="bg-light-background dark:bg-dark-background text-dark-background dark:text-light-background"
   >
     <If condition={DATA.welcomeBanner.isEnabled}>
-      <Notice>
-        <div class="bg-blue-100 dark:bg-green-900">
-          <div class="wrapper px-6 flex flex-col gap-10">
-            <h3 class="text-xl sm:text-2xl md:text-4xl font-bold text-center">
-              ✨¡Hola a todos los asombrosos asistentes del BiznagaFest 2023!✨
-            </h3>
-
-            <div class="flex flex-col gap-5 text-lg">
-              <p>
-                ¡La emoción está en el aire y el evento está en pleno apogeo!
-                Estamos viendo charlas inspiradoras, participando en talleres
-                innovadores y construyendo conexiones increíbles en este
-                epicentro de tecnología.
-              </p>
-              <p>
-                ¿Pero sabes qué es aún más emocionante? La próxima edición del
-                BiznagaFest. Sí, lo has oído bien. La diversión no termina aquí.
-                La próxima edición será aún más grandiosa, con conferencias aún
-                más fascinantes, talleres aún más interactivos y oportunidades
-                de networking aún más valiosas.
-              </p>
-              <p>
-                ¿Por qué esperar? Asegura tu lugar para el próximo BiznagaFest
-                ahora mismo. No te pierdas la oportunidad de ser parte de este
-                viaje increíblemente enriquecedor en el mundo de la tecnología.
-              </p>
-              <p class="font-semibold">
-                ¡Compra tus entradas ahora y prepárate para un futuro lleno de
-                innovación y descubrimientos en el BiznagaFest del próximo año!
-                ¡Nos vemos allí! 🚀
-              </p>
-            </div>
-
-            <a
-              class="text-light-background bg-blue-600 hover:bg-blue-400 dark:bg-green-600 dark:hover:bg-green-400 w-fit px-5 py-2 rounded-md transition-colors"
-              href="https://google.com">Comprar entradas</a
-            >
-          </div>
-        </div>
-      </Notice>
+      <Notice />
     </If>
     <div class="overflow-hidden min-h-screen flex flex-col justify-between">
       <div>
