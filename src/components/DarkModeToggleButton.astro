@@ -24,18 +24,26 @@
   >
 </div>
 <script>
-  document.getElementById("darkModeToggler")?.addEventListener("click", () => {
-    const isDarkMode = !!localStorage.getItem("dark");
+  function init() {
+    document
+      .getElementById("darkModeToggler")
+      ?.addEventListener("click", () => {
+        const isDarkMode = !!localStorage.getItem("dark");
 
-    if (isDarkMode) {
-      html?.classList.remove("dark");
-      localStorage.removeItem("dark");
-      return;
-    }
+        if (isDarkMode) {
+          html?.classList.remove("dark");
+          localStorage.removeItem("dark");
+          return;
+        }
 
-    html?.classList.add("dark");
-    localStorage.setItem("dark", "true");
-  });
+        html?.classList.add("dark");
+        localStorage.setItem("dark", "true");
+      });
 
-  const html = document.documentElement;
+    const html = document.documentElement;
+  }
+
+  init();
+
+  document.addEventListener("astro:after-swap", () => init());
 </script>

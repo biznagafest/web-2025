@@ -77,52 +77,58 @@ const { title, lang, description } = Astro.props;
       <Footer />
     </div>
     <script>
-      const html = document.documentElement;
-      if (!!localStorage.getItem("dark")) {
-        html.classList.add("dark");
+      function init() {
+        const html = document.documentElement;
+        if (!!localStorage.getItem("dark")) {
+          html.classList.add("dark");
+        }
+
+        const animations = [...document.querySelectorAll(".animate")];
+        const callback = (
+          entries: IntersectionObserverEntry[],
+          observer: IntersectionObserver,
+        ) => {
+          entries.forEach((entry: IntersectionObserverEntry) => {
+            let animationClasses = (
+              entry.target.getAttribute("data-animation") ?? ""
+            ).split(" ");
+
+            if (entry.isIntersecting) {
+              if (
+                !entry.target.getAttribute("data-animation-repeat") &&
+                entry.target.getAttribute("data-animation-repeated")
+              ) {
+                observer.unobserve(entry.target);
+                return;
+              }
+              entry.target.setAttribute("data-animation-repeated", "true");
+              animationClasses.forEach((className: any) => {
+                entry.target.classList.add(className);
+              });
+              if (entry.target.classList.contains("invisible")) {
+                entry.target.classList.remove("invisible");
+              }
+            } else if (
+              !entry.isIntersecting &&
+              entry.boundingClientRect.top > 0
+            ) {
+              animationClasses.forEach((className: any) => {
+                entry.target.classList.remove(className);
+              });
+            }
+          });
+        };
+
+        const observer = new IntersectionObserver(callback, {
+          rootMargin: "200px 0px",
+        });
+
+        animations.forEach((animation) => observer.observe(animation));
       }
 
-      const animations = [...document.querySelectorAll(".animate")];
-      const callback = (
-        entries: IntersectionObserverEntry[],
-        observer: IntersectionObserver,
-      ) => {
-        entries.forEach((entry: IntersectionObserverEntry) => {
-          let animationClasses = (
-            entry.target.getAttribute("data-animation") ?? ""
-          ).split(" ");
+      init();
 
-          if (entry.isIntersecting) {
-            if (
-              !entry.target.getAttribute("data-animation-repeat") &&
-              entry.target.getAttribute("data-animation-repeated")
-            ) {
-              observer.unobserve(entry.target);
-              return;
-            }
-            entry.target.setAttribute("data-animation-repeated", "true");
-            animationClasses.forEach((className: any) => {
-              entry.target.classList.add(className);
-            });
-            if (entry.target.classList.contains("invisible")) {
-              entry.target.classList.remove("invisible");
-            }
-          } else if (
-            !entry.isIntersecting &&
-            entry.boundingClientRect.top > 0
-          ) {
-            animationClasses.forEach((className: any) => {
-              entry.target.classList.remove(className);
-            });
-          }
-        });
-      };
-
-      const observer = new IntersectionObserver(callback, {
-        rootMargin: "200px 0px",
-      });
-
-      animations.forEach((animation) => observer.observe(animation));
+      document.addEventListener("astro:after-swap", () => init());
     </script>
   </body>
 </html>

@@ -1,0 +1,38 @@
+---
+import { type Ticket } from "../data/data.type";
+import TicketItem from "../components/TicketItem.astro";
+interface Props {
+  tickets: ReadonlyArray<Ticket>;
+}
+
+const { tickets } = Astro.props;
+---
+
+<div class="flex flex-col gap-10">
+  {
+    tickets.map((ticket, index) => (
+      <TicketItem ticket={ticket} align={index % 2 === 0 ? "left" : "right"} />
+    ))
+  }
+</div>
+<script>
+  function init() {
+    const wrappers = document.querySelectorAll(".ticket-item-wrapper");
+
+    wrappers.forEach((wrapper) => {
+      const toggler = wrapper.querySelector(".ticket-item-toggler");
+      const content = wrapper.querySelector(".ticket-item-content");
+      toggler?.addEventListener("click", () => {
+        wrapper.classList.toggle("active");
+      });
+
+      content?.addEventListener("click", () => {
+        wrapper.classList.toggle("active");
+      });
+    });
+  }
+
+  init();
+
+  document.addEventListener("astro:after-swap", () => init());
+</script>

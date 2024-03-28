@@ -1,0 +1,221 @@
+---
+import { type Ticket } from "../data/data.type";
+
+interface Props {
+  ticket: Ticket;
+  align: "left" | "right";
+}
+
+const { ticket, align } = Astro.props;
+---
+
+<div
+  class:list={[
+    "ticket-item-wrapper flex flex-col gap-3 items-start w-[300px]",
+    {
+      "self-start": align === "left",
+      "self-end": align === "right",
+    },
+  ]}
+>
+  <article
+    class:list={[
+      "cursor-pointer ticket-item-content border-green-600 border-8 rounded-md bg-white w-[300px] flex flex-row justify-between text-green-600 shadow-md",
+      {
+        "border-gray-200": ticket.isSoldOut,
+        "text-gray-200": ticket.isSoldOut,
+        "fill-gray-200": ticket.isSoldOut,
+      },
+    ]}
+  >
+    {
+      align === "left" && (
+        <svg
+          class="h-full ml-auto select-none pointer-events-none"
+          width="77"
+          height="136"
+          viewBox="0 0 77 136"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cy="68" r="55" fill="currentColor" />
+          <circle cx="72" cy="5" r="5" fill="currentColor" />
+          <circle cx="72" cy="19" r="5" fill="currentColor" />
+          <circle cx="72" cy="33" r="5" fill="currentColor" />
+          <circle cx="72" cy="47" r="5" fill="currentColor" />
+          <circle cx="72" cy="117" r="5" fill="currentColor" />
+          <circle cx="72" cy="131" r="5" fill="currentColor" />
+          <circle cx="72" cy="61" r="5" fill="currentColor" />
+          <circle cx="72" cy="75" r="5" fill="currentColor" />
+          <circle cx="72" cy="89" r="5" fill="currentColor" />
+          <circle cx="72" cy="103" r="5" fill="currentColor" />
+        </svg>
+      )
+    }
+    <header class="w-full grid place-content-center">
+      <h3 class="text-center text-2xl font-bold">
+        {ticket.name}
+      </h3>
+      {
+        ticket.notice && (
+          <span class="text-center text-sm text-gray-600">{ticket.notice}</span>
+        )
+      }
+      {
+        !ticket.isSoldOut && (
+          <span class="text-center text-md">{ticket.price} €</span>
+        )
+      }
+      {
+        ticket.isSoldOut && (
+          <span class="text-center text-sm text-red-600">Sold Out</span>
+        )
+      }
+    </header>
+    {
+      align === "right" && (
+        <svg
+          class="h-full ml-auto select-none pointer-events-none"
+          width="77"
+          height="136"
+          viewBox="0 0 77 136"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="55"
+            cy="55"
+            r="55"
+            transform="matrix(-1 0 0 1 132 13)"
+            fill="currentColor"
+          />
+          <circle
+            cx="5"
+            cy="5"
+            r="5"
+            transform="matrix(-1 0 0 1 10 0)"
+            fill="currentColor"
+          />
+          <circle
+            cx="5"
+            cy="5"
+            r="5"
+            transform="matrix(-1 0 0 1 10 14)"
+            fill="currentColor"
+          />
+          <circle
+            cx="5"
+            cy="5"
+            r="5"
+            transform="matrix(-1 0 0 1 10 28)"
+            fill="currentColor"
+          />
+          <circle
+            cx="5"
+            cy="5"
+            r="5"
+            transform="matrix(-1 0 0 1 10 42)"
+            fill="currentColor"
+          />
+          <circle
+            cx="5"
+            cy="5"
+            r="5"
+            transform="matrix(-1 0 0 1 10 112)"
+            fill="currentColor"
+          />
+          <circle
+            cx="5"
+            cy="5"
+            r="5"
+            transform="matrix(-1 0 0 1 10 126)"
+            fill="currentColor"
+          />
+          <circle
+            cx="5"
+            cy="5"
+            r="5"
+            transform="matrix(-1 0 0 1 10 56)"
+            fill="currentColor"
+          />
+          <circle
+            cx="5"
+            cy="5"
+            r="5"
+            transform="matrix(-1 0 0 1 10 70)"
+            fill="currentColor"
+          />
+          <circle
+            cx="5"
+            cy="5"
+            r="5"
+            transform="matrix(-1 0 0 1 10 84)"
+            fill="currentColor"
+          />
+          <circle
+            cx="5"
+            cy="5"
+            r="5"
+            transform="matrix(-1 0 0 1 10 98)"
+            fill="currentColor"
+          />
+        </svg>
+      )
+    }
+  </article>
+
+      <button
+      class=" ticket-item-toggler self-center rounded-full  opacity-40 aspect-square w-[30px] transition-all duration-300 ease-in-out"
+    >
+      <i class="ph ph-arrow-down  font-extrabold"></i>
+    </button>
+
+  <div class="perk-list hidden flex-col gap-2 items-center animate__animated animate__fadeIn">
+    <ul class="text-left list-['✅'] list-inside flex flex-col gap-3">
+      {
+        ticket.perks.map((perk, index) => (
+          <li>
+            <span class="md:pl-3">{perk}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+<style>
+  .ticket-item-wrapper.active .perk-list {
+    display: flex;
+  }
+
+  div:not(.active) button.ticket-item-toggler {
+    @apply bg-gray-200;
+  }
+
+  div:not(.active) button.ticket-item-toggler i {
+    @apply text-gray-600;
+  }
+
+  div:not(.active) button.ticket-item-toggler:hover {
+    @apply bg-gray-300;
+  }
+
+  div:not(.active) button.ticket-item-toggler:hover i {
+    @apply text-gray-700;
+  }
+
+  div.active button.ticket-item-toggler {
+    @apply rotate-180 bg-green-200;
+  }
+
+  div.active button.ticket-item-toggler i {
+    @apply text-green-600;
+  }
+
+  div.active button.ticket-item-toggler:hover {
+    @apply bg-green-300;
+  }
+
+  div.active button.ticket-item-toggler:hover i {
+    @apply text-green-700;
+  }
+</style>
