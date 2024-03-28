@@ -5,8 +5,6 @@ import If from "../../components/utils/If.astro";
 import { DATA } from "../../data/data";
 import Layout from "../../layouts/Layout.astro";
 
-export const prerender = true;
-
 export function getStaticPaths() {
   return DATA.sponsors
     .filter((sponsor) => sponsor.hasFeaturedPage)

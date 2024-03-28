@@ -3,8 +3,6 @@ import Socials from "../../components/Socials.astro";
 import { DATA } from "../../data/data";
 import Layout from "../../layouts/Layout.astro";
 
-export const prerender = true;
-
 export function getStaticPaths() {
   return DATA.team.organizers.map((_, index) => ({
     params: { organizer: index },
