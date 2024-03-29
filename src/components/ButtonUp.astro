@@ -1,0 +1,45 @@
+---
+interface Props {
+  class?: string;
+}
+---
+
+<a
+  class:list={[
+    "animate__animated animate__fadeIn hidden opacity-40 hover:opacity-100 transition-opacity transition-transform hover:animate-bounce z-50",
+    Astro.props.class,
+  ]}
+  id="buttonUp"
+  href={`${Astro.url.pathname}#top`}
+>
+  <i class="text-5xl ph ph-arrow-square-up"></i></a
+>
+
+<script>
+  function init() {
+    const btnUp = document.getElementById("buttonUp");
+
+    if (!btnUp) {
+      return;
+    }
+    window.onscroll = function () {
+      if (window.scrollY > 100) {
+        btnUp.classList.remove("hidden");
+      } else {
+        btnUp.classList.add("hidden");
+      }
+    };
+
+    btnUp.onclick = function () {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    };
+  }
+
+  init();
+
+  document.addEventListener("astro:after-swap", () => init());
+</script>

@@ -1,0 +1,53 @@
+---
+import type { SponssorsDossier } from "../data/data.type";
+
+interface Props {
+  dossier: SponssorsDossier;
+  class?: string;
+}
+
+const { dossier } = Astro.props;
+---
+
+{
+  dossier.enabled && (
+    <section class:list={[Astro.props.class]}>
+      <a
+        href="/documents/dossier-sponsors-es.pdf"
+        target="_blank"
+        class="p-1 md:p-2 rounded-full border border-dark-background dark:border-gray-300 flex flex-row gap-1 md:gap-3 items-center highlighted"
+      >
+        <i class=" grid ph ph-file-arrow-down aspect-square w-[32px] md:w-[32px]  border border-dark-background dark:border-gray-300 text-dark-background dark:text-gray-300 rounded-full place-items-center" />
+        <span class="highlighted text-md md:text-lg lg:text-xl">
+          Ver dossier de patrocinio.
+        </span>
+      </a>
+      <a
+        href="/documents/dossier-sponsors-en.pdf"
+        target="_blank"
+        class="w-fit text-xs md:text-sm lg:text-md text-gray-400"
+      >
+        View sponsorship dossier.
+      </a>
+    </section>
+  )
+}
+<style>
+  .highlighted {
+    @apply bg-gradient-to-r from-dark-background via-gray-300 to-dark-background dark:from-light-background dark:via-gray-600 dark:to-light-background;
+    text-align: center;
+    background-size: 200% auto;
+    color: #000;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 1s linear infinite;
+  }
+
+  @keyframes shine {
+    from {
+      background-position: 200% center;
+    }
+  }
+</style>

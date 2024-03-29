@@ -10,6 +10,7 @@ import TeamMember from "../components/TeamMember.astro";
 import Notice from "../components/Notice.astro";
 import Accordion from "../components/Accordion.astro";
 import TicketSection from "../components/TicketSection.astro";
+import SponsorDossier from "../components/SponsorDossier.astro";
 
 function formatDate(date: Date) {
   const formatter = new Intl.DateTimeFormat("es-ES", {
@@ -267,31 +268,10 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
               </article>
             </section>
           </If>
-          {
-            DATA.sponsorsDossier.enabled && (
-              <section class="flex flex-col mx-auto text-center  border-4 border-dark-background dark:border-light-background rounded-md">
-                <header class="p-10 text-xl sm:text-2xl lg:text-4xl bg-dark-background text-light-background dark:bg-light-background dark:text-dark-background">
-                  ¿Quieres ser patrocinador?
-                </header>
-                <div class="flex flex-col gap-5 p-3">
-                  <a
-                    class="text-lg md:text-2xl"
-                    href="/documents/dossier-sponsors-es.pdf"
-                    target="_blank"
-                  >
-                    Descargar dossier de patrocinio
-                  </a>
-                  <a
-                    class="text-sm md:text-md"
-                    href="/documents/dossier-sponsors-en.pdf"
-                    target="_blank"
-                  >
-                    Download sponsorship dossier
-                  </a>
-                </div>
-              </section>
-            )
-          }
+          <SponsorDossier
+            dossier={DATA.sponsorsDossier}
+            class="mx-auto w-fit flex flex-col gap-2 items-center"
+          />
         </div>
       </section>
     </If>
