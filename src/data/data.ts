@@ -709,10 +709,9 @@ const callForPapers = {
 } satisfies Readonly<CallForPapers>;
 
 export const DATA: Data = {
-  title: "BiznagaFest 2023",
-  ticketsUrl:
-    "https://www.eventbrite.es/e/entradas-biznagafest-2023-638556609007",
-  date: new Date(2023, 9, 28),
+  title: "BiznagaFest 2024",
+  ticketsUrl: "https://www.tickettailor.com/events/biznagafest/1127407",
+  date: new Date(2024, 9, 26),
   about: {
     descriptionInParagraphs: [
       'El BiznagaFest es el gran evento IT de la Costa del Sol para las comunidades "Google developers" de España, que se reúnen para ofrecer conferencias y workshops sobre Devops, Backend, Frontend, Chatbots, IA, Blockchain y soft skills.',
