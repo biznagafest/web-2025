@@ -80,29 +80,107 @@ import If from "./utils/If.astro";
       <li
         class="cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
       >
-        <a
-          target="_blank"
+        <button
+          id="tickets-modal-trigger"
           class="text-white p-2 rounded-lg bg-green-600 hover:bg-green-400 dark:bg-blue-600 dark:hover:bg-blue-400 transition-colors"
-          href={DATA.ticketsUrl}>Comprar entradas</a
         >
-      </li>
-      <li class="grid place-content-center">
-        <DarkModeToggleButton />
+          Comprar entradas
+        </button>
+        <li class="grid place-content-center">
+          <DarkModeToggleButton />
+        </li>
       </li>
     </ul>
+
+    <script>
+
+function listenToTicketsModal() {
+        const $ticketsModalWrapper = document.getElementById(
+          "ticketsModalWrapper",
+        );
+
+        if (!$ticketsModalWrapper) {
+          return;
+        }
+
+        const $ttWidget = document.createElement("div");
+        $ttWidget.classList.add("tt-widget");
+
+        const $ttWidgetFallback = document.createElement("div");
+        $ttWidgetFallback.classList.add("tt-widget-fallback");
+
+        $ttWidgetFallback.innerHTML = `
+          <p>
+            <a
+              href="https://www.tickettailor.com/checkout/new-session/id/3521838/chk/44e1/?ref=website_widget&show_search_filter=true&show_date_filter=true&show_sort=true"
+              target="_blank">Click here to buy tickets</a
+            ><br /><small
+              ><a
+                href="https://www.tickettailor.com?rf=wdg_173163"
+                class="tt-widget-powered"
+                >Sell tickets online with Ticket Tailor</a
+              ></small
+            >
+          </p>
+        `;
+
+        $ttWidget.appendChild($ttWidgetFallback);
+
+        const ttWidgetScript = document.createElement("script");
+        ttWidgetScript.src =
+          "https://cdn.tickettailor.com/js/widgets/min/widget.js";
+        ttWidgetScript.setAttribute(
+          "data-url",
+          "https://www.tickettailor.com/checkout/new-session/id/3521838/chk/44e1/?ref=website_widget&show_search_filter=true&show_date_filter=true&show_sort=true",
+        );
+        ttWidgetScript.setAttribute("data-type", "inline");
+        ttWidgetScript.setAttribute("data-inline-minimal", "true");
+        ttWidgetScript.setAttribute("data-inline-show-logo", "false");
+        ttWidgetScript.setAttribute("data-inline-bg-fill", "true");
+        ttWidgetScript.setAttribute(
+          "data-inline-inherit-ref-from-url-param",
+          "",
+        );
+        ttWidgetScript.setAttribute("data-inline-ref", "website_widget");
+
+        $ttWidget.appendChild(ttWidgetScript);
+
+        $ticketsModalWrapper.innerHTML = "";
+        $ticketsModalWrapper.appendChild($ttWidget);
+
+        const iframes = $ttWidget.querySelectorAll("iframe");
+        ttWidgetScript.addEventListener("load", () => {
+          
+          iframes.forEach((iframe) => {
+          iframe.style.height = "100%";
+        })
+          });
+
+      }
+
+      function init() {
+        const button = document.querySelector("#menu-button"); // Hamburger Icon
+        const menu = document.querySelector("#menu"); // Menu
+        button?.addEventListener("click", () => {
+          menu?.classList.toggle("hidden");
+        });
+
+        const ticketsModalTrigger = document.getElementById("tickets-modal-trigger");
+
+        ticketsModalTrigger?.addEventListener("click", () => {
+          const $ticketsModalWrapper = document.getElementById("ticketsModalWrapper");
+
+          if (!$ticketsModalWrapper) {
+            return;
+          }
+
+          listenToTicketsModal();
+        });
+      }
+
+      init();
+
+      document.addEventListener("astro:after-swap", () => init());
+    </script>
   </div>
-
-  <script>
-    function init() {
-      const button = document.querySelector("#menu-button"); // Hamburger Icon
-      const menu = document.querySelector("#menu"); // Menu
-      button?.addEventListener("click", () => {
-        menu?.classList.toggle("hidden");
-      });
-    }
-
-    init();
-
-    document.addEventListener("astro:after-swap", () => init());
-  </script>
 </nav>

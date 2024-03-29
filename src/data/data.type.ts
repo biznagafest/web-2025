@@ -135,6 +135,16 @@ export interface CallForPapers {
   url: string;
 }
 
+export type SponssorsDossier =
+  | {
+      enabled: true;
+      es: string;
+      en: string;
+    }
+  | {
+      enabled: false;
+    };
+
 export type Data = {
   title: string;
   date: Date;
@@ -163,6 +173,7 @@ export type Data = {
   schedules: ReadonlyArray<Schedule>;
   team: Team;
   sponsors: ReadonlyArray<Sponsor>;
+  sponsorsDossier: SponssorsDossier;
   events: ReadonlyArray<Event>;
   tickets: ReadonlyArray<Ticket>;
   previousEditions: ReadonlyArray<PreviousEdition>;

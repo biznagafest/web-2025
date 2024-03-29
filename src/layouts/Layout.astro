@@ -1,10 +1,11 @@
 ---
-import { ViewTransitions } from "astro:transitions";
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
 import Notice from "../components/Notice.astro";
 import If from "../components/utils/If.astro";
 import { DATA } from "../data/data";
+import CommonHead from "../components/CommonHead.astro";
+import { Modal } from "accessible-astro-components";
 
 export interface Props {
   title: string;
@@ -17,52 +18,7 @@ const { title, lang, description } = Astro.props;
 
 <!DOCTYPE html>
 <html lang={lang}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <ViewTransitions />
-    <!-- Animate.css CDN -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-
-    <!-- Phosphor icons CDN -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css"
-    />
-
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <style is:global>
-      @tailwind base;
-      @tailwind components;
-      @tailwind utilities;
-
-      @font-face {
-        font-family: "Manrope";
-        src: url("/fonts/Manrope/Manrope-VariableFont_wght.ttf")
-          format("truetype");
-      }
-
-      * {
-        box-sizing: border-box;
-        font-family: "Manrope";
-      }
-
-      .activeRoute {
-        @apply text-green-400 dark:text-blue-400;
-      }
-
-      .wrapper {
-        @apply md:w-8/12 md:mx-auto pt-16 pb-28 md:pt-32 md:pb-52;
-      }
-    </style>
-  </head>
+  <CommonHead title={title} description={description} />
   <body
     class="bg-light-background dark:bg-dark-background text-dark-background dark:text-light-background"
   >
@@ -72,17 +28,23 @@ const { title, lang, description } = Astro.props;
     <div class="overflow-hidden min-h-screen flex flex-col justify-between">
       <div>
         <Navigation />
+        <Modal triggerId="tickets-modal-trigger">
+          <div id="ticketsModalWrapper">
+          </div>
+        </Modal>
         <slot />
       </div>
       <Footer />
     </div>
     <script>
-      function init() {
+      function listenToDarkMode() {
         const html = document.documentElement;
         if (!!localStorage.getItem("dark")) {
           html.classList.add("dark");
         }
+      }
 
+      function listenAnimations() {
         const animations = [...document.querySelectorAll(".animate")];
         const callback = (
           entries: IntersectionObserverEntry[],
@@ -124,6 +86,12 @@ const { title, lang, description } = Astro.props;
         });
 
         animations.forEach((animation) => observer.observe(animation));
+      }
+
+
+      function init() {
+        listenToDarkMode();
+        listenAnimations();
       }
 
       init();

@@ -267,6 +267,31 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
               </article>
             </section>
           </If>
+          {
+            DATA.sponsorsDossier.enabled && (
+              <section class="flex flex-col mx-auto text-center  border-4 border-dark-background dark:border-light-background rounded-md">
+                <header class="p-10 text-xl sm:text-2xl lg:text-4xl bg-dark-background text-light-background dark:bg-light-background dark:text-dark-background">
+                  ¿Quieres ser patrocinador?
+                </header>
+                <div class="flex flex-col gap-5 p-3">
+                  <a
+                    class="text-lg md:text-2xl"
+                    href="/documents/dossier-sponsors-es.pdf"
+                    target="_blank"
+                  >
+                    Descargar dossier de patrocinio
+                  </a>
+                  <a
+                    class="text-sm md:text-md"
+                    href="/documents/dossier-sponsors-en.pdf"
+                    target="_blank"
+                  >
+                    Download sponsorship dossier
+                  </a>
+                </div>
+              </section>
+            )
+          }
         </div>
       </section>
     </If>
@@ -280,7 +305,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
             animation="animate__animated animate__fadeInLeft"
           >
             <h2 class="text-3xl font-bold text-center md:text-left">
-              Compra tu entrada
+              Elige tu entrada
             </h2>
           </AnimatedOnViewportEnter>
           <AnimatedOnViewportEnter
@@ -340,7 +365,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
           </AnimatedOnViewportEnter>
 
           <h3 class="text-xl font-semibold">
-            ETSI Informática, Universidad de Málaga
+            {DATA.venue.title}
           </h3>
 
           <p>Para llegar al evento puedes usar:</p>
@@ -351,7 +376,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
                 <li>
                   <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
                     <span class="text-xl font-semibold">
-                      <i class="ph ph-bus" /> Autobús
+                      <i class="text-2xl ph ph-bus" /> Autobús
                     </span>
                     <ul class="ml-7 list-disc list-inside">
                       {DATA.venue.howToArrive.howToArriveByBus.map((step) => (
@@ -367,7 +392,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
                 <li>
                   <AnimatedOnViewportEnter animation="animate__animated animate__fadeInUp">
                     <span class="text-xl font-semibold">
-                      <i class="ph ph-bicycle" /> Bicicleta
+                      <i class="text-2xl ph ph-bicycle" /> Bicicleta
                     </span>
                     <ul class="ml-7 list-disc list-inside">
                       {DATA.venue.howToArrive.howToArriveByBike.map((step) => (
@@ -383,7 +408,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
                 <li>
                   <AnimatedOnViewportEnter animation="animate__animated animate__fadeInRight">
                     <span class="text-xl font-semibold">
-                      <i class="ph ph-train" />
+                      <i class="text-2xl ph ph-train" />
                       Metro
                     </span>
                     <ul class="ml-7 list-disc list-inside">

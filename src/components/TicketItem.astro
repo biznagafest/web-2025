@@ -20,11 +20,14 @@ const { ticket, align } = Astro.props;
 >
   <article
     class:list={[
-      "cursor-pointer ticket-item-content border-green-600 border-8 rounded-md bg-white w-[300px] flex flex-row justify-between text-green-600 shadow-md",
+      "cursor-pointer ticket-item-content border-8 rounded-md bg-white w-[300px] flex flex-row justify-between  shadow-md",
       {
-        "border-gray-200": ticket.isSoldOut,
+        "text-green-600": !ticket.isSoldOut,
+        "fill-green-600": !ticket.isSoldOut,
+        "border-green-600": !ticket.isSoldOut,
         "text-gray-200": ticket.isSoldOut,
         "fill-gray-200": ticket.isSoldOut,
+        "border-gray-200": ticket.isSoldOut,
       },
     ]}
   >
@@ -164,13 +167,15 @@ const { ticket, align } = Astro.props;
     }
   </article>
 
-      <button
-      class=" ticket-item-toggler self-center rounded-full  opacity-40 aspect-square w-[30px] transition-all duration-300 ease-in-out"
-    >
-      <i class="ph ph-arrow-down  font-extrabold"></i>
-    </button>
+  <button
+    class="ticket-item-toggler self-center rounded-full opacity-40 aspect-square w-[30px] transition-all duration-300 ease-in-out"
+  >
+    <i class="ph ph-arrow-down font-extrabold"></i>
+  </button>
 
-  <div class="perk-list hidden flex-col gap-2 items-center animate__animated animate__fadeIn">
+  <div
+    class="perk-list hidden flex-col gap-2 items-center animate__animated animate__fadeIn"
+  >
     <ul class="text-left list-['✅'] list-inside flex flex-col gap-3">
       {
         ticket.perks.map((perk, index) => (

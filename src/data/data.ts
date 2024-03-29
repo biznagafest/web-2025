@@ -795,5 +795,10 @@ export const DATA: Data = {
     },
   ],
   welcomeBanner,
+  sponsorsDossier: {
+    enabled: true,
+    en: "/documents/dossier-sponsors-es.pdf",
+    es: "/documents/dossier-sponsors-es.pdf",
+  },
   callForPapers,
 } as const satisfies Readonly<Data>;
