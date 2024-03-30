@@ -18,20 +18,9 @@ import If from "./utils/If.astro";
     </a>
   </div>
   <svg class="h-6 w-6 cursor-pointer xl:hidden block"> </svg>
-  <svg
-    xmlns="<http://www.w3.org/2000/svg>"
-    id="menu-button"
-    class="h-6 w-6 cursor-pointer xl:hidden block"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M4 6h16M4 12h16M4 18h16"></path>
-  </svg>
+  <button id="menu-button" class="aspect-square block xl:hidden">
+    <i class="ph ph-list text-3xl"></i>
+  </button>
   <div
     class="hidden py-3 xl:py-0 w-full xl:flex xl:items-center xl:w-auto"
     id="menu"
@@ -40,45 +29,45 @@ import If from "./utils/If.astro";
       class="flex justify-evenly gap-2 text-sm flex-col lg:flex-row font-bold"
     >
       <If condition={!!DATA.schedules.length}>
-        <li>
+        <li class="mx-auto">
           <a
             href="/schedule#top"
-            class="px-3 h-full w-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+            class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
             >Schedule</a
           >
         </li>
       </If>
       <If condition={!!DATA.speakers.length}>
-        <li>
+        <li class="mx-auto">
           <a
             href="/#speakers"
-            class="px-3 h-full w-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+            class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
           >
             Speakers</a
           >
         </li>
       </If>
       <If condition={!!DATA.raffles.length}>
-        <li>
+        <li class="mx-auto">
           <a
             href="/raffles#top"
-            class="px-3 h-full w-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+            class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
           >
             Sorteos</a
           >
         </li>
       </If>
       <If condition={!!DATA.faq.length}>
-        <li>
+        <li class="mx-auto">
           <a
             href="/#faq"
-            class="px-3 h-full w-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+            class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
             >FAQ</a
           >
         </li>
       </If>
       <li
-        class="cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+        class="mx-auto cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
       >
         <button
           id="tickets-modal-trigger"
@@ -93,8 +82,7 @@ import If from "./utils/If.astro";
     </ul>
 
     <script>
-
-function listenToTicketsModal() {
+      function listenToTicketsModal() {
         const $ticketsModalWrapper = document.getElementById(
           "ticketsModalWrapper",
         );
@@ -150,25 +138,41 @@ function listenToTicketsModal() {
 
         const iframes = $ttWidget.querySelectorAll("iframe");
         ttWidgetScript.addEventListener("load", () => {
-          
           iframes.forEach((iframe) => {
-          iframe.style.height = "100%";
-        })
+            iframe.style.height = "100%";
           });
-
+        });
       }
 
-      function init() {
+      function listenBurgerButton() {
         const button = document.querySelector("#menu-button"); // Hamburger Icon
         const menu = document.querySelector("#menu"); // Menu
         button?.addEventListener("click", () => {
           menu?.classList.toggle("hidden");
-        });
+          const isOpen = button.attributes.getNamedItem("expanded");
 
-        const ticketsModalTrigger = document.getElementById("tickets-modal-trigger");
+          if (isOpen) {
+            button.removeAttribute("expanded");
+            button.innerHTML = `<i class="ph ph-list text-3xl"></i>`;
+            return;
+          } else {
+            button.setAttribute("expanded", "true");
+            button.innerHTML = `<i class="ph ph-x text-3xl"></i>`;
+          }
+        });
+      }
+
+      function init() {
+        listenBurgerButton();
+
+        const ticketsModalTrigger = document.getElementById(
+          "tickets-modal-trigger",
+        );
 
         ticketsModalTrigger?.addEventListener("click", () => {
-          const $ticketsModalWrapper = document.getElementById("ticketsModalWrapper");
+          const $ticketsModalWrapper = document.getElementById(
+            "ticketsModalWrapper",
+          );
 
           if (!$ticketsModalWrapper) {
             return;
