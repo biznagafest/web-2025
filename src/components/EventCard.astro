@@ -8,19 +8,19 @@ const { event } = Astro.props;
 ---
 
 <article
-  class="flex flex-col bg-blue-50 border border-blue-500 dark:border-green-500 dark:bg-green-800 dark:bg-opacity-30 rounded-lg p-10 gap-6"
+  class="flex flex-col bg-blue-50 border border-blue-500 dark:border-green-500 dark:bg-green-800 dark:bg-opacity-30 rounded-lg p-4 md:p-6 gap-6"
 >
   <header class="flex flex-col gap-6">
     <div
-      class="flex flex-wrap flex-row gap-4 text-light-background border-b border-gray-300 dark:border-green-500 pb-10"
+      class="flex flex-wrap flex-row gap-4 justify-center md:justify-start text-light-background border-b border-blue-500 dark:border-green-500 pb-4 md:pb-6 text-xs md:text-sm"
     >
       <span
-        class="max-w-fit text-center w-full py-2 px-4 bg-red-500 rounded-full"
+        class="max-w-fit text-center w-full py-1 px-2 md:py-2 md:px-4 bg-red-500 rounded-full"
         >{event.type === "lecture" ? "Charla" : "Taller"}</span
       >
       {
         event.date && (
-          <span class="max-w-fit text-center w-full py-2 px-4 bg-yellow-400 rounded-full text-dark-background">
+          <span class="max-w-fit text-center w-full py-1 px-2 md:py-2 md:px-4 bg-yellow-400 rounded-full text-dark-background">
             <i class="ph ph-clock" />
             {event.date}
           </span>
@@ -29,21 +29,21 @@ const { event } = Astro.props;
 
       {
         event.place && (
-          <span class="max-w-fit text-center w-full py-2 px-4 bg-blue-600 dark:bg-green-400 rounded-full">
+          <span class="max-w-fit text-center w-full py-1 px-2 md:py-2 md:px-4 bg-blue-600 dark:bg-green-400 rounded-full">
             {event.place}
           </span>
         )
       }
       {
         event.durationInMinutes && (
-          <span class="max-w-fit text-center w-full py-2 px-4 bg-blue-600 dark:bg-green-400 rounded-full">
+          <span class="max-w-fit text-center w-full py-1 px-2 md:py-2 md:px-4 bg-blue-600 dark:bg-green-400 rounded-full">
             {event.durationInMinutes} min.
           </span>
         )
       }
       {
         event.language && (
-          <span class="max-w-fit text-center w-full py-2 px-4 bg-blue-600 dark:bg-green-400 rounded-full">
+          <span class="max-w-fit text-center w-full py-1 px-2 md:py-2 md:px-4 bg-blue-600 dark:bg-green-400 rounded-full">
             {event.language}.
           </span>
         )
