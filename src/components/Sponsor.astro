@@ -17,26 +17,16 @@ const { sponsor } = Astro.props;
     loading="lazy"
     src={sponsor.picture}
     alt=`Logo of ${sponsor.name}`
-    class={`${
-      sponsor.tier === "platinum"
-        ? "w-[400px] md:w-[500px]"
-        : sponsor.tier === "gold"
-        ? "w-[350px] md:w-[450px]"
-        : sponsor.tier === "silver"
-        ? "w-[280px] md:w-[380px]"
-        : sponsor.tier === "bronze"
-        ? "w-[230px] md:w-[330px]"
-        : sponsor.tier === "media"
-        ? "w-[200px] md:w-[300px]"
-        : sponsor.tier === "food"
-        ? "w-[150px] md:w-[250px]"
-        : sponsor.tier === "community"
-        ? "w-[150px] md:w-[250px]"
-        : sponsor.tier === "supporter"
-        ? "w-[150px] md:w-[250px]"
-        : sponsor.tier === "other"
-        ? "w-[150px] md:w-[250px]"
-        : "w-[150px] md:w-[250px]"
-    }`}
+    class:list={{
+      "w-[400px] md:w-[500px]": sponsor.tier === "platinum",
+      "w-[350px] md:w-[450px]": sponsor.tier === "gold",
+      "w-[280px] md:w-[380px]": sponsor.tier === "silver",
+      "w-[230px] md:w-[330px]": sponsor.tier === "bronze",
+      "w-[200px] md:w-[300px]": sponsor.tier === "media",
+      "w-[150px] md:w-[250px]":
+        sponsor.tier === "food" ||
+        sponsor.tier === "community" ||
+        sponsor.tier === "supporter",
+    }}
   />
 </a>

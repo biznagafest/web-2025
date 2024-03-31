@@ -2,7 +2,6 @@
 import Footer from "../components/Footer.astro";
 import Navigation from "../components/Navigation.astro";
 import Notice from "../components/Notice.astro";
-import If from "../components/utils/If.astro";
 import { DATA } from "../data/data";
 import CommonHead from "../components/CommonHead.astro";
 import { Modal } from "accessible-astro-components";
@@ -23,9 +22,7 @@ const { title, lang, description } = Astro.props;
   <body
     class="bg-light-background dark:bg-dark-background text-dark-background dark:text-light-background"
   >
-    <If condition={DATA.welcomeBanner.isEnabled}>
-      <Notice />
-    </If>
+    {DATA.welcomeBanner.isEnabled && <Notice />}
     <div class="overflow-hidden min-h-screen flex flex-col justify-between">
       <div>
         <Navigation />

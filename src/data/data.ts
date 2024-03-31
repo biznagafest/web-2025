@@ -696,8 +696,6 @@ const team = {
   staff: [],
 } as const satisfies Team;
 
-const gallery: string[] = [];
-
 const welcomeBanner = {
   isEnabled: false,
 } satisfies Readonly<WelcomeBanner>;
@@ -725,7 +723,9 @@ export const DATA: Data = {
       youtube: "https://www.youtube.com/@biznagafest",
     },
   },
-  lastEditionVideoUrl: "https://www.youtube.com/embed/L1B6GCrWFVQ",
+  lastEdition: {
+    gallery: [],
+  },
   venue: {
     address: "Campus de Teatinos, Blvr. Louis Pasteur, 35, 29010 Málaga",
     description: "",
@@ -771,7 +771,6 @@ export const DATA: Data = {
       url: "https://2022.biznagafest.com/",
     },
   ],
-  gallery,
   team,
   faq,
   tickets,

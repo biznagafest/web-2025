@@ -1,7 +1,6 @@
 ---
 import { DATA } from "../data/data";
 import DarkModeToggleButton from "./DarkModeToggleButton.astro";
-import If from "./utils/If.astro";
 ---
 
 <nav
@@ -28,44 +27,54 @@ import If from "./utils/If.astro";
     <ul
       class="flex justify-evenly gap-2 text-sm flex-col lg:flex-row font-bold"
     >
-      <If condition={!!DATA.schedules.length}>
-        <li class="mx-auto">
-          <a
-            href="/schedule#top"
-            class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
-            >Schedule</a
-          >
-        </li>
-      </If>
-      <If condition={!!DATA.speakers.length}>
-        <li class="mx-auto">
-          <a
-            href="/#speakers"
-            class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
-          >
-            Speakers</a
-          >
-        </li>
-      </If>
-      <If condition={!!DATA.raffles.length}>
-        <li class="mx-auto">
-          <a
-            href="/raffles#top"
-            class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
-          >
-            Sorteos</a
-          >
-        </li>
-      </If>
-      <If condition={!!DATA.faq.length}>
-        <li class="mx-auto">
-          <a
-            href="/#faq"
-            class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
-            >FAQ</a
-          >
-        </li>
-      </If>
+      {
+        !!DATA.schedules.length && (
+          <li class="mx-auto">
+            <a
+              href="/schedule#top"
+              class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+            >
+              Schedule
+            </a>
+          </li>
+        )
+      }
+      {
+        !!DATA.speakers.length && (
+          <li class="mx-auto">
+            <a
+              href="/#speakers"
+              class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+            >
+              Speakers
+            </a>
+          </li>
+        )
+      }
+      {
+        !!DATA.raffles.length && (
+          <li class="mx-auto">
+            <a
+              href="/raffles#top"
+              class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+            >
+              Sorteos
+            </a>
+          </li>
+        )
+      }
+      {
+        !!DATA.faq.length && (
+          <li class="mx-auto">
+            <a
+              href="/#faq"
+              class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+            >
+              FAQ
+            </a>
+          </li>
+        )
+      }
       <li
         class="mx-auto cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
       >

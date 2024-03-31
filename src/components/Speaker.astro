@@ -1,6 +1,6 @@
 ---
 import type { Speaker } from "../data/data.type";
-import If from "./utils/If.astro";
+
 interface Props {
   speaker: Speaker;
   index: number;
@@ -31,8 +31,10 @@ const { speaker, index } = Astro.props;
     <h3 transition:name={`name-speaker-${index}`} class="text-2xl font-bold">
       {speaker.name}
     </h3>
-    <If condition={speaker.position !== undefined}>
-      <span class="text-sm">{speaker.position}</span>
-    </If>
+    {
+      speaker.position !== undefined && (
+        <span class="text-sm">{speaker.position}</span>
+      )
+    }
   </div>
 </div>
