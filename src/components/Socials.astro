@@ -2,10 +2,10 @@
 import type { Socials } from "../data/data.type";
 interface Props {
   socials: Socials;
-  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl";
+  class?: string;
 }
 
-const { socials, size = "lg" } = Astro.props;
+const { socials } = Astro.props;
 ---
 
 <ul
@@ -15,7 +15,7 @@ const { socials, size = "lg" } = Astro.props;
     socials?.devto && (
       <li>
         <a target="_blank" href={socials?.devto}>
-          <i class:list={["ph", "ph-dev-to-logo", `text-${size}`]} />
+          <i class:list={["ph", "ph-dev-to-logo", Astro.props.class]} />
         </a>
       </li>
     )
@@ -24,7 +24,7 @@ const { socials, size = "lg" } = Astro.props;
     socials?.github && (
       <li>
         <a target="_blank" href={socials?.github}>
-          <i class:list={["ph", "ph-github-logo", `text-${size}`]} />
+          <i class:list={["ph", "ph-github-logo", Astro.props.class]} />
         </a>
       </li>
     )
@@ -33,7 +33,7 @@ const { socials, size = "lg" } = Astro.props;
     socials?.instagram && (
       <li>
         <a target="_blank" href={socials?.instagram}>
-          <i class:list={["ph", "ph-instagram-logo", `text-${size}`]} />
+          <i class:list={["ph", "ph-instagram-logo", Astro.props.class]} />
         </a>
       </li>
     )
@@ -42,7 +42,7 @@ const { socials, size = "lg" } = Astro.props;
     socials?.linkedin && (
       <li>
         <a target="_blank" href={socials?.linkedin}>
-          <i class:list={["ph", "ph-linkedin-logo", `text-${size}`]} />
+          <i class:list={["ph", "ph-linkedin-logo", Astro.props.class]} />
         </a>
       </li>
     )
@@ -51,7 +51,7 @@ const { socials, size = "lg" } = Astro.props;
     socials?.mail && (
       <li>
         <a target="_blank" href={`mailto:${socials?.mail}`}>
-          <i class:list={["ph", "ph-envelope", `text-${size}`]} />
+          <i class:list={["ph", "ph-envelope", Astro.props.class]} />
         </a>
       </li>
     )
@@ -60,7 +60,7 @@ const { socials, size = "lg" } = Astro.props;
     socials?.mastodon && (
       <li>
         <a target="_blank" href={socials?.mastodon}>
-          <i class:list={["ph", "ph-at", `text-${size}`]} />
+          <i class:list={["ph", "ph-at", Astro.props.class]} />
         </a>
       </li>
     )
@@ -69,7 +69,7 @@ const { socials, size = "lg" } = Astro.props;
     socials?.medium && (
       <li>
         <a target="_blank" href={socials?.medium}>
-          <i class:list={["ph", "ph-book-open", `text-${size}`]} />
+          <i class:list={["ph", "ph-book-open", Astro.props.class]} />
         </a>
       </li>
     )
@@ -78,7 +78,7 @@ const { socials, size = "lg" } = Astro.props;
     socials?.twitch && (
       <li>
         <a target="_blank" href={socials?.twitch}>
-          <i class:list={["ph", "ph-twitch-logo", `text-${size}`]} />
+          <i class:list={["ph", "ph-twitch-logo", Astro.props.class]} />
         </a>
       </li>
     )
@@ -87,7 +87,7 @@ const { socials, size = "lg" } = Astro.props;
     socials?.twitter && (
       <li>
         <a target="_blank" href={socials?.twitter}>
-          <i class:list={["ph", "ph-twitter-logo", `text-${size}`]} />
+          <i class:list={["ph", "ph-twitter-logo", Astro.props.class]} />
         </a>
       </li>
     )
@@ -96,7 +96,7 @@ const { socials, size = "lg" } = Astro.props;
     socials?.website && (
       <li>
         <a target="_blank" href={socials?.website}>
-          <i class:list={["ph", "ph-globe", `text-${size}`]} />
+          <i class:list={["ph", "ph-globe", Astro.props.class]} />
         </a>
       </li>
     )
@@ -105,7 +105,7 @@ const { socials, size = "lg" } = Astro.props;
     socials?.youtube && (
       <li>
         <a target="_blank" href={socials?.youtube}>
-          <i class:list={["ph", "ph-youtube-logo", `text-${size}`]} />
+          <i class:list={["ph", "ph-youtube-logo", Astro.props.class]} />
         </a>
       </li>
     )
