@@ -145,11 +145,15 @@ export type SponssorsDossier =
       enabled: false;
     };
 
+export interface LastEdition {
+  lastEditionVideoUrl?: Nullish<string>;
+  gallery: ReadonlyArray<string>;
+}
+
 export type Data = {
   title: string;
   date: Date;
   ticketsUrl: string;
-  gallery: ReadonlyArray<string>;
   about: {
     descriptionInParagraphs: ReadonlyArray<string>;
     socials?: Socials;
@@ -177,7 +181,7 @@ export type Data = {
   events: ReadonlyArray<Event>;
   tickets: ReadonlyArray<Ticket>;
   previousEditions: ReadonlyArray<PreviousEdition>;
-  lastEditionVideoUrl?: Nullish<string>;
+  lastEdition?: Nullish<LastEdition>;
   faq: ReadonlyArray<FAQ>;
   footerLinks: ReadonlyArray<FooterLink>;
   raffles: ReadonlyArray<Raffle>;

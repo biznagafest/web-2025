@@ -1,0 +1,70 @@
+---
+import "swiper/css/bundle";
+
+interface Props {
+  images: ReadonlyArray<string>;
+  class?: string;
+  navigation?: boolean;
+  pagination?: boolean;
+  scrollbar?: boolean;
+}
+
+const {
+  images,
+  navigation = false,
+  pagination = false,
+  scrollbar = false,
+} = Astro.props;
+---
+
+<div class:list={["swiper", Astro.props.class]}>
+  <div class="swiper-wrapper w-full h-full">
+    {
+      images.map((image) => (
+        <div class="swiper-slide w-full h-full">
+          <img
+            class="w-ful h-full object-contain"
+            loading="lazy"
+            src={image}
+            alt="Event picture"
+          />
+        </div>
+      ))
+    }
+  </div>
+  {pagination && <div class="swiper-pagination" />}
+
+  {
+    navigation && (
+      <>
+        <div class="swiper-button-prev" />
+        <div class="swiper-button-next" />
+      </>
+    )
+  }
+
+  {scrollbar && <div class="swiper-scrollbar" />}
+</div>
+<script>
+  import Swiper from "swiper/bundle";
+
+  function init() {
+    const swiper = new Swiper(".swiper", {
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      scrollbar: {
+        el: ".swiper-scrollbar",
+      },
+    });
+  }
+
+  init();
+
+  document.addEventListener("astro:after-swap", () => init());
+</script>

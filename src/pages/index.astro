@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import { DATA } from "../data/data";
 import Speaker from "../components/Speaker.astro";
 import Sponsor from "../components/Sponsor.astro";
-import If from "../components/utils/If.astro";
 import AnimatedOnViewportEnter from "../components/utils/AnimatedOnViewportEnter.astro";
 import type { Sponsor as ISponsor, SponsorTier } from "../data/data.type";
 import TeamMember from "../components/TeamMember.astro";
@@ -11,6 +10,7 @@ import Notice from "../components/Notice.astro";
 import Accordion from "../components/Accordion.astro";
 import TicketSection from "../components/TicketSection.astro";
 import SponsorDossier from "../components/SponsorDossier.astro";
+import Carousel from "../components/Carousel.astro";
 
 function formatDate(date: Date) {
   const formatter = new Intl.DateTimeFormat("es-ES", {
@@ -51,7 +51,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
   <header>
     <section
       id="banner"
-      class="h-[400px] bg-green-50 dark:bg-blue-900 w-full flex flex-col gap-3 align-bottom justify-end p-10 md:p-20 overflow-hidden"
+      class="h-[400px] bg-green-50 dark:bg-blue-900 dark:bg-opacity-30 w-full flex flex-col gap-3 align-bottom justify-end p-10 md:p-20 overflow-hidden"
     >
       <h1 class="text-5xl">{DATA.title}</h1>
       <AnimatedOnViewportEnter
@@ -76,227 +76,183 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
       </div>
     </section>
   </header>
-  <main>
-    <section id="value" class="bg-light-background dark:bg-dark-background">
-      <div class="wrapper flex flex-col gap-5 text-xl px-6">
-        {
-          DATA.about.descriptionInParagraphs.map((paragraph) => (
-            <p class="text-center md:text-left lg:w-1/2">{paragraph}</p>
-          ))
-        }
-      </div>
-    </section>
-    <If condition={!!DATA.speakers.length}>
+  <section id="value" class="bg-light-background dark:bg-dark-background">
+    <div class="wrapper flex flex-col gap-5 text-xl px-6">
+      {
+        DATA.about.descriptionInParagraphs.map((paragraph) => (
+          <p class="text-center md:text-left lg:w-1/2">{paragraph}</p>
+        ))
+      }
+    </div>
+  </section>
+  {
+    !!DATA.speakers.length && (
       <section
         id="speakers"
-        class="bg-blue-50 dark:bg-green-800 text-dark-background dark:text-light-background"
+        class="bg-blue-50 dark:bg-green-800 dark:bg-opacity-30 text-dark-background dark:text-light-background"
       >
         <div class="wrapper flex flex-col gap-16 px-6">
-          <AnimatedOnViewportEnter
-            animation="animate__animated animate__fadeInLeft"
-          >
+          <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
             <h2 class="text-3xl font-bold text-center md:text-left">
               Speakers
             </h2>
           </AnimatedOnViewportEnter>
 
-          <div
-            class="flex flex-col align-middle justify-center md:grid md:grid-cols-2 gap-8 xl:gap-16 md:auto-rows-fr md:place-content-center px-6"
-          >
-            {
-              DATA.speakers.map((speaker, index) => {
-                return <Speaker speaker={speaker} index={index} />;
-              })
-            }
+          <div class="flex flex-col align-middle justify-center md:grid md:grid-cols-2 gap-8 xl:gap-16 md:auto-rows-fr md:place-content-center px-6">
+            {DATA.speakers.map((speaker, index) => {
+              return <Speaker speaker={speaker} index={index} />;
+            })}
           </div>
         </div>
       </section>
-    </If>
-    <If condition={DATA.callForPapers.isEnabled}>
-      <section
-        class="bg-blue-50 dark:bg-green-800 text-dark-background dark:text-light-background py-10 grid place-items-center"
-      >
+    )
+  }
+  {
+    DATA.callForPapers.isEnabled && (
+      <section class="bg-blue-50 dark:bg-green-800 dark:bg-opacity-30 text-dark-background dark:text-light-background py-10 grid place-items-center">
         <a
           class="w-fit px-3 py-2 rounded-md text-xl bg-blue-600 hover:bg-blue-500 text-white dark:bg-green-400 dark:hover:bg-green-300 cursor-pointer"
           href={DATA.callForPapers.url}
-          target="_blank">{DATA.callForPapers.title}</a
+          target="_blank"
         >
+          {DATA.callForPapers.title}
+        </a>
       </section>
-    </If>
-    <If condition={!!DATA.sponsors.length}>
+    )
+  }
+  {
+    !!DATA.sponsors.length && (
       <section
         id="sponsors"
         class="bg-light-background dark:bg-dark-background"
       >
         <div class="wrapper flex flex-col gap-16 px-6">
-          <AnimatedOnViewportEnter
-            animation="animate__animated animate__fadeInLeft"
-          >
+          <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
             <h2 class="text-3xl font-bold text-center md:text-left">
               Sponsors
             </h2>
           </AnimatedOnViewportEnter>
-          <If condition={!!sponsors.platinum.length}>
+          {!!sponsors.platinum.length && (
             <section class="flex flex-col gap-5">
-              <h3
-                class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center"
-              >
+              <h3 class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center">
                 Platinum
               </h3>
-              <article
-                class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6"
-              >
-                {
-                  sponsors.platinum.map((sponsor) => (
-                    <Sponsor sponsor={sponsor} />
-                  ))
-                }
+              <article class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6">
+                {sponsors.platinum.map((sponsor) => (
+                  <Sponsor sponsor={sponsor} />
+                ))}
               </article>
             </section>
-          </If>
-          <If condition={!!sponsors.gold.length}>
+          )}
+          {!!sponsors.gold.length && (
             <section class="flex flex-col gap-5">
-              <h3
-                class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center"
-              >
+              <h3 class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center">
                 Gold
               </h3>
-              <article
-                class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6"
-              >
-                {sponsors.gold.map((sponsor) => <Sponsor sponsor={sponsor} />)}
+              <article class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6">
+                {sponsors.gold.map((sponsor) => (
+                  <Sponsor sponsor={sponsor} />
+                ))}
               </article>
             </section>
-          </If>
-          <If condition={!!sponsors.silver.length}>
+          )}
+          {!!sponsors.silver.length && (
             <section class="flex flex-col gap-5">
-              <h3
-                class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center"
-              >
+              <h3 class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center">
                 Silver
               </h3>
-              <article
-                class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6"
-              >
-                {
-                  sponsors.silver.map((sponsor) => (
-                    <Sponsor sponsor={sponsor} />
-                  ))
-                }
+              <article class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6">
+                {sponsors.silver.map((sponsor) => (
+                  <Sponsor sponsor={sponsor} />
+                ))}
               </article>
             </section>
-          </If>
-          <If condition={!!sponsors.bronze.length}>
+          )}
+          {!!sponsors.bronze.length && (
             <section class="flex flex-col gap-5">
-              <h3
-                class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center"
-              >
+              <h3 class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center">
                 Bronze
               </h3>
-              <article
-                class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6"
-              >
-                {
-                  sponsors.bronze.map((sponsor) => (
-                    <Sponsor sponsor={sponsor} />
-                  ))
-                }
+              <article class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6">
+                {sponsors.bronze.map((sponsor) => (
+                  <Sponsor sponsor={sponsor} />
+                ))}
               </article>
             </section>
-          </If>
-          <If condition={!!sponsors.media.length}>
+          )}
+          {!!sponsors.media.length && (
             <section class="flex flex-col gap-5">
-              <h3
-                class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center"
-              >
+              <h3 class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center">
                 Media
               </h3>
-              <article
-                class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6"
-              >
-                {sponsors.media.map((sponsor) => <Sponsor sponsor={sponsor} />)}
+              <article class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6">
+                {sponsors.media.map((sponsor) => (
+                  <Sponsor sponsor={sponsor} />
+                ))}
               </article>
             </section>
-          </If>
-          <If condition={!!sponsors.community.length}>
+          )}
+          {!!sponsors.community.length && (
             <section class="flex flex-col gap-5">
-              <h3
-                class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center"
-              >
+              <h3 class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center">
                 Community Partners
               </h3>
-              <article
-                class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6"
-              >
-                {
-                  sponsors.community.map((sponsor) => (
-                    <Sponsor sponsor={sponsor} />
-                  ))
-                }
+              <article class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6">
+                {sponsors.community.map((sponsor) => (
+                  <Sponsor sponsor={sponsor} />
+                ))}
               </article>
             </section>
-          </If>
-          <If condition={!!sponsors.supporter.length}>
+          )}
+          {!!sponsors.supporter.length && (
             <section class="flex flex-col gap-5">
-              <h3
-                class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center"
-              >
+              <h3 class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center">
                 Supporters
               </h3>
-              <article
-                class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6"
-              >
-                {
-                  sponsors.supporter.map((sponsor) => (
-                    <Sponsor sponsor={sponsor} />
-                  ))
-                }
+              <article class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6">
+                {sponsors.supporter.map((sponsor) => (
+                  <Sponsor sponsor={sponsor} />
+                ))}
               </article>
             </section>
-          </If>
-          <If condition={!!sponsors.food.length}>
+          )}
+          {!!sponsors.food.length && (
             <section class="flex flex-col gap-5">
-              <h3
-                class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center"
-              >
+              <h3 class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center">
                 Fooding Partners
               </h3>
-              <article
-                class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6"
-              >
-                {sponsors.food.map((sponsor) => <Sponsor sponsor={sponsor} />)}
+              <article class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6">
+                {sponsors.food.map((sponsor) => (
+                  <Sponsor sponsor={sponsor} />
+                ))}
               </article>
             </section>
-          </If>
+          )}
           <SponsorDossier
             dossier={DATA.sponsorsDossier}
             class="mx-auto w-fit flex flex-col gap-2 items-center"
           />
         </div>
       </section>
-    </If>
-    <If condition={!!DATA.tickets.length}>
+    )
+  }
+  {
+    !!DATA.tickets.length && (
       <section
         id="tickets"
-        class="bg-yellow-100 dark:bg-yellow-700 text-dark-background"
+        class="bg-yellow-100 dark:bg-blue-900 dark:bg-opacity-30 "
       >
         <div class="wrapper flex flex-col gap-10 px-6">
-          <AnimatedOnViewportEnter
-            animation="animate__animated animate__fadeInLeft"
-          >
+          <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
             <h2 class="text-3xl font-bold text-center md:text-left">
               Elige tu entrada
             </h2>
           </AnimatedOnViewportEnter>
-          <AnimatedOnViewportEnter
-            animation="animate__animated animate__fadeIn"
-          >
+          <AnimatedOnViewportEnter animation="animate__animated animate__fadeIn">
             <div class="flex flex-col gap-5">
               <TicketSection tickets={DATA.tickets} />
               <Notice>
-                <div
-                  class="bg-blue-200 dark:bg-red-400 w-fit p-5 rounded-md flex flex-col gap-2"
-                >
+                <div class="bg-blue-200 dark:bg-blue-600 w-fit p-5 rounded-md flex flex-col gap-2">
                   <h3 class="title font-semibold text-lg">
                     ✨¡No te quedes sin tu swag!✨
                   </h3>
@@ -310,16 +266,16 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
           </AnimatedOnViewportEnter>
         </div>
       </section>
-    </If>
-    <If condition={!!DATA.faq.length}>
+    )
+  }
+  {
+    !!DATA.faq.length && (
       <section
         id="faq"
         class="bg-light-background dark:bg-dark-background text-dark-background dark:text-light-background"
       >
         <div class="wrapper flex flex-col gap-10 px-6">
-          <AnimatedOnViewportEnter
-            animation="animate__animated animate__fadeInLeft"
-          >
+          <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
             <h2 class="text-3xl font-bold text-center md:text-left">FAQ</h2>
           </AnimatedOnViewportEnter>
           <div class="block lg:grid lg:grid-cols-[4fr_3fr] px-2 md:px-0">
@@ -327,165 +283,161 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
           </div>
         </div>
       </section>
-    </If>
-    <section
-      id="venue"
-      class="bg-yellow-100 dark:bg-yellow-700 text-dark-background"
-    >
-      <div class="flex flex-col lg:grid lg:grid-cols-2 gap-6">
-        <div
-          class="flex flex-col gap-6 md:mx-auto px-6 xl:px-48 h-full pt-16 pb-28 md:pt-32 md:pb-52"
+    )
+  }
+  <section id="venue" class="bg-yellow-100 dark:bg-blue-900 dark:bg-opacity-30">
+    <div class="flex flex-col lg:grid lg:grid-cols-2 gap-6">
+      <div
+        class="flex flex-col gap-6 md:mx-auto px-6 xl:px-48 h-full pt-16 pb-28 md:pt-32 md:pb-52"
+      >
+        <AnimatedOnViewportEnter
+          animation="animate__animated animate__fadeInLeft"
         >
-          <AnimatedOnViewportEnter
-            animation="animate__animated animate__fadeInLeft"
-          >
-            <h2 class="text-3xl font-bold text-center md:text-left">
-              Ubicación
-            </h2>
-          </AnimatedOnViewportEnter>
+          <h2 class="text-3xl font-bold text-center md:text-left">Ubicación</h2>
+        </AnimatedOnViewportEnter>
 
-          <h3 class="text-xl font-semibold">
-            {DATA.venue.title}
-          </h3>
+        <h3 class="text-xl font-semibold">
+          {DATA.venue.title}
+        </h3>
 
-          <p>Para llegar al evento puedes usar:</p>
+        <p>Para llegar al evento puedes usar:</p>
 
-          <ul class="flex flex-col gap-6">
-            {
-              DATA.venue.howToArrive?.howToArriveByBus && (
-                <li>
-                  <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
-                    <span class="text-xl font-semibold">
-                      <i class="text-2xl ph ph-bus" /> Autobús
-                    </span>
-                    <ul class="ml-7 list-disc list-inside">
-                      {DATA.venue.howToArrive.howToArriveByBus.map((step) => (
-                        <li>{step}</li>
-                      ))}
-                    </ul>
-                  </AnimatedOnViewportEnter>
-                </li>
-              )
-            }
-            {
-              DATA.venue.howToArrive?.howToArriveByBike && (
-                <li>
-                  <AnimatedOnViewportEnter animation="animate__animated animate__fadeInUp">
-                    <span class="text-xl font-semibold">
-                      <i class="text-2xl ph ph-bicycle" /> Bicicleta
-                    </span>
-                    <ul class="ml-7 list-disc list-inside">
-                      {DATA.venue.howToArrive.howToArriveByBike.map((step) => (
-                        <li>{step}</li>
-                      ))}
-                    </ul>
-                  </AnimatedOnViewportEnter>
-                </li>
-              )
-            }
-            {
-              DATA.venue.howToArrive?.howToArriveByMetro && (
-                <li>
-                  <AnimatedOnViewportEnter animation="animate__animated animate__fadeInRight">
-                    <span class="text-xl font-semibold">
-                      <i class="text-2xl ph ph-train" />
-                      Metro
-                    </span>
-                    <ul class="ml-7 list-disc list-inside">
-                      {DATA.venue.howToArrive.howToArriveByMetro.map((step) => (
-                        <li>{step}</li>
-                      ))}
-                    </ul>
-                  </AnimatedOnViewportEnter>
-                </li>
-              )
-            }
-          </ul>
-        </div>
-        <iframe
-          title="Venue map"
-          class="h-full w-full min-h-[600px]"
-          src={DATA.venue.mapUrl}
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <ul class="flex flex-col gap-6">
+          {
+            DATA.venue.howToArrive?.howToArriveByBus && (
+              <li>
+                <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
+                  <span class="text-xl font-semibold">
+                    <i class="text-2xl ph ph-bus" /> Autobús
+                  </span>
+                  <ul class="ml-7 list-disc list-inside">
+                    {DATA.venue.howToArrive.howToArriveByBus.map((step) => (
+                      <li>{step}</li>
+                    ))}
+                  </ul>
+                </AnimatedOnViewportEnter>
+              </li>
+            )
+          }
+          {
+            DATA.venue.howToArrive?.howToArriveByBike && (
+              <li>
+                <AnimatedOnViewportEnter animation="animate__animated animate__fadeInUp">
+                  <span class="text-xl font-semibold">
+                    <i class="text-2xl ph ph-bicycle" /> Bicicleta
+                  </span>
+                  <ul class="ml-7 list-disc list-inside">
+                    {DATA.venue.howToArrive.howToArriveByBike.map((step) => (
+                      <li>{step}</li>
+                    ))}
+                  </ul>
+                </AnimatedOnViewportEnter>
+              </li>
+            )
+          }
+          {
+            DATA.venue.howToArrive?.howToArriveByMetro && (
+              <li>
+                <AnimatedOnViewportEnter animation="animate__animated animate__fadeInRight">
+                  <span class="text-xl font-semibold">
+                    <i class="text-2xl ph ph-train" />
+                    Metro
+                  </span>
+                  <ul class="ml-7 list-disc list-inside">
+                    {DATA.venue.howToArrive.howToArriveByMetro.map((step) => (
+                      <li>{step}</li>
+                    ))}
+                  </ul>
+                </AnimatedOnViewportEnter>
+              </li>
+            )
+          }
+        </ul>
       </div>
-    </section>
+      <iframe
+        title="Venue map"
+        class="h-full w-full min-h-[600px]"
+        src={DATA.venue.mapUrl}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
 
-    <If condition={!!DATA.lastEditionVideoUrl}>
+  {
+    (DATA.lastEdition?.lastEditionVideoUrl ||
+      !!DATA.lastEdition?.gallery?.length) && (
       <section
         id="last"
         class="bg-light-background dark:bg-dark-background text-dark-background dark:text-light-background"
       >
-        <div class="pt-16 md:pt-32 flex flex-col gap-10">
-          <AnimatedOnViewportEnter
-            animation="animate__animated animate__fadeInLeft"
-          >
-            <h2
-              class="md:mx-auto text-3xl font-bold text-center md:text-left px-6"
-            >
-              Última Edición
-            </h2>
-          </AnimatedOnViewportEnter>
-
+        <div class="wrapper">
+          <div class="pt-16 md:pt-32 flex flex-col gap-10">
+            <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
+              <h2 class="md:mx-auto text-3xl font-bold text-center md:text-left px-6">
+                Última Edición
+              </h2>
+            </AnimatedOnViewportEnter>
+            <Carousel
+              navigation={true}
+              pagination={true}
+              class="w-full sm:rounded-md"
+              images={DATA.lastEdition.gallery}
+            />
+          </div>
+        </div>
+        {DATA.lastEdition.lastEditionVideoUrl && (
           <div class="w-full aspect-video">
             <iframe
               title="Last Edition Video"
               class="w-full h-full"
-              src={DATA.lastEditionVideoUrl}
+              src={DATA.lastEdition.lastEditionVideoUrl}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
-              loading="lazy"></iframe>
+              loading="lazy"
+            />
           </div>
-        </div>
+        )}
       </section>
-    </If>
-    <If condition={!!DATA.team.organizers.length}>
+    )
+  }
+  {
+    !!DATA.team.organizers.length && (
       <section
         id="team"
-        class="bg-blue-50 dark:bg-green-800 text-dark-background dark:text-light-background"
+        class="bg-blue-50 dark:bg-green-800 dark:bg-opacity-30 text-dark-background dark:text-light-background"
       >
         <div class="wrapper flex flex-col gap-10 px-6">
-          <AnimatedOnViewportEnter
-            animation="animate__animated animate__fadeInLeft"
-          >
+          <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
             <h2 class="text-3xl font-bold text-center md:text-left">Equipo</h2>
           </AnimatedOnViewportEnter>
-          <div
-            class="px-6 md:px-0 mx-auto flex flex-row flex-wrap gap-10 align-middle justify-center w-full"
-          >
-            {
-              DATA.team.organizers.map((member, index) => (
-                <TeamMember kind="organizer" member={member} index={index} />
-              ))
-            }
+          <div class="px-6 md:px-0 mx-auto flex flex-row flex-wrap gap-10 align-middle justify-center w-full">
+            {DATA.team.organizers.map((member, index) => (
+              <TeamMember kind="organizer" member={member} index={index} />
+            ))}
           </div>
         </div>
       </section>
-    </If>
-    <If condition={!!DATA.team.staff.length}>
+    )
+  }
+  {
+    !!DATA.team.staff.length && (
       <section
         id="staff"
         class="bg-light-background dark:bg-dark-background text-dark-background dark:text-light-background"
       >
         <div class="wrapper flex flex-col gap-10 px-6">
-          <AnimatedOnViewportEnter
-            animation="animate__animated animate__fadeInLeft"
-          >
+          <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
             <h2 class="text-3xl font-bold text-center md:text-left">
               Voluntarios
             </h2>
           </AnimatedOnViewportEnter>
-          <div
-            class="px-6 md:px-0 mx-auto flex flex-row flex-wrap gap-10 align-middle justify-center w-full"
-          >
-            {
-              DATA.team.staff.map((member, index) => (
-                <TeamMember kind="staff" member={member} index={index} />
-              ))
-            }
+          <div class="px-6 md:px-0 mx-auto flex flex-row flex-wrap gap-10 align-middle justify-center w-full">
+            {DATA.team.staff.map((member, index) => (
+              <TeamMember kind="staff" member={member} index={index} />
+            ))}
           </div>
         </div>
       </section>
-    </If>
-  </main>
+    )
+  }
 </Layout>

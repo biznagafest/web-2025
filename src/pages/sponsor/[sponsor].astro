@@ -1,7 +1,6 @@
 ---
 import JobOfferCard from "../../components/JobOfferCard.astro";
 import Socials from "../../components/Socials.astro";
-import If from "../../components/utils/If.astro";
 import { DATA } from "../../data/data";
 import Layout from "../../layouts/Layout.astro";
 
@@ -28,7 +27,7 @@ if (!sponsorData || sponsorData.hasFeaturedPage === false) {
   lang="es"
 >
   <main class="flex flex-col gap-6 min-h-screen">
-    <header class="bg-green-50 dark:bg-green-800 p-6">
+    <header class="bg-green-50 dark:bg-green-800 dark:bg-opacity-30 p-6">
       <div class="md:w-8/12 p-4 md:p-10 mx-auto">
         <img
           transition:name={sponsorData.name}
@@ -37,23 +36,31 @@ if (!sponsorData || sponsorData.hasFeaturedPage === false) {
         />
       </div>
     </header>
-    <If condition={!!sponsorData.descriptionInParagraphs.length}>
-      <div class="md:w-8/12 md:mx-auto flex flex-col gap-4 text-xl p-4 py-10">
-        {sponsorData.descriptionInParagraphs.map((descPar) => <p>{descPar}</p>)}
-      </div>
-    </If>
+    {
+      !!sponsorData.descriptionInParagraphs.length && (
+        <div class="md:w-8/12 md:mx-auto flex flex-col gap-4 text-xl p-4 py-10">
+          {sponsorData.descriptionInParagraphs.map((descPar) => (
+            <p>{descPar}</p>
+          ))}
+        </div>
+      )
+    }
     <div class="mx-auto">
       <Socials socials={sponsorData.socials} size="4xl" />
     </div>
-    <If condition={!!sponsorData.jobOffers.length}>
-      <h3 class="text-3xl font-bold mx-auto text-center">Ofertas de Trabajo</h3>
-      <section class="grid grid-cols-1 lg:grid-cols-2 py-2 px-6 pb-10 gap-6">
-        {
-          sponsorData.jobOffers.map((jobOffer) => (
-            <JobOfferCard jobOffer={jobOffer} />
-          ))
-        }
-      </section>
-    </If>
+    {
+      !!sponsorData.jobOffers.length && (
+        <>
+          <h3 class="text-3xl font-bold mx-auto text-center">
+            Ofertas de Trabajo
+          </h3>
+          <section class="grid grid-cols-1 lg:grid-cols-2 py-2 px-6 pb-10 gap-6">
+            {sponsorData.jobOffers.map((jobOffer) => (
+              <JobOfferCard jobOffer={jobOffer} />
+            ))}
+          </section>
+        </>
+      )
+    }
   </main>
 </Layout>

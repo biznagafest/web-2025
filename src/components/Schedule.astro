@@ -3,41 +3,32 @@ import type { Schedule } from "../data/data.type";
 import BreakSchedule from "./BreakSchedule.astro";
 import LectureSchedule from "./LectureSchedule.astro";
 import WorkshopSchedule from "./WorkshopSchedule.astro";
-import If from "./utils/If.astro";
 
 interface Props {
   schedule: Schedule;
-  type: "break" | "no-break"
+  type: "break" | "no-break";
 }
 
 const { schedule, type } = Astro.props;
 ---
 
-<If condition={ type === "break" }>
-    <BreakSchedule event={schedule.events[0]} /> 
-</If>
-
-<If condition={ type !== "break" }>
-
-<div class="flex flex-col md:flex-row gap-4 mb-4">
-    <div class="flex flex-col md:w-1/2 gap-4">
-        {
-            schedule.events.map( (event) => {
-                if( event.type === "lecture" ) {
-                    return <LectureSchedule event={event} />
-                }
-            } ) 
+{
+  type === "break" ? (
+    <BreakSchedule event={schedule.events[0]} />
+  ) : (
+    <div class="flex flex-col md:flex-row gap-4 mb-4">
+      <div class="flex flex-col md:w-1/2 gap-4">
+        {schedule.events.map((event) => {
+          if (event.type === "lecture") {
+            return <LectureSchedule event={event} />;
+          }
+        })}
+      </div>
+      {schedule.events.map((event) => {
+        if (event.type !== "lecture") {
+          return <WorkshopSchedule event={event} />;
         }
+      })}
     </div>
-    {
-        schedule.events.map( (event) => {
-            if( event.type !== "lecture" ) {
-                return <WorkshopSchedule event={event} />
-            }
-        } ) 
-    }
-</div>
-
-</If>
-
-
+  )
+}

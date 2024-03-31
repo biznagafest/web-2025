@@ -22,9 +22,9 @@ const { ticket, align } = Astro.props;
     class:list={[
       "cursor-pointer ticket-item-content border-8 rounded-md bg-white w-[300px] flex flex-row justify-between  shadow-md",
       {
-        "text-green-600": !ticket.isSoldOut,
-        "fill-green-600": !ticket.isSoldOut,
-        "border-green-600": !ticket.isSoldOut,
+        "text-green-600 dark:text-blue-600": !ticket.isSoldOut,
+        "fill-green-600 dark:fill-blue-600": !ticket.isSoldOut,
+        "border-green-600 dark:border-blue-600": !ticket.isSoldOut,
         "text-gray-200": ticket.isSoldOut,
         "fill-gray-200": ticket.isSoldOut,
         "border-gray-200": ticket.isSoldOut,
@@ -168,7 +168,7 @@ const { ticket, align } = Astro.props;
   </article>
 
   <button
-    class="ticket-item-toggler self-center rounded-full opacity-40 aspect-square w-[30px] transition-all duration-300 ease-in-out"
+    class="ticket-item-toggler self-center rounded-full opacity-40 aspect-square w-[30px] transition-all duration-300 ease-in-out animate-bounce"
   >
     <i class="ph ph-arrow-down font-extrabold"></i>
   </button>
