@@ -723,7 +723,13 @@ export const DATA: Data = {
     },
   },
   lastEdition: {
-    gallery: [],
+    gallery: [
+      "/gallery/1.jpg",
+      "/gallery/2.jpg",
+      "/gallery/3.jpg",
+      "/gallery/4.jpg",
+      "/gallery/5.jpg",
+    ],
   },
   venue: {
     address: "Campus de Teatinos, Blvr. Louis Pasteur, 35, 29010 Málaga",
