@@ -184,8 +184,10 @@ export const DATA: Data = {
     ],
     socials: {
       instagram: "https://www.instagram.com/biznagafest/",
-      twitter: "https://twitter.com/home",
+      twitter: "https://twitter.com/BiznagaFest",
       youtube: "https://www.youtube.com/@biznagafest",
+      linkedin: "https://www.linkedin.com/company/biznagafest/",
+      mail: "biznagafest@gmail.com",
     },
   },
   lastEdition: {
