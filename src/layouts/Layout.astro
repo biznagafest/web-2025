@@ -4,7 +4,6 @@ import Navigation from "../components/Navigation.astro";
 import Notice from "../components/Notice.astro";
 import { DATA } from "../data/data";
 import CommonHead from "../components/CommonHead.astro";
-import { Modal } from "accessible-astro-components";
 import ButtonUp from "../components/ButtonUp.astro";
 
 export interface Props {
@@ -88,9 +87,7 @@ const { title, lang, description } = Astro.props;
         listenAnimations();
       }
 
-      init();
-
-      document.addEventListener("astro:after-swap", () => init());
+      document.addEventListener("astro:page-load", init);
     </script>
   </body>
 </html>
