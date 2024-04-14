@@ -174,7 +174,7 @@ const callForPapers = {
 
 export const DATA: Data = {
   title: "BiznagaFest 2024",
-  ticketsUrl: "https://www.tickettailor.com/events/biznagafest/1127407",
+  ticketsUrl: "https://www.eventbrite.es/e/entradas-biznagafest-2024-742690716927",
   date: new Date(2024, 9, 26),
   about: {
     descriptionInParagraphs: [
