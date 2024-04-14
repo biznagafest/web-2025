@@ -78,71 +78,42 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
       <li
         class="mx-auto cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
       >
-        <noscript
-          ><a
-            href="https://www.eventbrite.es/e/entradas-biznagafest-2024-742690716927"
-            rel="noopener noreferrer"
-            target="_blank">Comprar entradas en Eventbrite</a
-          ></noscript
-        >
-        <button
+        <a
+          href={DATA.ticketsUrl}
+          target="_blank"
           class="text-white p-2 rounded-lg bg-green-600 hover:bg-green-400 dark:bg-blue-600 dark:hover:bg-blue-400 transition-colors"
-          id="eventbrite-widget-modal-trigger-742690716927"
-          type="button">Comprar entradas</button
+          type="button">Comprar entradas</a
         >
-        <li class="grid place-content-center">
-          <DarkModeToggleButton />
-        </li>
+      </li>
+
+      <li class="grid place-content-center">
+        <DarkModeToggleButton />
       </li>
     </ul>
-
-    <script>
-      function listenBurgerButton() {
-        const button = document.querySelector("#menu-button"); // Hamburger Icon
-        const menu = document.querySelector("#menu"); // Menu
-        button?.addEventListener("click", () => {
-          menu?.classList.toggle("hidden");
-          const isOpen = button.attributes.getNamedItem("expanded");
-
-          if (isOpen) {
-            button.removeAttribute("expanded");
-            button.innerHTML = `<i class="ph ph-list text-3xl"></i>`;
-            return;
-          } else {
-            button.setAttribute("expanded", "true");
-            button.innerHTML = `<i class="ph ph-x text-3xl"></i>`;
-          }
-        });
-      }
-
-      function listenTicketsWidget() {
-        var exampleCallback = function () {
-          console.log("Pedido completo");
-        };
-
-        const eventListener = () => {
-          (window as any).EBWidgets.createWidget({
-            widgetType: "checkout",
-            eventId: "742690716927",
-            modal: true,
-            modalTriggerElementId:
-              "eventbrite-widget-modal-trigger-742690716927",
-            onOrderComplete: exampleCallback,
-          });
-        };
-
-        window.removeEventListener("DOMContentLoaded", eventListener);
-        window.addEventListener("DOMContentLoaded", eventListener);
-      }
-
-      function init() {
-        listenBurgerButton();
-        listenTicketsWidget();
-      }
-
-      init();
-
-      document.addEventListener("astro:after-swap", () => init());
-    </script>
   </div>
 </nav>
+<script>
+  function listenBurgerButton() {
+    const button = document.querySelector("#menu-button"); // Hamburger Icon
+    const menu = document.querySelector("#menu"); // Menu
+    button?.addEventListener("click", () => {
+      menu?.classList.toggle("hidden");
+      const isOpen = button.attributes.getNamedItem("expanded");
+
+      if (isOpen) {
+        button.removeAttribute("expanded");
+        button.innerHTML = `<i class="ph ph-list text-3xl"></i>`;
+        return;
+      } else {
+        button.setAttribute("expanded", "true");
+        button.innerHTML = `<i class="ph ph-x text-3xl"></i>`;
+      }
+    });
+  }
+
+  function init() {
+    listenBurgerButton();
+  }
+
+  document.addEventListener("astro:page-load", init);
+</script>

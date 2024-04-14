@@ -62,9 +62,6 @@ const { image = "/favicon.svg", description } = Astro.props;
   <meta property="twitter:title" content={title} />
   <meta property="twitter:description" content={description} />
   <meta property="twitter:image" content={new URL(image, Astro.url)} />
-  <script
-    src="https://corsproxy.io/?https://www.eventbrite.es/static/widgets/eb_widgets.js"
-  ></script>
   <style is:global>
     @tailwind base;
     @tailwind components;

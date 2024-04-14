@@ -45,9 +45,7 @@ const { data } = Astro.props;
     });
   }
 
-  init();
-
-  document.addEventListener("astro:after-swap", () => init());
+  document.addEventListener("astro:page-load", init);
 </script>
 <style>
   li.active > header {
