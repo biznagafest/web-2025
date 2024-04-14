@@ -1,5 +1,6 @@
 ---
 import type { JobOffer } from "../data/data.type";
+import RichText from "./RichText.astro";
 
 interface Props {
   jobOffer: JobOffer;
@@ -16,10 +17,10 @@ const { jobOffer } = Astro.props;
       <div
         class="text-lg font-semibold text-bookmark-blue flex space-x-1 items-center mb-2"
       >
-        <span>{jobOffer.jobTitle}</span>
+        <span>{jobOffer.title}</span>
       </div>
       <div class="text-sm text-gray-500 dark:text-gray-300 flex flex-col gap-2">
-        {jobOffer.descriptionInParagrapgs.map((descPar) => <p>{descPar}</p>)}
+        <RichText text={jobOffer.description} />
       </div>
     </div>
     <div>

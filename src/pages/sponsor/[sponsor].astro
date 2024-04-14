@@ -1,5 +1,6 @@
 ---
 import JobOfferCard from "../../components/JobOfferCard.astro";
+import RichText from "../../components/RichText.astro";
 import Socials from "../../components/Socials.astro";
 import { DATA } from "../../data/data";
 import Layout from "../../layouts/Layout.astro";
@@ -23,7 +24,7 @@ if (!sponsorData || sponsorData.hasFeaturedPage === false) {
 
 <Layout
   title={`${sponsorData.name} | ${DATA.title}`}
-  description={sponsorData.descriptionInParagraphs.join(" ")}
+  description={sponsorData.description}
   lang="es"
 >
   <main class="flex flex-col gap-6 min-h-screen">
@@ -37,11 +38,9 @@ if (!sponsorData || sponsorData.hasFeaturedPage === false) {
       </div>
     </header>
     {
-      !!sponsorData.descriptionInParagraphs.length && (
+      !!sponsorData.description !== undefined && (
         <div class="md:w-8/12 md:mx-auto flex flex-col gap-4 text-xl p-4 py-10">
-          {sponsorData.descriptionInParagraphs.map((descPar) => (
-            <p>{descPar}</p>
-          ))}
+          <RichText text={sponsorData.description} />
         </div>
       )
     }

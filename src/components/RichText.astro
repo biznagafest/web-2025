@@ -1,0 +1,12 @@
+---
+import { parse } from "marked";
+import type { Nullish } from "../utils/nullish";
+
+interface Props {
+  text: Nullish<string>;
+}
+
+const { text } = Astro.props;
+---
+
+{text !== undefined && <Fragment set:html={parse(text)} />}

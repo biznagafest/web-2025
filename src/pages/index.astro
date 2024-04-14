@@ -11,6 +11,7 @@ import Accordion from "../components/Accordion.astro";
 import TicketSection from "../components/TicketSection.astro";
 import SponsorDossier from "../components/SponsorDossier.astro";
 import Carousel from "../components/Carousel.astro";
+import RichText from "../components/RichText.astro";
 
 function formatDate(date: Date) {
   const formatter = new Intl.DateTimeFormat("es-ES", {
@@ -43,11 +44,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
 }
 ---
 
-<Layout
-  title={DATA.title}
-  description={DATA.about.descriptionInParagraphs.join(" ")}
-  lang="es"
->
+<Layout title={DATA.title} description={DATA.description} lang="es">
   <header>
     <section
       id="banner"
@@ -78,11 +75,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
   </header>
   <section id="value" class="bg-light-background dark:bg-dark-background">
     <div class="wrapper flex flex-col gap-5 text-xl px-6">
-      {
-        DATA.about.descriptionInParagraphs.map((paragraph) => (
-          <p class="text-center md:text-left lg:w-1/2">{paragraph}</p>
-        ))
-      }
+      <RichText text={DATA.description} />
     </div>
   </section>
   {
@@ -310,11 +303,9 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
                   <span class="text-xl font-semibold">
                     <i class="text-2xl ph ph-bus" /> Autobús
                   </span>
-                  <ul class="ml-7 list-disc list-inside">
-                    {DATA.venue.howToArrive.howToArriveByBus.map((step) => (
-                      <li>{step}</li>
-                    ))}
-                  </ul>
+                  <div class="ml-7 list [&>ul]:list-disc [&>ul]:list-inside">
+                    <RichText text={DATA.venue.howToArrive.howToArriveByBus} />
+                  </div>
                 </AnimatedOnViewportEnter>
               </li>
             )
@@ -326,11 +317,9 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
                   <span class="text-xl font-semibold">
                     <i class="text-2xl ph ph-bicycle" /> Bicicleta
                   </span>
-                  <ul class="ml-7 list-disc list-inside">
-                    {DATA.venue.howToArrive.howToArriveByBike.map((step) => (
-                      <li>{step}</li>
-                    ))}
-                  </ul>
+                  <div class="ml-7 list [&>ul]:list-disc [&>ul]:list-inside">
+                    <RichText text={DATA.venue.howToArrive.howToArriveByBike} />
+                  </div>
                 </AnimatedOnViewportEnter>
               </li>
             )
@@ -343,11 +332,11 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
                     <i class="text-2xl ph ph-train" />
                     Metro
                   </span>
-                  <ul class="ml-7 list-disc list-inside">
-                    {DATA.venue.howToArrive.howToArriveByMetro.map((step) => (
-                      <li>{step}</li>
-                    ))}
-                  </ul>
+                  <div class="ml-7 list [&>ul]:list-disc [&>ul]:list-inside">
+                    <RichText
+                      text={DATA.venue.howToArrive.howToArriveByMetro}
+                    />
+                  </div>
                 </AnimatedOnViewportEnter>
               </li>
             )
