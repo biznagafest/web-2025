@@ -78,12 +78,18 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
       <li
         class="mx-auto cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
       >
-        <button
-          id="tickets-modal-trigger"
-          class="text-white p-2 rounded-lg bg-green-600 hover:bg-green-400 dark:bg-blue-600 dark:hover:bg-blue-400 transition-colors"
+        <noscript
+          ><a
+            href="https://www.eventbrite.es/e/entradas-biznagafest-2024-742690716927"
+            rel="noopener noreferrer"
+            target="_blank">Comprar entradas en Eventbrite</a
+          ></noscript
         >
-          Comprar entradas
-        </button>
+        <button
+          class="text-white p-2 rounded-lg bg-green-600 hover:bg-green-400 dark:bg-blue-600 dark:hover:bg-blue-400 transition-colors"
+          id="eventbrite-widget-modal-trigger-742690716927"
+          type="button">Comprar entradas</button
+        >
         <li class="grid place-content-center">
           <DarkModeToggleButton />
         </li>
@@ -91,68 +97,6 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
     </ul>
 
     <script>
-      function listenToTicketsModal() {
-        const $ticketsModalWrapper = document.getElementById(
-          "ticketsModalWrapper",
-        );
-
-        if (!$ticketsModalWrapper) {
-          return;
-        }
-
-        const $ttWidget = document.createElement("div");
-        $ttWidget.classList.add("tt-widget");
-
-        const $ttWidgetFallback = document.createElement("div");
-        $ttWidgetFallback.classList.add("tt-widget-fallback");
-
-        $ttWidgetFallback.innerHTML = `
-          <p>
-            <a
-              href="https://www.tickettailor.com/checkout/new-session/id/3521838/chk/44e1/?ref=website_widget&show_search_filter=true&show_date_filter=true&show_sort=true"
-              target="_blank">Click here to buy tickets</a
-            ><br /><small
-              ><a
-                href="https://www.tickettailor.com?rf=wdg_173163"
-                class="tt-widget-powered"
-                >Sell tickets online with Ticket Tailor</a
-              ></small
-            >
-          </p>
-        `;
-
-        $ttWidget.appendChild($ttWidgetFallback);
-
-        const ttWidgetScript = document.createElement("script");
-        ttWidgetScript.src =
-          "https://cdn.tickettailor.com/js/widgets/min/widget.js";
-        ttWidgetScript.setAttribute(
-          "data-url",
-          "https://www.tickettailor.com/checkout/new-session/id/3521838/chk/44e1/?ref=website_widget&show_search_filter=true&show_date_filter=true&show_sort=true",
-        );
-        ttWidgetScript.setAttribute("data-type", "inline");
-        ttWidgetScript.setAttribute("data-inline-minimal", "true");
-        ttWidgetScript.setAttribute("data-inline-show-logo", "false");
-        ttWidgetScript.setAttribute("data-inline-bg-fill", "true");
-        ttWidgetScript.setAttribute(
-          "data-inline-inherit-ref-from-url-param",
-          "",
-        );
-        ttWidgetScript.setAttribute("data-inline-ref", "website_widget");
-
-        $ttWidget.appendChild(ttWidgetScript);
-
-        $ticketsModalWrapper.innerHTML = "";
-        $ticketsModalWrapper.appendChild($ttWidget);
-
-        const iframes = $ttWidget.querySelectorAll("iframe");
-        ttWidgetScript.addEventListener("load", () => {
-          iframes.forEach((iframe) => {
-            iframe.style.height = "100%";
-          });
-        });
-      }
-
       function listenBurgerButton() {
         const button = document.querySelector("#menu-button"); // Hamburger Icon
         const menu = document.querySelector("#menu"); // Menu
@@ -171,24 +115,29 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
         });
       }
 
+      function listenTicketsWidget() {
+        var exampleCallback = function () {
+          console.log("Pedido completo");
+        };
+
+        const eventListener = () => {
+          (window as any).EBWidgets.createWidget({
+            widgetType: "checkout",
+            eventId: "742690716927",
+            modal: true,
+            modalTriggerElementId:
+              "eventbrite-widget-modal-trigger-742690716927",
+            onOrderComplete: exampleCallback,
+          });
+        };
+
+        window.removeEventListener("DOMContentLoaded", eventListener);
+        window.addEventListener("DOMContentLoaded", eventListener);
+      }
+
       function init() {
         listenBurgerButton();
-
-        const ticketsModalTrigger = document.getElementById(
-          "tickets-modal-trigger",
-        );
-
-        ticketsModalTrigger?.addEventListener("click", () => {
-          const $ticketsModalWrapper = document.getElementById(
-            "ticketsModalWrapper",
-          );
-
-          if (!$ticketsModalWrapper) {
-            return;
-          }
-
-          listenToTicketsModal();
-        });
+        listenTicketsWidget();
       }
 
       init();

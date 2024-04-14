@@ -26,9 +26,6 @@ const { title, lang, description } = Astro.props;
     <div class="overflow-hidden min-h-screen flex flex-col justify-between">
       <div>
         <Navigation />
-        <Modal triggerId="tickets-modal-trigger">
-          <div id="ticketsModalWrapper"></div>
-        </Modal>
         <slot />
       </div>
       <ButtonUp class="fixed bottom-1 right-1" />
