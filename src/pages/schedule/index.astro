@@ -7,7 +7,7 @@ import Layout from "../../layouts/Layout.astro";
 const hasSchedule = !!DATA.schedules.length;
 
 if (!hasSchedule) {
-  Astro.redirect("/");
+  return Astro.redirect("/");
 }
 ---
 
