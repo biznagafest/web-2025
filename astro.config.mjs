@@ -7,5 +7,7 @@ import pageInsight from "astro-page-insight";
 export default defineConfig({
   integrations: [tailwind(), pageInsight()],
   output: "server",
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: { enabled: true },
+  }),
 });
