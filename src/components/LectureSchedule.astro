@@ -1,5 +1,6 @@
 ---
 import type { ScheduleEvent } from "../data/data.type";
+import RichText from "./RichText.astro";
 
 interface Props {
   event: ScheduleEvent;
@@ -22,7 +23,7 @@ const { event } = Astro.props;
         <h4 class="font-light">{event.subtitle}</h4>
       </div>
       <p class="mt-4 dark:text-white font-medium text-grey-50">
-        {event.description}
+        <RichText text={event.description} />
       </p>
       <span class="block md:hidden text-sm text-blue-600 font-bold"
         >Main track</span

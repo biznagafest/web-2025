@@ -1,5 +1,6 @@
 ---
 import type { FAQ } from "../data/data.type";
+import RichText from "./RichText.astro";
 
 interface Props {
   data: ReadonlyArray<FAQ>;
@@ -18,7 +19,9 @@ const { data } = Astro.props;
             <i class="ph ph-caret-up transition-transform duration-150" />
           </span>
         </header>
-        <p class="px-4 mt-2 animate__animated animate__fadeIn">{faq.body}</p>
+        <p class="px-4 mt-2 animate__animated animate__fadeIn">
+          <RichText text={faq.body} />
+          </p>
       </li>
     ))
   }

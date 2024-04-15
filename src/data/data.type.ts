@@ -74,6 +74,7 @@ export interface Sponsor {
   description?: Nullish<string>;
   picture: string;
   socials: Socials;
+  url: string;
 }
 
 export interface Ticket {
