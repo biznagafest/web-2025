@@ -3,6 +3,12 @@ import Raffle from "../../components/Raffle.astro";
 import AnimatedOnViewportEnter from "../../components/utils/AnimatedOnViewportEnter.astro";
 import { DATA } from "../../data/data";
 import Layout from "../../layouts/Layout.astro";
+
+const hasRaffles = !!DATA.raffles.length;
+
+if (!hasRaffles) {
+  Astro.redirect("/");
+}
 ---
 
 <Layout

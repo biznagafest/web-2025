@@ -3,6 +3,12 @@ import AnimatedOnViewportEnter from "../../components/utils/AnimatedOnViewportEn
 import ScheduleComponent from "../../components/Schedule.astro";
 import { DATA } from "../../data/data";
 import Layout from "../../layouts/Layout.astro";
+
+const hasSchedule = !!DATA.schedules.length;
+
+if (!hasSchedule) {
+  Astro.redirect("/");
+}
 ---
 
 <Layout title="Horario" description="Horario del BiznagaFest 2023" lang="es">
