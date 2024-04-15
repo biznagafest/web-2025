@@ -9,4 +9,4 @@ interface Props {
 const { text } = Astro.props;
 ---
 
-{text !== undefined && <Fragment set:html={parse(text)} />}
+{typeof text === "string" && <Fragment set:html={parse(text)} />}
