@@ -110,7 +110,7 @@ export interface Event {
   name: string;
   type: "lecture" | "workshop";
   speakers: ReadonlyArray<SpeakerName>;
-  description: string;
+  description?: Nullish<string>;
   durationInMinutes?: Nullish<number>;
   place?: Nullish<string>;
   date?: Nullish<string>;

@@ -2,7 +2,7 @@ import type { Nullable } from "../utils/nullable";
 import type { Data, SponsorTier } from "./data.type";
 import axios from "axios";
 
-export interface CmsResponse {
+interface CmsResponse {
   title: string;
   date: string;
   tickets_url: string;
@@ -20,9 +20,10 @@ export interface CmsResponse {
   speakers: Speaker[];
   sponsors: Sponsor[];
   tickets: Ticket[];
+  events: Event[];
 }
 
-export type Socials = {
+type Socials = {
   twitter: Nullable<string>;
   youtube: Nullable<string>;
   linkedin: Nullable<string>;
@@ -36,7 +37,7 @@ export type Socials = {
   twitch: Nullable<string>;
 } | null;
 
-export interface Venue {
+interface Venue {
   title: string;
   description: string;
   address: string;
@@ -46,13 +47,13 @@ export interface Venue {
   pictures: any[];
 }
 
-export interface HowToArrive {
+interface HowToArrive {
   by_bus: string;
   by_bike: string;
   by_subway: string;
 }
 
-export interface SponsorDossier {
+interface SponsorDossier {
   is_enabled: boolean;
   spanish: {
     url: string;
@@ -62,37 +63,37 @@ export interface SponsorDossier {
   };
 }
 
-export interface LastEdition {
+interface LastEdition {
   video_url: Nullable<string>;
   gallery: Picture[];
 }
 
-export interface Picture {
+interface Picture {
   url: string;
 }
 
-export interface Faq {
+interface Faq {
   title: string;
   body: string;
 }
 
-export interface FooterLink {
+interface FooterLink {
   title: string;
   href: string;
 }
 
-export interface CallForPapers {
+interface CallForPapers {
   is_enabled: boolean;
   title: string;
   url: string;
 }
 
-export interface PreviousEdition {
+interface PreviousEdition {
   name: string;
   url: string;
 }
 
-export interface Team {
+interface Team {
   name: string;
   type: string;
   position: string;
@@ -101,7 +102,18 @@ export interface Team {
   picture: Picture;
 }
 
-export interface Speaker {
+interface Event {
+  name: string;
+  type: "lecture" | "workshop";
+  description: Nullable<string>;
+  durationInMinutes: Nullable<number>;
+  place: Nullable<string>;
+  date: Nullable<string>;
+  language: Nullable<string>;
+  speakers: Speaker[];
+}
+
+interface Speaker {
   name: string;
   description: Nullable<string>;
   position: Nullable<string>;
@@ -109,7 +121,7 @@ export interface Speaker {
   picture: Picture;
 }
 
-export interface Sponsor {
+interface Sponsor {
   name: string;
   tier: SponsorTier;
   url: string;
@@ -120,14 +132,14 @@ export interface Sponsor {
   picture: Picture;
 }
 
-export interface JobOffer {
+interface JobOffer {
   id: number;
   title: string;
   url: string;
   description: string;
 }
 
-export interface Ticket {
+interface Ticket {
   name: string;
   price: number;
   is_sold_out: boolean;
@@ -135,11 +147,10 @@ export interface Ticket {
   perks: Perk[];
 }
 
-export interface Perk {
+interface Perk {
   description: string;
 }
 
-const useCms = import.meta.env.USE_CMS;
 const cmsHostname = import.meta.env.CMS_URL;
 
 const cmsEndpoint = `${cmsHostname}/info`;
@@ -289,9 +300,17 @@ function mapCmsResponseToDate(response: CmsResponse): Data {
       perks: ticket.perks.map((perk) => perk.description),
       url: response.tickets_url,
     })),
-
+    events: response.events.map((event) => ({
+      name: event.name,
+      type: event.type,
+      description: event.description || undefined,
+      durationInMinutes: event.durationInMinutes || undefined,
+      place: event.place || undefined,
+      date: event.date || undefined,
+      language: event.language || undefined,
+      speakers: event.speakers.map((speaker) => speaker.name),
+    })),
     // TODO (David): Add the following properties to the CMS
-    events: [],
     raffles: [],
     schedules: [],
   };

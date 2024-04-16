@@ -1,15 +1,28 @@
 ---
 import type { Event } from "../data/data.type";
+import type { Nullish } from "../utils/nullish";
 import RichText from "./RichText.astro";
 interface Props {
   event: Event;
 }
 
 const { event } = Astro.props;
+
+function formatDate(date?: Nullish<string>) {
+  if (!date) {
+    return;
+  }
+
+  const richDate = new Date(date);
+
+  return Intl.DateTimeFormat("es-ES", {
+    timeStyle: "short",
+  }).format(richDate);
+}
 ---
 
 <article
-  class="flex flex-col bg-blue-50 border border-blue-500 dark:border-green-500 dark:bg-green-800 dark:bg-opacity-30 rounded-lg p-4 md:p-6 gap-6"
+  class="flex flex-col bg-blue-50 border border-blue-500 dark:border-green-500 dark:bg-green-800 dark:bg-opacity-30 rounded-lg p-4 md:p-6 gap-6 w-full"
 >
   <header class="flex flex-col gap-6">
     <div
@@ -21,9 +34,9 @@ const { event } = Astro.props;
       >
       {
         event.date && (
-          <span class="max-w-fit text-center w-full py-1 px-2 md:py-2 md:px-4 bg-yellow-400 rounded-full text-dark-background">
+          <span class="max-w-fit text-center w-full py-1 px-2 md:py-2 md:px-4 bg-yellow-400 rounded-full text-dark-background flex flex-row items-center gap-1">
             <i class="ph ph-clock" />
-            {event.date}
+            {formatDate(event.date)}
           </span>
         )
       }
