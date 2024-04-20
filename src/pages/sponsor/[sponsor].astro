@@ -28,11 +28,11 @@ if (!sponsorData || sponsorData.hasFeaturedPage === false) {
   lang="es"
 >
   <main class="flex flex-col gap-6 min-h-screen">
-    <header class="bg-green-50 dark:bg-green-800 dark:bg-opacity-30 p-6">
+    <header class="p-6">
       <div class="md:w-8/12 p-4 md:p-10 mx-auto">
         <img
           transition:name={sponsorData.name}
-          class="w-full"
+          class="mx-auto h-full max-h-[400px]"
           src={sponsorData.picture}
         />
       </div>
@@ -44,8 +44,11 @@ if (!sponsorData || sponsorData.hasFeaturedPage === false) {
         </div>
       )
     }
-    <div class="mx-auto">
-      <Socials socials={sponsorData.socials} class="text-4xl text-green-600" />
+    <div class="mx-auto mb-4">
+      <Socials
+        socials={sponsorData.socials}
+        class="text-4xl text-green-600 dark:text-blue-600"
+      />
     </div>
     {
       !!sponsorData.jobOffers.length && (
