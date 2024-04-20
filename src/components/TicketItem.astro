@@ -20,7 +20,7 @@ const { ticket, align } = Astro.props;
 >
   <article
     class:list={[
-      "cursor-pointer ticket-item-content border-8 rounded-md bg-white w-[300px] flex flex-row justify-between  shadow-md",
+      "cursor-pointer ticket-item-content border-8 rounded-md bg-white w-[300px] flex flex-row justify-between  shadow-md select-none",
       {
         "text-green-600 dark:text-blue-600": !ticket.isSoldOut,
         "fill-green-600 dark:fill-blue-600": !ticket.isSoldOut,
