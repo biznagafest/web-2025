@@ -104,8 +104,10 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
     </section>
   </header>
   <section id="value" class="bg-light-background dark:bg-dark-background">
-    <div class="wrapper flex flex-col gap-5 text-xl px-6">
-      <RichText text={DATA.description} />
+    <div class="wrapper text-xl px-6">
+      <div class="w-1/2 flex flex-col gap-5">
+        <RichText text={DATA.description} />
+      </div>
     </div>
   </section>
   {
