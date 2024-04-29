@@ -1,5 +1,6 @@
 ---
 import EventCard from "../../components/EventCard.astro";
+import RichText from "../../components/RichText.astro";
 import Socials from "../../components/Socials.astro";
 import { DATA } from "../../data/data";
 import Layout from "../../layouts/Layout.astro";
@@ -25,7 +26,7 @@ const events = DATA.events.filter((event) =>
 
 <Layout
   title={`${speakerData.name} | ${DATA.title}`}
-  description={speakerData.descriptionParagraphs.join(" ")}
+  description={speakerData.description}
   lang="es"
 >
   <main class="flex flex-col gap-6 min-h-screen wrapper">
@@ -58,16 +59,12 @@ const events = DATA.events.filter((event) =>
             {speakerData.position}
           </h3>
           <div class="flex flex-col gap-4 text-xl">
-            {
-              speakerData.descriptionParagraphs.map((descPar) => (
-                <p>{descPar}</p>
-              ))
-            }
+            <RichText text={speakerData.description} />
           </div>
         </div>
       </div>
     </aside>
-    <section class="flex flex-col items-center py-2 px-6 pb-10 md:py-20 gap-3">
+    <section class="flex flex-col items-center py-2 px-6 pb-10 md:py-20 gap-6">
       {!!events.length && events.map((event) => <EventCard event={event} />)}
     </section>
   </main>

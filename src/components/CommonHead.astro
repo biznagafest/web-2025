@@ -1,6 +1,5 @@
 ---
 import { ViewTransitions } from "astro:transitions";
-import { DATA } from "../data/data";
 
 interface Props {
   title: string;
@@ -10,8 +9,7 @@ interface Props {
 
 // const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const title = DATA.title;
-const { image = "/favicon.svg", description } = Astro.props;
+const { image = "/favicon.svg", description, title } = Astro.props;
 ---
 
 <head>

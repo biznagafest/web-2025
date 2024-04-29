@@ -1,5 +1,4 @@
 import type { Nullish } from "../utils/nullish";
-import type { DATA, speakers } from "./data";
 
 export type Socials = Nullish<
   Partial<{
@@ -19,7 +18,7 @@ export type Socials = Nullish<
 export type Speaker = {
   name: string;
   position?: Nullish<string>;
-  descriptionParagraphs: ReadonlyArray<string>;
+  description?: Nullish<string>;
   socials?: Socials;
   picture: string;
 };
@@ -41,7 +40,7 @@ export type Schedule = {
 export interface TeamMember {
   name: string;
   position?: Nullish<string>;
-  descriptionInParagraphs: ReadonlyArray<string>;
+  description?: Nullish<string>;
   socials?: Socials;
   picture: string;
 }
@@ -62,28 +61,21 @@ export type SponsorTier =
   | "supporter";
 
 export interface JobOffer {
-  jobTitle: string;
+  title: string;
   url: string;
-  descriptionInParagrapgs: ReadonlyArray<string>;
+  description: string;
 }
 
-export type Sponsor =
-  | {
-      hasFeaturedPage: false;
-      name: string;
-      tier: SponsorTier;
-      picture: string;
-      url: string;
-    }
-  | {
-      hasFeaturedPage: true;
-      jobOffers: ReadonlyArray<JobOffer>;
-      name: string;
-      tier: SponsorTier;
-      descriptionInParagraphs: ReadonlyArray<string>;
-      picture: string;
-      socials: Socials;
-    };
+export interface Sponsor {
+  hasFeaturedPage: boolean;
+  jobOffers: ReadonlyArray<JobOffer>;
+  name: string;
+  tier: SponsorTier;
+  description?: Nullish<string>;
+  picture: string;
+  socials: Socials;
+  url: string;
+}
 
 export interface Ticket {
   name: string;
@@ -105,26 +97,27 @@ export interface FAQ {
 
 export interface Raffle {
   url: string;
-  descriptionInParagraphs: ReadonlyArray<string>;
+  description: string;
 }
 
-interface PreviousEdition {
+export interface PreviousEdition {
   name: string;
   url: string;
 }
 
+type SpeakerName = string;
 export interface Event {
   name: string;
   type: "lecture" | "workshop";
-  speakers: ReadonlyArray<(typeof speakers)[number]["name"]>;
-  descriptionInParagraphs: ReadonlyArray<string>;
+  speakers: ReadonlyArray<SpeakerName>;
+  description?: Nullish<string>;
   durationInMinutes?: Nullish<number>;
   place?: Nullish<string>;
   date?: Nullish<string>;
   language?: Nullish<string>;
 }
 
-interface FooterLink {
+export interface FooterLink {
   title: string;
   href: string;
 }
@@ -154,10 +147,8 @@ export type Data = {
   title: string;
   date: Date;
   ticketsUrl: string;
-  about: {
-    descriptionInParagraphs: ReadonlyArray<string>;
-    socials?: Socials;
-  };
+  description: string;
+  socials?: Socials;
   venue: {
     title: string;
     description: string;
@@ -167,9 +158,9 @@ export type Data = {
     city: string;
     howToArrive?: Nullish<
       Partial<{
-        howToArriveByBus: ReadonlyArray<string>;
-        howToArriveByBike: ReadonlyArray<string>;
-        howToArriveByMetro: ReadonlyArray<string>;
+        howToArriveByBus: string;
+        howToArriveByBike: string;
+        howToArriveByMetro: string;
       }>
     >;
   };

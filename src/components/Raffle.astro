@@ -1,5 +1,6 @@
 ---
 import type { Raffle } from "../data/data.type";
+import RichText from "./RichText.astro";
 interface Props {
   raffle: Raffle;
   isEven: boolean;
@@ -29,11 +30,7 @@ const { raffle, isEven } = Astro.props;
       />
     </div>
     <div class="flex flex-col sm:justify-center sm:w-1/2 px-4 gap-4">
-      {
-        raffle.descriptionInParagraphs.map((description) => (
-          <p>{description}</p>
-        ))
-      }
+      <RichText text={raffle.description} />
     </div>
   </div>
 </article>

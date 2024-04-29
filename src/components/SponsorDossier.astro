@@ -13,7 +13,7 @@ const { dossier } = Astro.props;
   dossier.enabled && (
     <section class:list={[Astro.props.class]}>
       <a
-        href="/documents/dossier-sponsors-es.pdf"
+        href={dossier.es}
         target="_blank"
         class="p-1 md:p-2 rounded-full border border-dark-background dark:border-gray-300 flex flex-row gap-1 md:gap-3 items-center highlighted"
       >
@@ -23,7 +23,7 @@ const { dossier } = Astro.props;
         </span>
       </a>
       <a
-        href="/documents/dossier-sponsors-en.pdf"
+        href={dossier.en}
         target="_blank"
         class="w-fit text-xs md:text-sm lg:text-md text-gray-400"
       >

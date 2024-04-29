@@ -1,5 +1,6 @@
 ---
 import type { FAQ } from "../data/data.type";
+import RichText from "./RichText.astro";
 
 interface Props {
   data: ReadonlyArray<FAQ>;
@@ -8,17 +9,21 @@ interface Props {
 const { data } = Astro.props;
 ---
 
-<ul class="flex flex-col gap-4">
+<ul
+  class="accordion flex flex-col gap-4 [&_a]:dark:text-red-600 [&_a]:text-red-400"
+>
   {
     data.map((faq: FAQ) => (
       <li class:list={["flex", "flex-col", "accordion-item"]}>
-        <header class="rounded-lg flex flex-row justify-between align-middle cursor-pointer gap-x-2 p-4">
+        <header class="accordion-header rounded-lg flex flex-row justify-between align-middle cursor-pointer gap-x-2 p-4 select-none">
           <span class="text-xl">{faq.title}</span>
           <span class="grid grid-cols-1 place-content-center">
             <i class="ph ph-caret-up transition-transform duration-150" />
           </span>
         </header>
-        <p class="px-4 mt-2 animate__animated animate__fadeIn">{faq.body}</p>
+        <div class="accordion-body px-4 mt-2 animate__animated animate__fadeIn">
+          <RichText text={faq.body} />
+        </div>
       </li>
     ))
   }
@@ -29,8 +34,8 @@ const { data } = Astro.props;
     const tuples = document.querySelectorAll(".accordion-item");
 
     tuples.forEach((tuple) => {
-      const header = tuple.querySelector("header");
-      const body = tuple.querySelector("p");
+      const header = tuple.querySelector(".accordion-header");
+      const body = tuple.querySelector(".accordion-body");
 
       header?.addEventListener("click", () => {
         tuple.classList.toggle("active");
@@ -48,11 +53,11 @@ const { data } = Astro.props;
   document.addEventListener("astro:page-load", init);
 </script>
 <style>
-  li.active > header {
+  li.active > .accordion-header {
     @apply bg-red-100 dark:bg-red-400;
   }
 
-  li:not(.active) > header {
+  li:not(.active) > .accordion-header {
     @apply bg-red-50 dark:bg-red-800;
   }
 
@@ -60,11 +65,11 @@ const { data } = Astro.props;
     @apply transform rotate-180;
   }
 
-  li.active > p {
+  li.active > .accordion-body {
     @apply block;
   }
 
-  li:not(.active) > p {
+  li:not(.active) > .accordion-body {
     @apply hidden;
   }
 </style>

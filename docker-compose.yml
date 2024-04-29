@@ -1,0 +1,48 @@
+version: "3.7"
+
+services:
+  strapi24:
+    image: strapi/strapi:latest
+    container_name: strapi24
+    restart: always
+    environment:
+      NODE_ENV: production
+      DATABASE_CLIENT: mysql
+      DATABASE_NAME: ${DB_NAME}
+      DATABASE_HOST: database
+      DATABASE_PORT: 3306
+      DATABASE_USERNAME: ${DB_USERNAME}
+      DATABASE_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./strapi24:/srv/app
+    networks:
+      - shared_network
+    healthcheck:
+      test: curl --fail http://localhost:1337 || exit 1
+      interval: 40s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
+
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - /root/nginx24/nginx.conf:/etc/nginx/nginx.conf
+      - /etc/letsencrypt/live/vps-c9dd5ba4.vps.ovh.net/fullchain.pem:/etc/ssl/certs/vps-c9dd5ba4.vps.ovh.net.crt
+      - /etc/letsencrypt/live/vps-c9dd5ba4.vps.ovh.net/privkey.pem:/etc/ssl/private/vps-c9dd5ba4.vps.ovh.net.key
+    ports:
+      - "8081:443"
+    networks:
+      - shared_network
+    depends_on:
+      - strapi24
+    healthcheck:
+      test: ps aux | grep -v grep | grep nginx || exit 1
+      interval: 40s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
+
+networks:
+  shared_network:
+    external: true
