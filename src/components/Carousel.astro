@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import "swiper/css/bundle";
 
 interface Props {
@@ -22,11 +23,12 @@ const {
     {
       images.map((image) => (
         <div class="swiper-slide">
-          <img
-            class="object-contain"
-            loading="lazy"
+          <Image
             src={image}
+            class="w-full"
             alt="Event picture"
+            width="800"
+            height="550"
           />
         </div>
       ))

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { TeamMember } from "../data/data.type";
 interface Props {
   member: TeamMember;
@@ -17,11 +18,12 @@ const { member, index, kind } = Astro.props;
     href={`/${kind}/${index}#top`}
     class="w-[200px] h-[200px] block rounded-full shadow-md hover:shadow-lg transition-shadow duration-500 ease-in-out overflow-hidden mx-auto"
   >
-    <img
-      loading="lazy"
+    <Image
       class="object-cover select-none mx-auto aspect-square w-[200px] h-[200px] hover:scale-110 transition-transform duration-500 ease-in-out"
       src={member.picture}
       alt={`Picture of ${member.name}`}
+      height={200}
+      width={200}
     />
   </a>
   <h4

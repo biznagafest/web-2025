@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 import { DATA } from "../data/data";
 import Socials from "./Socials.astro";
 ---
@@ -12,10 +14,11 @@ import Socials from "./Socials.astro";
     <div class="flex flex-col items-center">
       <div class="w-full max-w-[250px] md:max-w-[300px] mx-auto">
         <a href="/#top" class="w-full h-full">
-          <img
-            loading="lazy"
+          <Image
             src="/logo.svg"
-            alt=`Logo of Biznagafest`
+            alt="Logo of Biznagafest"
+            width={250}
+            height={50}
             class="brightness-100 dark:invert"
           />
         </a>

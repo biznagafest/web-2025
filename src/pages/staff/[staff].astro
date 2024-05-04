@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import RichText from "../../components/RichText.astro";
 import Socials from "../../components/Socials.astro";
 import { DATA } from "../../data/data";
@@ -27,14 +28,16 @@ if (!staffData) {
   <main class="flex flex-col gap-6 min-h-screen wrapper">
     <aside class="px-6">
       <div
-        class="grid grid-cols-1 lg:grid-cols-[2fr_4fr] xl:grid-cols-[1fr_4fr] gap-4 md:gap-6 lg:gap-12 w-full"
+        class="grid grid-cols-1 lg:grid-cols-[2fr_4fr] gap-4 md:gap-6 lg:gap-12 w-full"
       >
         <section class="w-full flex-grow flex flex-col gap-3 mx-auto">
-          <img
+          <Image
             transition:name={`picture-staff-${staffData.name}`}
-            class="rounded-md border-8 border-blue-600 dark:border-blue-600 aspect-square object-cover"
+            class="w-full max-w-[300px] mx-auto rounded-md border-8 border-blue-600 dark:border-blue-600 aspect-square object-cover"
             src={staffData.picture}
             alt={`Picture of ${staffData.name}`}
+            height={300}
+            width={300}
           />
           <Socials
             socials={staffData.socials}

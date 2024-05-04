@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { Speaker } from "../data/data.type";
 
 interface Props {
@@ -17,12 +18,13 @@ const { speaker, index } = Astro.props;
     href={`/speaker/${index}#top`}
     class="w-[200px] h-[200px] mx-auto block rounded-full shadow-md overflow-hidden"
   >
-    <img
-      loading="lazy"
+    <Image
       src={speaker.picture}
-      alt=`Picture of ${speaker.name}`
+      alt={`Picture of ${speaker.name}`}
       class="object-cover select-none mx-auto aspect-square w-[200px] h-[200px] hover:scale-110 transition-transform duration-500 ease-in-out"
       style="-webkit-user-drag: none;"
+      height={200}
+      width={200}
     />
   </a>
   <div
