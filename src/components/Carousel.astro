@@ -18,12 +18,12 @@ const {
 ---
 
 <div class:list={["swiper", Astro.props.class]}>
-  <div class="swiper-wrapper w-full h-full">
+  <div class="swiper-wrapper">
     {
       images.map((image) => (
-        <div class="swiper-slide w-full h-full">
+        <div class="swiper-slide">
           <img
-            class="w-ful h-full object-contain"
+            class="object-contain"
             loading="lazy"
             src={image}
             alt="Event picture"
