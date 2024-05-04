@@ -33,7 +33,7 @@ if (!sponsorData || sponsorData.hasFeaturedPage === false) {
       <div class="p-4 mx-auto">
         <Image
           transition:name={sponsorData.name}
-          class="mx-auto w-full h-full max-h-[400px]"
+          class="mx-auto w-full h-full object-contain max-h-[400px]"
           src={sponsorData.picture}
           alt={sponsorData.name}
           height={400}

@@ -58,7 +58,7 @@ const { initialWidth, afterLoadWidth } = sponsorWitdths[sponsor.tier];
     src={sponsor.picture}
     alt={`Logo of ${sponsor.name}`}
     width={initialWidth}
-    height={100}
-    class:list={afterLoadWidth}
+    height={initialWidth / 2}
+    class:list={[afterLoadWidth, ["aspect-[2/1] object-contain"]]}
   />
 </a>
