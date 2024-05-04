@@ -14,6 +14,7 @@ const { member, index, kind } = Astro.props;
   class="w-full max-w-[300px] h-fit flex flex-col align-middle justify-center"
 >
   <a
+    aria-label={`Go to ${member.name}'s profile`}
     transition:name={`picture-${kind}-${member.name}`}
     href={`/${kind}/${index}#top`}
     class="w-[200px] h-[200px] block rounded-full shadow-md hover:shadow-lg transition-shadow duration-500 ease-in-out overflow-hidden mx-auto"

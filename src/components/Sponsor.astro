@@ -1,47 +1,64 @@
 ---
 import { Image } from "astro:assets";
-import type { Sponsor } from "../data/data.type";
+import type { Sponsor, SponsorTier } from "../data/data.type";
 
 interface Props {
   sponsor: Sponsor;
 }
 
 const { sponsor } = Astro.props;
+
+const sponsorWitdths: Record<
+  SponsorTier,
+  {
+    initialWidth: number;
+    afterLoadWidth: string;
+  }
+> = {
+  gold: {
+    initialWidth: 500,
+    afterLoadWidth: "w-[400px] md:w-[500px]",
+  },
+  silver: {
+    initialWidth: 450,
+    afterLoadWidth: "w-[350px] md:w-[450px]",
+  },
+  bronze: {
+    initialWidth: 380,
+    afterLoadWidth: "w-[280px] md:w-[380px]",
+  },
+  media: {
+    initialWidth: 300,
+    afterLoadWidth: "w-[200px] md:w-[300px]",
+  },
+  food: {
+    initialWidth: 250,
+    afterLoadWidth: "w-[150px] md:w-[250px]",
+  },
+  community: {
+    initialWidth: 250,
+    afterLoadWidth: "w-[150px] md:w-[250px]",
+  },
+  supporter: {
+    initialWidth: 250,
+    afterLoadWidth: "w-[150px] md:w-[250px]",
+  },
+};
+
+const { initialWidth, afterLoadWidth } = sponsorWitdths[sponsor.tier];
 ---
 
 <a
+  aria-label={`Visit ${sponsor.name}'s website`}
   transition:name={sponsor.name}
   href={sponsor.hasFeaturedPage ? `/sponsor/${sponsor.name}#top` : sponsor.url}
-  class={`transition-all grid place-content-center hover:scale-105 duration-300 ease-in-out grayscale hover:grayscale-0`}
+  class="transition-all grid place-content-center hover:scale-105 duration-300 ease-in-out grayscale hover:grayscale-0"
 >
   <Image
     src={sponsor.picture}
     alt={`Logo of ${sponsor.name}`}
-    width={sponsor.tier === "gold"
-      ? 500
-      : sponsor.tier === "silver"
-        ? 450
-        : sponsor.tier === "bronze"
-          ? 380
-          : sponsor.tier === "media"
-            ? 300
-            : sponsor.tier === "food" ||
-                sponsor.tier === "community" ||
-                sponsor.tier === "supporter"
-              ? 250
-              : 200}
+    width={initialWidth}
     height={100}
-    class:list={{
-      "w-[400px] md:w-[500px]": sponsor.tier === "gold",
-      "w-[350px] md:w-[450px]": sponsor.tier === "silver",
-      "w-[280px] md:w-[380px]": sponsor.tier === "bronze",
-      "w-[200px] md:w-[300px]": sponsor.tier === "media",
-      "w-[150px] md:w-[250px]":
-        sponsor.tier === "food" ||
-        sponsor.tier === "community" ||
-        sponsor.tier === "supporter"
-          ? 250
-          : 200,
-    }}
+    class:list={afterLoadWidth}
   />
 </a>
