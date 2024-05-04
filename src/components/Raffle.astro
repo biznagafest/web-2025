@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { Raffle } from "../data/data.type";
 import RichText from "./RichText.astro";
 interface Props {
@@ -11,7 +12,7 @@ const { raffle, isEven } = Astro.props;
 
 <article
   class:list={{
-    "bg-yellow-100 dark:bg-green-900 text-dark-background dark:text-white":
+    "bg-yellow-100 dark:bg-green-900 dark:bg-opacity-30 text-dark-background dark:text-white":
       isEven,
   }}
 >
@@ -22,13 +23,13 @@ const { raffle, isEven } = Astro.props;
       "sm:flex-row-reverse": isEven,
     }}
   >
-    <div class="flex justify-center sm:w-1/2 bg-green-50 aspect-square">
-      <img
-        class="w-full aspect-square object-contain"
-        src={raffle.url}
-        alt="Raffle image"
-      />
-    </div>
+    <Image
+      class="w-full aspect-square object-cover sm:w-1/2 bg-green-50"
+      src={raffle.url}
+      alt="Raffle image"
+      height={500}
+      width={500}
+    />
     <div class="flex flex-col sm:justify-center sm:w-1/2 px-4 gap-4">
       <RichText text={raffle.description} />
     </div>

@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import type { Sponsor } from "../data/data.type";
 
 interface Props {
@@ -13,10 +14,23 @@ const { sponsor } = Astro.props;
   href={sponsor.hasFeaturedPage ? `/sponsor/${sponsor.name}#top` : sponsor.url}
   class={`transition-all grid place-content-center hover:scale-105 duration-300 ease-in-out grayscale hover:grayscale-0`}
 >
-  <img
-    loading="lazy"
+  <Image
     src={sponsor.picture}
-    alt=`Logo of ${sponsor.name}`
+    alt={`Logo of ${sponsor.name}`}
+    width={sponsor.tier === "gold"
+      ? 500
+      : sponsor.tier === "silver"
+        ? 450
+        : sponsor.tier === "bronze"
+          ? 380
+          : sponsor.tier === "media"
+            ? 300
+            : sponsor.tier === "food" ||
+                sponsor.tier === "community" ||
+                sponsor.tier === "supporter"
+              ? 250
+              : 200}
+    height={100}
     class:list={{
       "w-[400px] md:w-[500px]": sponsor.tier === "gold",
       "w-[350px] md:w-[450px]": sponsor.tier === "silver",
@@ -25,7 +39,9 @@ const { sponsor } = Astro.props;
       "w-[150px] md:w-[250px]":
         sponsor.tier === "food" ||
         sponsor.tier === "community" ||
-        sponsor.tier === "supporter",
+        sponsor.tier === "supporter"
+          ? 250
+          : 200,
     }}
   />
 </a>

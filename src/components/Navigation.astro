@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { DATA } from "../data/data";
 import DarkModeToggleButton from "./DarkModeToggleButton.astro";
 ---
@@ -9,10 +10,12 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
 >
   <div class="w-full max-w-[150px] sm:max-w-[180px] md:max-w-[200px]">
     <a href="/#top" class="h-10">
-      <img
+      <Image
         src="/logo.svg"
-        alt=`Logo of ${DATA.title}`
+        alt={`Logo of ${DATA.title}`}
         class="brightness-100 dark:invert"
+        height="40"
+        width="200"
       />
     </a>
   </div>
