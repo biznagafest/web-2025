@@ -25,7 +25,6 @@ function formatDate(date: Date) {
 }
 
 const sponsors: Record<SponsorTier, (ISponsor & { index: number })[]> = {
-  platinum: [],
   gold: [],
   silver: [],
   bronze: [],
@@ -42,13 +41,14 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
     index: Number(index),
   });
 }
+console.log("pepe");
 ---
 
 <Layout title={DATA.title} description={DATA.description} lang="es">
-  <header>
+  <header class="h-[400px] bg-green-50 dark:bg-blue-900 dark:bg-opacity-30">
     <section
       id="banner"
-      class="h-[400px] bg-green-50 dark:bg-blue-900 dark:bg-opacity-30 w-full flex flex-col gap-3 align-bottom justify-end p-10 md:p-20 overflow-hidden"
+      class="w-full flex flex-col gap-3 align-bottom justify-end overflow-y-clip h-full p-10 md:p-20 max-w-[2000px] mx-auto"
     >
       <h1 class="text-5xl">{DATA.title}</h1>
       <AnimatedOnViewportEnter
@@ -157,18 +157,6 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
               Sponsors
             </h2>
           </AnimatedOnViewportEnter>
-          {!!sponsors.platinum.length && (
-            <section class="flex flex-col gap-5">
-              <h3 class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center">
-                Platinum
-              </h3>
-              <article class="flex flex-row flex-wrap gap-16 justify-center align-middle px-6">
-                {sponsors.platinum.map((sponsor) => (
-                  <Sponsor sponsor={sponsor} />
-                ))}
-              </article>
-            </section>
-          )}
           {!!sponsors.gold.length && (
             <section class="flex flex-col gap-5">
               <h3 class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center">
@@ -267,7 +255,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
         id="tickets"
         class="bg-yellow-100 dark:bg-blue-900 dark:bg-opacity-30 "
       >
-        <div class="wrapper flex flex-col gap-10 px-6">
+        <div class="wrapper flex flex-col gap-10 px-6 mx-auto">
           <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
             <h2 class="text-3xl font-bold text-center md:text-left">
               Elige tu entrada
@@ -300,7 +288,9 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
     )
   }
   <section id="venue" class="bg-yellow-100 dark:bg-blue-900 dark:bg-opacity-30">
-    <div class="flex flex-col lg:grid lg:grid-cols-2 gap-6">
+    <div
+      class="flex flex-col lg:grid lg:grid-cols-2 gap-6 max-w-[2000px] mx-auto"
+    >
       <div
         class="flex flex-col gap-6 md:mx-auto px-6 xl:px-48 h-full pt-16 pb-28 md:pt-32 md:pb-52"
       >
@@ -420,7 +410,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
           <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
             <h2 class="text-3xl font-bold text-center md:text-left">Equipo</h2>
           </AnimatedOnViewportEnter>
-          <div class="px-6 md:px-0 mx-auto flex flex-row flex-wrap gap-10 align-middle justify-center w-full">
+          <div class="px-6 md:px-0 mx-auto flex flex-row flex-wrap gap-2 align-middle justify-center w-full">
             {DATA.team.organizers.map((member, index) => (
               <TeamMember kind="organizer" member={member} index={index} />
             ))}

@@ -4,48 +4,52 @@ import Socials from "./Socials.astro";
 ---
 
 <footer
-  class="px-6 flex flex-col-reverse lg:grid lg:grid-cols-[1fr_3fr_1fr] gap-10 bg-green-50 dark:bg-blue-900 dark:bg-opacity-30 text-dark-background dark:text-light-background p-10 text-center"
+  class="bg-green-50 dark:bg-blue-900 dark:bg-opacity-30 text-dark-background dark:text-light-background p-10 text-center"
 >
-  <div class="flex flex-col items-center">
-    <div class="w-full max-w-[250px] md:max-w-[300px] mx-auto">
-      <a href="/#top" class="w-full h-full">
-        <img
-          loading="lazy"
-          src="/logo.svg"
-          alt=`Logo of Biznagafest`
-          class="brightness-100 dark:invert"
-        />
-      </a>
-    </div>
-    <span class="font-thin text-sm">&copy; {DATA.title}</span>
-    <Socials socials={DATA.socials} />
-  </div>
-  <div class="flex flex-row gap-6 align-middle justify-center flex-wrap">
-    {
-      DATA.footerLinks.map((link) => (
-        <a
-          class="grid grid-cols-1 place-content-center font-semibold"
-          href={`${link.href}#top`}
-        >
-          {link.title}
+  <div
+    class="mx-auto max-w-[2000px] flex flex-col-reverse lg:grid lg:grid-cols-[1fr_3fr_1fr] gap-10"
+  >
+    <div class="flex flex-col items-center">
+      <div class="w-full max-w-[250px] md:max-w-[300px] mx-auto">
+        <a href="/#top" class="w-full h-full">
+          <img
+            loading="lazy"
+            src="/logo.svg"
+            alt=`Logo of Biznagafest`
+            class="brightness-100 dark:invert"
+          />
         </a>
-      ))
+      </div>
+      <span class="font-thin text-sm">&copy; {DATA.title}</span>
+      <Socials socials={DATA.socials} />
+    </div>
+    <div class="flex flex-row gap-6 align-middle justify-center flex-wrap">
+      {
+        DATA.footerLinks.map((link) => (
+          <a
+            class="grid grid-cols-1 place-content-center font-semibold"
+            href={`${link.href}#top`}
+          >
+            {link.title}
+          </a>
+        ))
+      }
+    </div>
+    {
+      !!DATA.previousEditions.length && (
+        <div class="flex flex-col gap-6 w-fit mx-auto">
+          <h5 class="text-center lg:text-left font-semibold text-lg">
+            Previous Editions
+          </h5>
+          <ul class="flex flex-row flex-wrap gap-3 align-middle justify-center md:justify-start">
+            {DATA.previousEditions.map((prevEd) => (
+              <li>
+                <a href={prevEd.url}>{prevEd.name}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
     }
   </div>
-  {
-    !!DATA.previousEditions.length && (
-      <div class="flex flex-col gap-6 w-fit mx-auto">
-        <h5 class="text-center lg:text-left font-semibold text-lg">
-          Previous Editions
-        </h5>
-        <ul class="flex flex-row flex-wrap gap-3 align-middle justify-center md:justify-start">
-          {DATA.previousEditions.map((prevEd) => (
-            <li>
-              <a href={prevEd.url}>{prevEd.name}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
 </footer>

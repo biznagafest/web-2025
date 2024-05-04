@@ -17,11 +17,11 @@ export const speakers = [
     name: "Jecelyn Yeen",
     position: "DevRel Engineer, Chrome",
     picture: "/speakers/jecelyn.jpg",
-    description: [
-      "Jecelyn Yeen is a DevRel engineer at Google working on Chrome DevTools and Browser Automation.",
-      "Her work focuses on understanding and activating the ecosystem around developer tooling.",
-      "When she’s not coding (and avocado-ing), she’s jumping into mysterious sea waters in search of narwhals and mermaids.",
-    ],
+    description: `Jecelyn Yeen is a DevRel engineer at Google working on Chrome DevTools and Browser Automation.  
+
+Her work focuses on understanding and activating the ecosystem around developer tooling.  
+
+When she’s not coding (and avocado-ing), she’s jumping into mysterious sea waters in search of narwhals and mermaids.`,
     socials: {
       mail: "jec@google.com",
       mastodon: "https://indieweb.social/@jecfish",
@@ -32,7 +32,7 @@ export const speakers = [
     name: "Bezael Pérez",
     position: "Lead Software Engineer",
     picture: "/speakers/bezael.jpg",
-    description: ["Divulgador de contenido."],
+    description: "Divulgador de contenido.",
     socials: {
       mail: "bezael@gmail.com",
       youtube: "https://youtube.com/@dominicode",
@@ -43,7 +43,7 @@ export const speakers = [
     name: "Leifer Mendez",
     position: "Front-end Developer",
     picture: "/speakers/leifer.jpg",
-    description: ["Apasionado de la tecnología y la divulgación de contenido."],
+    description: "Apasionado de la tecnología y la divulgación de contenido.",
     socials: {
       youtube: "https://youtube.com/@LeiferMendez",
       twitter: "https://twitter.com/LeiferMendez",
@@ -53,11 +53,11 @@ export const speakers = [
     name: "Carmen Ansio",
     position: "Freelance UX Engineer.",
     picture: "/speakers/carmen.jpg",
-    description: [
-      "Mi nombre es Carmen Ansio y soy freelance UX Engineer. ",
-      "He trabajado en compañías increíbles diseñando e implementando productos digitales desde hace más de 10 años.",
-      "Además formo parte del programa de Google GDE y comparto mi pasión sobre diseño y desarrollo web a diario en redes. Actualmente imparto formaciones y consultorías enfocadas en formación para perfiles de diseño y desarrollo web.",
-    ],
+    description: `Mi nombre es Carmen Ansio y soy freelance UX Engineer.  
+
+He trabajado en compañías increíbles diseñando e implementando productos digitales desde hace más de 10 años.  
+
+Además formo parte del programa de Google GDE y comparto mi pasión sobre diseño y desarrollo web a diario en redes. Actualmente imparto formaciones y consultorías enfocadas en formación para perfiles de diseño y desarrollo web.`,
     socials: {
       mail: "carmenansio@gmail.com",
       twitter: "https://twitter.com/carmenansio",
@@ -67,11 +67,11 @@ export const speakers = [
     name: "Álvaro López Sánchez",
     position: "R&D Engineer / Innovation, Fortris",
     picture: "/speakers/alvaro-lopez.jpeg",
-    description: [
-      "+10 yrs of expertise as a software engineer in the video game industry.",
-      "In recent years, I turned his attention to decentralized technologies in terms of cybersecurity and scalability.",
-      "Now, I hold the position of R&D Engineer at Fortris and am pursuing a Ph.D. at the University of Malaga in decentralized technology and its cybersecurity implications.",
-    ],
+    description: `+10 yrs of expertise as a software engineer in the video game industry.  
+
+In recent years, I turned his attention to decentralized technologies in terms of cybersecurity and scalability.  
+
+Now, I hold the position of R&D Engineer at Fortris and am pursuing a Ph.D. at the University of Malaga in decentralized technology and its cybersecurity implications.`,
     socials: {
       mail: "bluebycode@gmail.com",
       linkedin: "https://www.linkedin.com/in/bluebycode/",
@@ -81,7 +81,6 @@ export const speakers = [
     name: "Irene M Morgado",
     position: "Head of Brand & Culture, Kairós Digital Solutions",
     picture: "/speakers/irene.jpg",
-    description: [],
     socials: {
       mail: "irenemmorgado@gmail.com",
       linkedin: "https://www.linkedin.com/in/irenemmorgado/",
@@ -91,11 +90,12 @@ export const speakers = [
     name: "Francisco Guerrero",
     position: "QA Manager & QA Coach",
     picture: "/speakers/fran-guerrero.jpeg",
-    description: [
-      "Fran Guerrero es un especialista certificado en Agile ISTQB con más de 12 años de experiencia en el campo de la Calidad del Software.",
-      "Implementa procesos de prueba, estrategias de control de calidad, herramientas innovadoras y construye relaciones sólidas en todos los equipos.Su objetivo siempre es que su equipo se convierta en una parte esencial del proceso de Calidad del Software",
-      "De vez en cuando, le gusta hablar en foros relacionados con QA y Testing sobre temas que incluyen Metodologías Ágiles, Test Automation y DevOps CI / CD.",
-    ],
+    description: `
+      Fran Guerrero es un especialista certificado en Agile ISTQB con más de 12 años de experiencia en el campo de la Calidad del Software.  
+
+Implementa procesos de prueba, estrategias de control de calidad, herramientas innovadoras y construye relaciones sólidas en todos los equipos.Su objetivo siempre es que su equipo se convierta en una parte esencial del proceso de Calidad del Software"  
+
+De vez en cuando, le gusta hablar en foros relacionados con QA y Testing sobre temas que incluyen Metodologías Ágiles, Test Automation y DevOps CI / CD.`,
     socials: {
       mail: "fran.guerrero.sanchez@gmail.com",
       linkedin: "https://www.linkedin.com/in/franguerrero/",
@@ -105,11 +105,11 @@ export const speakers = [
     name: "Sasha Denisov",
     position: "Chief Software Engineer",
     picture: "/speakers/denisov.png",
-    description: [
-      "Sasha is an experienced software developer with a rich background, in IT for more than 20 years.",
-      "He worked with different stacks in backend, frontend and mobile fields, but since 2018 his main interest is Flutter.Sasha is a Chief Software Engineer and Head of Flutter Discipline in EPAM Systems.",
-      "Also, he is Flutter and Dart GDE and Co- Organizer of Flutter Berlin community.",
-    ],
+    description: `Sasha is an experienced software developer with a rich background, in IT for more than 20 years.  
+
+He worked with different stacks in backend, frontend and mobile fields, but since 2018 his main interest is Flutter.Sasha is a Chief Software Engineer and Head of Flutter Discipline in EPAM Systems.  
+
+Also, he is Flutter and Dart GDE and Co- Organizer of Flutter Berlin community.`,
     socials: {
       mail: "denisov.shureg@gmail.com",
       twitter: "https://twitter.com/ShuregDenisov",
@@ -119,7 +119,6 @@ export const speakers = [
     name: "Alix Martínez Martínez",
     position: "Design Leader, Miro",
     picture: "/speakers/alix.jpg",
-    description: [],
     socials: {
       mail: "info@alixmzmz.eu",
       website: "https://www.alixmzmz.eu/",
@@ -131,7 +130,6 @@ export const speakers = [
     name: "Juan Manuel Real Garry",
     position: "Product Design Manager, Miro",
     picture: "/speakers/juanreal.jpeg",
-    description: [],
     socials: {
       mail: "pheurton@gmail.com",
       website: "https://juanreal.com/",
@@ -142,7 +140,6 @@ export const speakers = [
     name: "Albert Sunyer",
     position: "Technical Account Manager",
     picture: "/speakers/albert.jpeg",
-    description: [],
     socials: {
       mail: "sunyer@google.com",
     },
@@ -151,7 +148,6 @@ export const speakers = [
     name: "Alba Rivas",
     position: "Principal Developer Advocate at Salesforce",
     picture: "/speakers/albarivas.jpeg",
-    description: [],
     socials: {
       twitter: "https://twitter.com/AlbaSFDC",
       linkedin: "https://www.linkedin.com/in/alba-rivas/",
@@ -334,10 +330,9 @@ export const schedules: Schedule[] = [
 export const events = [
   {
     name: "Modern Web Debugging",
-    description: [
-      "Few developers enjoy debugging, and debugging can be complex for modern web apps because of the multiple frameworks, languages, and libraries used. But, developer tools have come a long way in making the process easier.",
-      "In this talk, Jecelyn will dig into the modern state of debugging, improvements in DevTools, and how you can use them to reliably debug your apps.",
-    ],
+    description: `Few developers enjoy debugging, and debugging can be complex for modern web apps because of the multiple frameworks, languages, and libraries used. But, developer tools have come a long way in making the process easier.  
+
+In this talk, Jecelyn will dig into the modern state of debugging, improvements in DevTools, and how you can use them to reliably debug your apps.`,
     durationInMinutes: 45,
     place: "auditorium",
     type: "lecture",
@@ -346,11 +341,11 @@ export const events = [
   },
   {
     name: "El Presente y el Futuro Inminente del Frontend: Perspectivas y Predicciones",
-    description: [
-      "En esta charla dinámica, exploraremos las tendencias actuales y las previsiones futuras del desarrollo frontend.",
-      "Con un enfoque especial en los frameworks, herramientas y técnicas emergentes, analizaremos cómo estas innovaciones están redefiniendo las capacidades y responsabilidades del desarrollo frontend.",
-      "Esta charla es imprescindible para desarrolladores, diseñadores y todos aquellos interesados en la dirección futura del diseño web y la programación frontend.",
-    ],
+    description: `En esta charla dinámica, exploraremos las tendencias actuales y las previsiones futuras del desarrollo frontend.  
+
+Con un enfoque especial en los frameworks, herramientas y técnicas emergentes, analizaremos cómo estas innovaciones están redefiniendo las capacidades y responsabilidades del desarrollo frontend.  
+
+Esta charla es imprescindible para desarrolladores, diseñadores y todos aquellos interesados en la dirección futura del diseño web y la programación frontend.`,
     durationInMinutes: 45,
     place: "auditorium",
     type: "lecture",
@@ -359,9 +354,7 @@ export const events = [
   },
   {
     name: "✨ Haz magia con CSS",
-    description: [
-      "En la charla veremos hechizos de magia a modo de snippets de código CSS variados, desde arte con CSS, ilusiones ópticas, un videojuego funcional, interfaces animadas, funciones en CSS, elementos de html con los que tener funcionalidades de saque en el navegador sin necesidad de JS...",
-    ],
+    description: `En la charla veremos hechizos de magia a modo de snippets de código CSS variados, desde arte con CSS, ilusiones ópticas, un videojuego funcional, interfaces animadas, funciones en CSS, elementos de html con los que tener funcionalidades de saque en el navegador sin necesidad de JS...`,
     durationInMinutes: 45,
     place: "auditorium",
     type: "lecture",
@@ -370,11 +363,11 @@ export const events = [
   },
   {
     name: "Under the Hood of Decentralized Technology: Examining Scalability and Security",
-    description: [
-      "This talk examines everything no one tells you about blockchain as a decentralized distributed system: challenges of balancing security and scalability.",
-      "It covers the costs of improving performance, known challenges in blockchain platforms, and the issue of centralization in decentralized systems.",
-      "It visits the known-unknown security attacks case per case.",
-    ],
+    description: `This talk examines everything no one tells you about blockchain as a decentralized distributed system: challenges of balancing security and scalability.  
+
+It covers the costs of improving performance, known challenges in blockchain platforms, and the issue of centralization in decentralized systems.  
+
+It visits the known-unknown security attacks case per case.`,
     durationInMinutes: 45,
     place: "auditorium",
     type: "lecture",
@@ -383,10 +376,9 @@ export const events = [
   },
   {
     name: "A Developer Journey",
-    description: [
-      "¿Sabes qué además de la UX existe toda una ciencia detrás de la Experiencia de Developers y otras personas que trabajan en empresas tech?",
-      'Si tu empresa "presume" de cuidar bien a quienes trabajan en ella, seguro que tiene expertas y expertos en #EX(Employee Xperience) que trabajan para que tu día a día y la cultura de tu organización sea un éxito...o deberían.',
-    ],
+    description: `¿Sabes qué además de la UX existe toda una ciencia detrás de la Experiencia de Developers y otras personas que trabajan en empresas tech?  
+
+Si tu empresa "presume" de cuidar bien a quienes trabajan en ella, seguro que tiene expertas y expertos en #EX(Employee Xperience) que trabajan para que tu día a día y la cultura de tu organización sea un éxito...o deberían.`,
     durationInMinutes: 45,
     place: "auditorium",
     type: "lecture",
@@ -395,10 +387,9 @@ export const events = [
   },
   {
     name: "API Testing con herramientas CI/CD",
-    description: [
-      "Las pruebas de API han sido un desafío para los probadores y herramientas como Postman han facilitado esta tarea gracias a la creación manual de colecciones de solicitudes. Pero, ¿cómo podemos configurar pruebas automatizadas de API usando Postman y lanzar estas pruebas en contenedores? No solo eso, sino también integrarlos en nuestras canalizaciones de CI/CD.",
-      "En esta charla, Fran Guerrero explorará 3 puntos clave en la automatización de pruebas API con herramientas habituales como Postman: es decir, la creación de pruebas automatizadas desde Postman, cómo ejecutar tus recopilaciones de solicitudes y sus pruebas automatizadas usando Docker, así como los contenedores adecuados.para ellos y cómo las pruebas de API se integran en una canalización de CI / CD de una manera sencilla usando GitlabCI.",
-    ],
+    description: `Las pruebas de API han sido un desafío para los probadores y herramientas como Postman han facilitado esta tarea gracias a la creación manual de colecciones de solicitudes. Pero, ¿cómo podemos configurar pruebas automatizadas de API usando Postman y lanzar estas pruebas en contenedores? No solo eso, sino también integrarlos en nuestras canalizaciones de CI/CD.  
+
+En esta charla, Fran Guerrero explorará 3 puntos clave en la automatización de pruebas API con herramientas habituales como Postman: es decir, la creación de pruebas automatizadas desde Postman, cómo ejecutar tus recopilaciones de solicitudes y sus pruebas automatizadas usando Docker, así como los contenedores adecuados.para ellos y cómo las pruebas de API se integran en una canalización de CI / CD de una manera sencilla usando GitlabCI.`,
     durationInMinutes: 45,
     place: "auditorium",
     type: "workshop",
@@ -407,11 +398,12 @@ export const events = [
   },
   {
     name: "Compose Flutter Modules in your Android App",
-    description: [
-      "Explore the process of embedding Flutter into existing Android applications in this live coding session.",
-      "Learn how to seamlessly integrate Flutter with your native code, rendering multiple Flutter modules on a single screen and incorporating them into a Jetpack Compose hierarchy.",
-      "Discover the techniques and best practices for successfully integrating Flutter into your Android app.Join us for this informative session and level up your app development skills.",
-    ],
+    description: `Explore the process of embedding Flutter into existing Android applications in this live coding session.  
+
+Learn how to seamlessly integrate Flutter with your native code, rendering multiple Flutter modules on a single screen and incorporating them into a Jetpack Compose hierarchy.  
+
+Discover the techniques and best practices for successfully integrating Flutter into your Android app.Join us for this informative session and level up your app development skills.
+    `,
     durationInMinutes: 45,
     place: "auditorium",
     type: "workshop",
@@ -420,9 +412,7 @@ export const events = [
   },
   {
     name: "Creatividad en la era de la IA: ¿Existe realmente la posibilidad de ser original?",
-    description: [
-      "En esta charla profundizaremos en analíticas, anécdotas, caminos, herramientas prácticas y personas detrás del #EX, hablando concretamente del sector Tech.",
-    ],
+    description: `En esta charla profundizaremos en analíticas, anécdotas, caminos, herramientas prácticas y personas detrás del #EX, hablando concretamente del sector Tech.`,
     durationInMinutes: 45,
     place: "auditorium",
     type: "lecture",
@@ -431,9 +421,7 @@ export const events = [
   },
   {
     name: "ML API Skills",
-    description: [
-      "In this game you will combine Vision API, Translation API, and Natural Language API, analyze images with the Vision API, perform text analysis with the Cloud Natural Language API, and use Kubernetes and Cloud Vision API to classify images from Reddit's /r/aww subreddit and displayed the results in a web app.",
-    ],
+    description: `In this game you will combine Vision API, Translation API, and Natural Language API, analyze images with the Vision API, perform text analysis with the Cloud Natural Language API, and use Kubernetes and Cloud Vision API to classify images from Reddit's /r/aww subreddit and displayed the results in a web app.`,
     durationInMinutes: 45,
     place: "auditorium",
     type: "workshop",
@@ -442,10 +430,9 @@ export const events = [
   },
   {
     name: "¿Salesforce Developer?¿Quééé?",
-    description: [
-      "El rol de Salesforce Developer está altamente demandado en el mercado laboral, pero a la vez, es un gran desconocido.",
-      "En esta sesión os contaré a qué se dedica un Salesforce Developer, veremos qué lenguajes y herramientas se utilizan para crear aplicaciones en Salesforce, y, desde mi experiencia personal, os contaré las ventajas y retos que os podéis encontrar en el camino.",
-    ],
+    description: `El rol de Salesforce Developer está altamente demandado en el mercado laboral, pero a la vez, es un gran desconocido.
+
+En esta sesión os contaré a qué se dedica un Salesforce Developer, veremos qué lenguajes y herramientas se utilizan para crear aplicaciones en Salesforce, y, desde mi experiencia personal, os contaré las ventajas y retos que os podéis encontrar en el camino.`,
     durationInMinutes: 45,
     place: "auditorium",
     type: "lecture",
@@ -516,12 +503,13 @@ export const sponsors = [
     hasFeaturedPage: true,
     name: "Fortris",
     picture: "/sponsors/fortris.svg",
-    tier: "platinum",
-    description: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate dignissim suspendisse in est ante.",
-      "Id volutpat lacus laoreet non curabitur gravida. Tincidunt augue interdum velit euismod. Sagittis id consectetur purus ut faucibus pulvinar elementum integer enim. Eleifend donec pretium vulputate sapien. Mi bibendum neque egestas congue quisque egestas. Sed risus ultricies tristique nulla aliquet enim tortor.",
-      "Interdum consectetur libero id faucibus nisl tincidunt eget. Vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt. Sed pulvinar proin gravida hendrerit.",
-    ],
+    tier: "gold",
+    url: "https://fortris.com",
+    description: `Lorem ipsum dolo
+    r sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vulputate dignissim suspendisse in est ante.  
+Id volutpat lacus laoreet non curabitur gravida. Tincidunt augue interdum velit euismod. Sagittis id consectetur purus ut faucibus pulvinar elementum integer enim. Eleifend donec pretium vulputate sapien. Mi bibendum neque egestas congue quisque egestas. Sed risus ultricies tristique nulla aliquet enim tortor.  
+
+Interdum consectetur libero id faucibus nisl tincidunt eget. Vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt. Sed pulvinar proin gravida hendrerit.`,
     socials: {
       website: "https://fortris.com",
     },
@@ -529,34 +517,30 @@ export const sponsors = [
       {
         title: "Frontend Developer",
         url: "https://google.com",
-        description: [
-          "We are looking for a frontend developer in technology stack Angular, React, Vue, etc.",
-          "2 years of experience required",
-        ],
+        description: `We are looking for a frontend developer in technology stack Angular, React, Vue, etc.  
+
+2 years of experience required.`,
       },
       {
         title: "Frontend Developer",
         url: "https://google.com",
-        description: [
-          "We are looking for a frontend developer in technology stack Angular, React, Vue, etc.",
-          "2 years of experience required",
-        ],
+        description: `We are looking for a frontend developer in technology stack Angular, React, Vue, etc.  
+
+2 years of experience required.`,
       },
       {
         title: "Frontend Developer",
         url: "https://google.com",
-        description: [
-          "We are looking for a frontend developer in technology stack Angular, React, Vue, etc.",
-          "2 years of experience required",
-        ],
+        description: `We are looking for a frontend developer in technology stack Angular, React, Vue, etc.  
+
+2 years of experience required.`,
       },
       {
         title: "Frontend Developer",
         url: "https://google.com",
-        description: [
-          "We are looking for a frontend developer in technology stack Angular, React, Vue, etc.",
-          "2 years of experience required",
-        ],
+        description: `We are looking for a frontend developer in technology stack Angular, React, Vue, etc.  
+
+2 years of experience required.`,
       },
     ],
   },
@@ -596,11 +580,11 @@ const faq = [
 const raffles = [
   {
     url: "fallback/person.png",
-    description: [
-      "¡La fiesta de clausura se acerca! 🚀 En nuestro Kahoot tech, no solo te divertirás, sino que también tendrás la oportunidad de ganar libros de programación increíbles que impulsarán tu conocimiento en el mundo de la tecnología. 📚",
-      "Si eres un entusiasta de la tecnología, este evento es simplemente imprescindible. 💻🎉 Imagina una tarde llena de emoción, risas y desafíos mientras compites con otros amantes de la tecnología en un Kahoot que pondrá a prueba tus conocimientos y habilidades. Pero eso no es todo, ¡también hay premios en juego!",
-      "Asegura tu lugar y prepárate para una experiencia única que te llevará a casa no solo con recuerdos, sino también con conocimientos tecnológicos adicionales. ¡No te lo puedes perder!",
-    ],
+    description: `¡La fiesta de clausura se acerca! 🚀 En nuestro Kahoot tech, no solo te divertirás, sino que también tendrás la oportunidad de ganar libros de programación increíbles que impulsarán tu conocimiento en el mundo de la tecnología. 📚  
+
+Si eres un entusiasta de la tecnología, este evento es simplemente imprescindible. 💻🎉 Imagina una tarde llena de emoción, risas y desafíos mientras compites con otros amantes de la tecnología en un Kahoot que pondrá a prueba tus conocimientos y habilidades. Pero eso no es todo, ¡también hay premios en juego!  
+
+Asegura tu lugar y prepárate para una experiencia única que te llevará a casa no solo con recuerdos, sino también con conocimientos tecnológicos adicionales. ¡No te lo puedes perder!`,
   },
 ] as const satisfies ReadonlyArray<Raffle>;
 
@@ -616,17 +600,16 @@ const team = {
         github: "https://github.com/JoseAntpr",
         linkedin: "https://www.linkedin.com/in/joseantpalacios/",
       },
-      description: [],
     },
     {
       name: "Carlos Caballero",
       // TODO
       picture: "/fallback/person.png",
-      description: [
-        "Carlos Caballero González es ingeniero informático y doctor en informática de la Universidad de Málaga.",
-        "Máster en Ingeniería de Software y en Inteligencia Artificial.",
-        "Google Developer Experts en Angular.",
-      ],
+      description: `Carlos Caballero González es ingeniero informático y doctor en informática de la Universidad de Málaga.  
+
+Máster en Ingeniería de Software y en Inteligencia Artificial.  
+
+Google Developer Experts en Angular.`,
       position: "Angular Google Developer Expert (GDE)",
       socials: {
         twitter: "https://twitter.com/carlillo",
@@ -645,15 +628,13 @@ const team = {
         twitter: "https://twitter.com/joseabarreram",
         linkedin: "https://www.linkedin.com/in/joseabarreram/",
       },
-      description: [],
     },
     {
       name: "David Rojo",
       picture: "/team/david-rojo.png",
-      description: [
-        "David Rojo es un desarrollador de software especializado en tecnologías web como NestJs y Angular.",
-        "Con gran interes en la comunidad y en proyectos open source.",
-      ],
+      description: `David Rojo es un desarrollador de software especializado en tecnologías web como NestJs y Angular.  
+
+Con gran interes en la comunidad y en proyectos open source.`,
       position: "Software Developer, Max Gain Development",
       socials: {
         twitter: "https://twitter.com/davidrojom",
@@ -666,10 +647,9 @@ const team = {
       name: "Inma Ortega",
       // TODO
       picture: "/fallback/person.png",
-      description: [
-        "Graduada en periodismo, es técnica en Comunicación Corporativa, PR y especialista en Social Media Marketing.",
-        "Tiene un gran interes sobre sector tecnológico, que tan en boga está en Málaga y está siendo un revulsivo en el tejido social y económico en la provincia.",
-      ],
+      description: `Graduada en periodismo, es técnica en Comunicación Corporativa, PR y especialista en Social Media Marketing.  
+
+Tiene un gran interes sobre sector tecnológico, que tan en boga está en Málaga y está siendo un revulsivo en el tejido social y económico en la provincia.`,
       position: "Community Manager, ComparteMedios",
       socials: {
         linkedin: "https://www.linkedin.com/in/inmaculadaortegamartin/",
@@ -679,11 +659,11 @@ const team = {
       name: "Daniel Olivet",
       // TODO
       picture: "/fallback/person.png",
-      description: [
-        "Desarrollador de software malagueño.",
-        "Estudió ASIR y por afición pura acabó desarrollando webs.",
-        "Especializado en entornos LAMP, con gran interés en nuevas tecnologías y en clean code.",
-      ],
+      description: `Desarrollador de software malagueño.  
+
+Estudió ASIR y por afición pura acabó desarrollando webs.  
+
+Especializado en entornos LAMP, con gran interés en nuevas tecnologías y en clean code.`,
       position: "Desarrollador Backend, Bulevip",
       socials: {
         linkedin: "https://www.linkedin.com/in/daniel-olivet-jimenez/",
@@ -709,11 +689,12 @@ export const LOCALDATA: Data = {
   ticketsUrl:
     "https://www.eventbrite.es/e/entradas-biznagafest-2023-638556609007",
   date: new Date(2023, 9, 28),
-  description: [
-    'El BiznagaFest es el gran evento IT de la Costa del Sol para las comunidades "Google developers" de España, que se reúnen para ofrecer conferencias y workshops sobre Devops, Backend, Frontend, Chatbots, IA, Blockchain y soft skills.',
-    "En su edición anterior asisitieron más de 500 personas a las 12 horas de ponencias y talleres.",
-    "Por Biznaga fest han pasado grandes expertos que trabajan en las principales empresas tecnológicas nacionales e internacionales, como Google, Virus Total, Deloitte, Red Hat, Chainalysis, Sngular, entre otros.",
-  ],
+  description: `El BiznagaFest es el gran evento IT de la Costa del Sol para las comunidades "Google developers" de España, que se reúnen para ofrecer conferencias y workshops sobre Devops, Backend, Frontend, Chatbots, IA, Blockchain y soft skills.  
+
+En su edición anterior asisitieron más de 500 personas a las 12 horas de ponencias y talleres.  
+
+Por Biznaga fest han pasado grandes expertos que trabajan en las principales empresas tecnológicas nacionales e internacionales, como Google, Virus Total, Deloitte, Red Hat, Chainalysis, Sngular, entre otros.
+  `,
   socials: {
     instagram: "https://www.instagram.com/biznagafest/",
     twitter: "https://twitter.com/BiznagaFest",
@@ -733,18 +714,12 @@ export const LOCALDATA: Data = {
     title: "E.T.S de Ingeniería Informática",
     city: "Málaga",
     howToArrive: {
-      howToArriveByBus: [
-        "Línea 8 (Alameda Principal - Clínico) - Parada Hospital Clínico",
-        "Línea 11 (Universidad - El Palo: P. Virginia) - Parada Louis Pasteur",
-        "Línea 22 (Avda. de Moliere - Universidad) Parada Louis Pasteur",
-        "Línea 25 (Paseo del Parque - Maqueda) - Parada  Andrés Llorden",
-      ],
-      howToArriveByBike: [
-        "El Campus cuenta con un carril bici que comienza en el Paseo del Parque y llega al Boulevar Louis Pasteur",
-      ],
-      howToArriveByMetro: [
-        "Línea 1 (Andalucía Tech - El Perchel) - Parada Hospital Clínico",
-      ],
+      howToArriveByBus: `- Línea 8 (Alameda Principal - Clínico) - Parada Hospital Clínico.  
+- Línea 11 (Universidad - El Palo: P. Virginia) - Parada Louis Pasteur.  
+- Línea 22 (Avda. de Moliere - Universidad) Parada Louis Pasteur.  
+- Línea 25 (Paseo del Parque - Maqueda) - Parada  Andrés Llorden.`,
+      howToArriveByBike: `- El Campus cuenta con un carril bici que comienza en el Paseo del Parque y llega al Boulevar Louis Pasteur.`,
+      howToArriveByMetro: `- Línea 1 (Andalucía Tech - El Perchel) - Parada Hospital Clínico`,
     },
   },
   previousEditions: [
