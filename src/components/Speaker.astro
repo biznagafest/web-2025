@@ -14,6 +14,7 @@ const { speaker, index } = Astro.props;
   class="flex flex-col align-middle justify-center lg:grid lg:grid-cols-[2fr_3fr] lg:gap-5 mx-auto"
 >
   <a
+    aria-label={`Go to ${speaker.name}'s profile`}
     transition:name={`picture-speaker-${index}`}
     href={`/speaker/${index}#top`}
     class="w-[200px] h-[200px] mx-auto block rounded-full shadow-md overflow-hidden"

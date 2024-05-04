@@ -9,7 +9,7 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
   class="flex flex-wrap items-center justify-between w-full mx-auto max-w-[2000px] px-8 py-5 md:px-16 md:py-10 text-lg text-dark-background dark:text-light-background"
 >
   <div class="w-full max-w-[150px] sm:max-w-[180px] md:max-w-[200px]">
-    <a href="/#top" class="h-10">
+    <a aria-label="Go to Home Page" href="/#top" class="h-10">
       <Image
         src="/logo.svg"
         alt={`Logo of ${DATA.title}`}
@@ -34,6 +34,7 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
         !!DATA.schedules.length && (
           <li class="mx-auto">
             <a
+              aria-label="Go to Schedule Page"
               href="/schedule#top"
               class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
             >
@@ -46,6 +47,7 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
         !!DATA.speakers.length && (
           <li class="mx-auto">
             <a
+              aria-label="Go to Speakers"
               href="/#speakers"
               class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
             >
@@ -58,6 +60,7 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
         !!DATA.raffles.length && (
           <li class="mx-auto">
             <a
+              aria-label="Go to Raffles Page"
               href="/raffles#top"
               class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
             >
@@ -70,6 +73,7 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
         !!DATA.faq.length && (
           <li class="mx-auto">
             <a
+              aria-label="Go to FAQ"
               href="/#faq"
               class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
             >
@@ -82,6 +86,7 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
         class="mx-auto cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
       >
         <a
+          aria-label="Buy Tickets"
           href={DATA.ticketsUrl}
           target="_blank"
           class="text-white p-2 rounded-lg bg-green-600 hover:bg-green-400 dark:bg-blue-600 dark:hover:bg-blue-400 transition-colors"

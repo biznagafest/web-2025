@@ -14,7 +14,12 @@ const { socials } = Astro.props;
   {
     socials?.devto && (
       <li>
-        <a target="_blank" href={socials?.devto}>
+        <a
+          title="Devto"
+          aria-label="Link to Devto"
+          target="_blank"
+          href={socials?.devto}
+        >
           <i class:list={["ph", "ph-dev-to-logo", Astro.props.class]} />
         </a>
       </li>
@@ -23,7 +28,12 @@ const { socials } = Astro.props;
   {
     socials?.github && (
       <li>
-        <a target="_blank" href={socials?.github}>
+        <a
+          title="Github"
+          aria-label="Link to Github"
+          target="_blank"
+          href={socials?.github}
+        >
           <i class:list={["ph", "ph-github-logo", Astro.props.class]} />
         </a>
       </li>
@@ -32,7 +42,12 @@ const { socials } = Astro.props;
   {
     socials?.instagram && (
       <li>
-        <a target="_blank" href={socials?.instagram}>
+        <a
+          title="Instagram"
+          aria-label="Link to Instagram"
+          target="_blank"
+          href={socials?.instagram}
+        >
           <i class:list={["ph", "ph-instagram-logo", Astro.props.class]} />
         </a>
       </li>
@@ -41,7 +56,12 @@ const { socials } = Astro.props;
   {
     socials?.linkedin && (
       <li>
-        <a target="_blank" href={socials?.linkedin}>
+        <a
+          title="Linkedin"
+          aria-label="Link to Linkedin"
+          target="_blank"
+          href={socials?.linkedin}
+        >
           <i class:list={["ph", "ph-linkedin-logo", Astro.props.class]} />
         </a>
       </li>
@@ -50,7 +70,12 @@ const { socials } = Astro.props;
   {
     socials?.mail && (
       <li>
-        <a target="_blank" href={`mailto:${socials?.mail}`}>
+        <a
+          title="Mail"
+          aria-label="Send a Mail"
+          target="_blank"
+          href={`mailto:${socials?.mail}`}
+        >
           <i class:list={["ph", "ph-envelope", Astro.props.class]} />
         </a>
       </li>
@@ -59,7 +84,12 @@ const { socials } = Astro.props;
   {
     socials?.mastodon && (
       <li>
-        <a target="_blank" href={socials?.mastodon}>
+        <a
+          title="Mastodon"
+          aria-label="Link to Mastodon"
+          target="_blank"
+          href={socials?.mastodon}
+        >
           <i class:list={["ph", "ph-at", Astro.props.class]} />
         </a>
       </li>
@@ -68,7 +98,12 @@ const { socials } = Astro.props;
   {
     socials?.medium && (
       <li>
-        <a target="_blank" href={socials?.medium}>
+        <a
+          title="Medium"
+          aria-label="Link to Medium"
+          target="_blank"
+          href={socials?.medium}
+        >
           <i class:list={["ph", "ph-book-open", Astro.props.class]} />
         </a>
       </li>
@@ -77,7 +112,12 @@ const { socials } = Astro.props;
   {
     socials?.twitch && (
       <li>
-        <a target="_blank" href={socials?.twitch}>
+        <a
+          title="Twitch"
+          aria-label="Link to Twitch"
+          target="_blank"
+          href={socials?.twitch}
+        >
           <i class:list={["ph", "ph-twitch-logo", Astro.props.class]} />
         </a>
       </li>
@@ -86,7 +126,12 @@ const { socials } = Astro.props;
   {
     socials?.twitter && (
       <li>
-        <a target="_blank" href={socials?.twitter}>
+        <a
+          title="Twitter"
+          aria-label="Link to Twitter"
+          target="_blank"
+          href={socials?.twitter}
+        >
           <i class:list={["ph", "ph-twitter-logo", Astro.props.class]} />
         </a>
       </li>
@@ -95,7 +140,12 @@ const { socials } = Astro.props;
   {
     socials?.website && (
       <li>
-        <a target="_blank" href={socials?.website}>
+        <a
+          title="Website"
+          aria-label="Link to Website"
+          target="_blank"
+          href={socials?.website}
+        >
           <i class:list={["ph", "ph-globe", Astro.props.class]} />
         </a>
       </li>
@@ -104,7 +154,12 @@ const { socials } = Astro.props;
   {
     socials?.youtube && (
       <li>
-        <a target="_blank" href={socials?.youtube}>
+        <a
+          title="Youtube"
+          aria-label="Link to Youtube"
+          target="_blank"
+          href={socials?.youtube}
+        >
           <i class:list={["ph", "ph-youtube-logo", Astro.props.class]} />
         </a>
       </li>
