@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from "astro:transitions";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
@@ -80,4 +81,5 @@ const { image = "/favicon.svg", description, title } = Astro.props;
       @apply mx-auto max-w-5xl pt-16 pb-28 md:pt-32 md:pb-52;
     }
   </style>
+  <SpeedInsights />
 </head>
