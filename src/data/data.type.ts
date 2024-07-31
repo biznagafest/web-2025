@@ -163,6 +163,11 @@ export type Data = {
       }>
     >;
   };
+  companyTicketsNotice: {
+    enabled: boolean;
+    title: string;
+    description: string;
+  };
   speakers: ReadonlyArray<Speaker>;
   schedules: ReadonlyArray<Schedule>;
   team: Team;

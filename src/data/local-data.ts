@@ -722,6 +722,12 @@ Por Biznaga fest han pasado grandes expertos que trabajan en las principales emp
       howToArriveByMetro: `- Línea 1 (Andalucía Tech - El Perchel) - Parada Hospital Clínico`,
     },
   },
+  companyTicketsNotice: {
+    enabled: true,
+    title: "¿Eres una empresa?",
+    description:
+      "¿Representas a una empresa y deseas adquirir entradas para tus empleados? Contáctanos a través de nuestro correo electrónico: **biznagafest@gmail.com**",
+  },
   previousEditions: [
     {
       name: "2017",
