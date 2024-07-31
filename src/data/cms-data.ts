@@ -21,6 +21,13 @@ interface CmsResponse {
   sponsors: Sponsor[];
   tickets: Ticket[];
   events: Event[];
+  CompanyTicketsNotice: CompanyTicketsNotice;
+}
+
+interface CompanyTicketsNotice {
+  enabled: boolean;
+  title: string;
+  description: string;
 }
 
 type Socials = {
@@ -202,6 +209,11 @@ export async function getDataFromCms(): Promise<Data> {
       lastEdition: {
         gallery: [],
       },
+      companyTicketsNotice: {
+        enabled: false,
+        title: "",
+        description: "",
+      },
     };
 
     data = failOverData;
@@ -310,6 +322,11 @@ function mapCmsResponseToDate(response: CmsResponse): Data {
       language: event.language || undefined,
       speakers: event.speakers.map((speaker) => speaker.name),
     })),
+    companyTicketsNotice: {
+      enabled: response.CompanyTicketsNotice.enabled,
+      title: response.CompanyTicketsNotice.title,
+      description: response.CompanyTicketsNotice.description,
+    },
     // TODO (David): Add the following properties to the CMS
     raffles: [],
     schedules: [],
