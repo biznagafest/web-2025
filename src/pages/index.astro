@@ -266,6 +266,17 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
               <TicketSection tickets={DATA.tickets} />
             </div>
           </AnimatedOnViewportEnter>
+
+          {!!DATA.companyTicketsNotice.enabled && (
+            <Notice>
+              <div class="max-w-lg rounded-md w-fit p-4 flex flex-col gap-5 px-6 bg-blue-50 dark:bg-green-800 dark:bg-opacity-30 text-dark-background dark:text-light-background [&>p]:text-md md:[&>p]:text-lg">
+                <h3 class="text-xl md:text-2xl lg:text-3xl font-bold">
+                  {DATA.companyTicketsNotice.title}
+                </h3>
+                <RichText text={DATA.companyTicketsNotice.description} />
+              </div>
+            </Notice>
+          )}
         </div>
       </section>
     )
