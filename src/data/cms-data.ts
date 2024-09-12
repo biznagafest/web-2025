@@ -22,6 +22,18 @@ interface CmsResponse {
   tickets: Ticket[];
   events: Event[];
   CompanyTicketsNotice: CompanyTicketsNotice;
+  schedule: ScheduleItem[];
+}
+
+interface ScheduleItem {
+  kind: "break" | "nobreak";
+  type: Nullable<"lecture" | "workshop">;
+  time_start: string;
+  time_end: string;
+  title: string;
+  subtitle: Nullable<string>;
+  description: Nullable<string>;
+  location: Nullable<string>;
 }
 
 interface CompanyTicketsNotice {
@@ -183,7 +195,7 @@ export async function getDataFromCms(): Promise<Data> {
       footerLinks: [],
       previousEditions: [],
       raffles: [],
-      schedules: [],
+      schedule: [],
       speakers: [],
       sponsors: [],
       sponsorsDossier: {
@@ -327,9 +339,18 @@ function mapCmsResponseToDate(response: CmsResponse): Data {
       title: response.CompanyTicketsNotice.title,
       description: response.CompanyTicketsNotice.description,
     },
+    schedule: response.schedule.map((scheduleItem) => ({
+      end: scheduleItem.time_end,
+      kind: scheduleItem.kind,
+      start: scheduleItem.time_start,
+      title: scheduleItem.title,
+      description: scheduleItem.description || undefined,
+      location: scheduleItem.location || undefined,
+      subtitle: scheduleItem.subtitle || undefined,
+      type: scheduleItem.type || undefined,
+    })),
     // TODO (David): Add the following properties to the CMS
     raffles: [],
-    schedules: [],
   };
 }
 

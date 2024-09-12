@@ -23,20 +23,6 @@ export type Speaker = {
   picture: string;
 };
 
-export type ScheduleEvent = {
-  time_start: string;
-  time_end: string;
-  title: string;
-  subtitle?: Nullish<string>;
-  description?: Nullish<string>;
-  type?: Nullish<"lecture" | "workshop">;
-};
-
-export type Schedule = {
-  type: "break" | "no-break";
-  events: ScheduleEvent[];
-};
-
 export interface TeamMember {
   name: string;
   position?: Nullish<string>;
@@ -142,6 +128,17 @@ export interface LastEdition {
   gallery: ReadonlyArray<string>;
 }
 
+export interface ScheduleItem {
+  kind: "break" | "nobreak";
+  type?: Nullish<"lecture" | "workshop">;
+  start: string;
+  end: string;
+  title: string;
+  subtitle?: Nullish<string>;
+  description?: Nullish<string>;
+  location?: Nullish<string>;
+}
+
 export type Data = {
   title: string;
   date: Date;
@@ -169,7 +166,7 @@ export type Data = {
     description: string;
   };
   speakers: ReadonlyArray<Speaker>;
-  schedules: ReadonlyArray<Schedule>;
+  schedule: ReadonlyArray<ScheduleItem>;
   team: Team;
   sponsors: ReadonlyArray<Sponsor>;
   sponsorsDossier: SponssorsDossier;

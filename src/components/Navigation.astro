@@ -31,11 +31,11 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
       class="flex justify-evenly gap-2 text-sm flex-col lg:flex-row font-bold"
     >
       {
-        !!DATA.schedules.length && (
+        !!DATA.schedule.length && (
           <li class="mx-auto">
             <a
-              aria-label="Go to Schedule Page"
-              href="/schedule#top"
+              aria-label="Go to Schedule"
+              href="#schedule"
               class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
             >
               Schedule

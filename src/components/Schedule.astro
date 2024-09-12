@@ -1,34 +1,163 @@
 ---
-import type { Schedule } from "../data/data.type";
-import BreakSchedule from "./BreakSchedule.astro";
-import LectureSchedule from "./LectureSchedule.astro";
-import WorkshopSchedule from "./WorkshopSchedule.astro";
+import { DATA } from "../data/data";
+import type { ScheduleItem } from "../data/data.type";
+import RichText from "./RichText.astro";
 
 interface Props {
-  schedule: Schedule;
-  type: "break" | "no-break";
+  data: ReadonlyArray<ScheduleItem>;
 }
 
-const { schedule, type } = Astro.props;
+const { data } = Astro.props;
+
+const events = DATA.events;
+
+function hasEvent(speakerName: string): boolean {
+  return events.some((event) => event.speakers.includes(speakerName));
+}
 ---
 
-{
-  type === "break" ? (
-    <BreakSchedule event={schedule.events[0]} />
-  ) : (
-    <div class="flex flex-col md:flex-row gap-4 mb-4">
-      <div class="flex flex-col md:w-1/2 gap-4">
-        {schedule.events.map((event) => {
-          if (event.type === "lecture") {
-            return <LectureSchedule event={event} />;
+<ul class="accordion flex flex-col gap-4">
+  {
+    data.map((item: ScheduleItem) => (
+      <li
+        class="flex flex-col"
+        class:list={{ "schedule-item": item.description }}
+      >
+        <header
+          class="schedule-header rounded-lg flex flex-row items-center justify-between gap-2 select-none "
+          class:list={{
+            break: item.kind === "break",
+            lecture: item.kind === "nobreak" && item.type === "lecture",
+            workshop: item.kind === "nobreak" && item.type === "workshop",
+            "cursor-pointer": item.description,
+          }}
+        >
+          <div>
+            <div class="flex flex-col gap-2 p-1 md:p-4">
+              <div
+                class="px-4 pt-4 flex flex-row gap-1 text-xs font-semibold flex-wrap"
+                class:list={{
+                  hidden: item.kind === "break",
+                }}
+              >
+                {item.location && (
+                  <span class="border rounded-full px-2 py-1 text-gray-500 border-gray-500 dark:text-gray-400 dark:border-gray-400">
+                    {item.location}
+                  </span>
+                )}
+                {item.type !== undefined && (
+                  <span class="border rounded-full px-2 py-1 text-gray-500 border-gray-500 dark:text-gray-400 dark:border-gray-400">
+                    {item.type === "lecture"
+                      ? "Charla"
+                      : item.type === "workshop"
+                        ? "Taller"
+                        : ""}
+                  </span>
+                )}
+              </div>
+              <div
+                class="flex flex-row gap-4 p-4"
+                class:list={{
+                  "pt-0": item.kind !== "break",
+                }}
+              >
+                <div class="flex flex-row items-center gap-x-4 md:gap-x-10 ">
+                  <div class="flex flex-col w-fit">
+                    <span class="text-sm text-blue-600 font-bold">
+                      {item.start}
+                    </span>
+                    <span class="text-sm text-blue-600 font-bold">
+                      {item.end}
+                    </span>
+                  </div>
+                </div>
+                <div class="w-full flex flex-col gap-2 text-left">
+                  <span class="text-md md:text-xl text-dark-background dark:text-light-background">
+                    {item.title}
+                  </span>
+                  {item.subtitle && (
+                    <span class="text-xs md:text-sm font-semibold text-gray-500 dark:text-gray-400">
+                      {item.subtitle}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+          <span
+            class="grid grid-cols-1 place-content-center min-w-8 aspect-square"
+            class:list={{ hidden: !item.description }}
+          >
+            <i class="ph ph-caret-up transition-transform duration-150 w-fit" />
+          </span>
+        </header>
+        <div class="schedule-body px-4 mt-2 animate__animated animate__fadeIn text-dark-background dark:text-light-background">
+          <div class="flex flex-col gap-4">
+            <RichText text={item.description} />
+          </div>
+        </div>
+      </li>
+    ))
+  }
+</ul>
+
+<script>
+  function init() {
+    const tuples = document.querySelectorAll(".schedule-item");
+
+    tuples.forEach((tuple) => {
+      const header = tuple.querySelector(".schedule-header");
+      const body = tuple.querySelector(".schedule-body");
+
+      header?.addEventListener("click", () => {
+        tuple.classList.toggle("active");
+        body?.classList.toggle("hidden");
+
+        tuples.forEach((t) => {
+          if (t !== tuple) {
+            t.classList.remove("active");
           }
-        })}
-      </div>
-      {schedule.events.map((event) => {
-        if (event.type !== "lecture") {
-          return <WorkshopSchedule event={event} />;
-        }
-      })}
-    </div>
-  )
-}
+        });
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", init);
+</script>
+<style>
+  li.active > .schedule-header.break {
+    @apply bg-red-100 dark:bg-red-400 dark:bg-opacity-30;
+  }
+
+  li:not(.active) > .schedule-header.break {
+    @apply bg-red-50 dark:bg-red-800 dark:bg-opacity-30;
+  }
+
+  li.active > .schedule-header.lecture {
+    @apply bg-yellow-100 dark:bg-yellow-700 dark:bg-opacity-30;
+  }
+
+  li:not(.active) > .schedule-header.lecture {
+    @apply bg-yellow-50 dark:bg-yellow-800 dark:bg-opacity-30;
+  }
+
+  li.active > .schedule-header.workshop {
+    @apply bg-blue-50 dark:bg-blue-900 dark:bg-opacity-30;
+  }
+
+  li:not(.active) > .schedule-header.workshop {
+    @apply bg-blue-50 dark:bg-blue-800 dark:bg-opacity-30;
+  }
+
+  li.active i {
+    @apply transform rotate-180;
+  }
+
+  li.active > .schedule-body {
+    @apply block;
+  }
+
+  li:not(.active) > .schedule-body {
+    @apply hidden;
+  }
+</style>

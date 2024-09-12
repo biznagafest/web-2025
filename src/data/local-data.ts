@@ -3,7 +3,7 @@ import type {
   Raffle,
   Event,
   FAQ,
-  Schedule,
+  ScheduleItem,
   Speaker,
   Sponsor,
   Team,
@@ -156,174 +156,224 @@ Also, he is Flutter and Dart GDE and Co- Organizer of Flutter Berlin community.`
   },
 ] as const satisfies ReadonlyArray<Speaker>;
 
-export const schedules: Schedule[] = [
+export const schedule: ScheduleItem[] = [
   {
-    type: "break",
-    events: [
-      {
-        time_start: "9.00",
-        time_end: "9.15",
-        title: "Welcome",
-        subtitle: "Presentación y agradecimientos",
-      },
-    ],
+    end: "9.15",
+    kind: "break",
+    start: "9.00",
+    title: "Welcome",
+    description: undefined,
+    location: "Auditorio",
+    subtitle: "Presentación y agradecimientos",
+    type: undefined,
   },
   {
-    type: "no-break",
-    events: [
-      {
-        time_start: "9.15",
-        time_end: "10.15",
-        title: "Modern Web Debugging",
-        subtitle: "Jecelyn Yeen",
-        description:
-          "In this talk, Jecelyn will dig into the modern state of debugging, improvements in DevTools, and how you can use them to reliably debug your apps.",
-        type: "lecture",
-      },
-      {
-        time_start: "10.15",
-        time_end: "11.15",
-        title: "Haz magia con CSS",
-        subtitle: "Carmen Ansio",
-        description:
-          "En la charla veremos hechizos de magia a modo de snippets de código CSS variados, desde arte con CSS, ilusiones ópticas, un videojuego funcional, interfaces animadas, funciones en CSS, elementos de html con los que tener funcionalidades de saque en el navegador sin necesidad de JS...",
-        type: "lecture",
-      },
-      {
-        time_start: "9.15",
-        time_end: "11.15",
-        title: "Compose Flutter modules in your Android App",
-        subtitle: "Sasha Denisov",
-        description:
-          "Explore the process of embedding Flutter into existing Android applications in this live coding session. Learn how to seamlessly integrate Flutter with your native code, rendering multiple Flutter modules on a single screen and incorporating them into a Jetpack Compose hierarchy. Discover the techniques and best practices for successfully integrating Flutter into your Android app.Join us for this informative session and level up your app development skills.",
-        type: "workshop",
-      },
-    ],
+    end: "10.10",
+    kind: "nobreak",
+    start: "9.15",
+    title: "From fast loading to instant loading",
+    description:
+      "Learn about the Speculation Rules API and how it allows for instant page loads and a near-zero Largest Contentful Paint.",
+    location: "Auditorio",
+    subtitle: "Barry Pollard",
+    type: "lecture",
   },
   {
-    type: "break",
-    events: [
-      {
-        time_start: "11.15",
-        time_end: "12.00",
-        title: "☕ Coffee break",
-        subtitle: "Recarguemos las pilas",
-      },
-    ],
+    end: "11.10",
+    kind: "nobreak",
+    start: "9.15",
+    title: "Aprende Rust programando un shooter",
+    description:
+      "Aprende a crear un juego al estilo Wolfenstein usando Rust.  \n\nPara ello se dará a los asistentes el código del juego con algunas partes incompletas para que ellos las terminen. Así, se podrán tratar de forma aislada pero práctica algunos de los conceptos más importantes del lenguaje.",
+    location: "Sala Talleres 1",
+    subtitle: "Pablo Cumpián",
+    type: "workshop",
   },
   {
-    type: "no-break",
-    events: [
-      {
-        time_start: "12.00",
-        time_end: "13.00",
-        title:
-          "Under the hood of decentralized technology: Examining scalability and security",
-        subtitle: "Álvaro López",
-        description:
-          "In this talk, Jecelyn will dig into the modern state of debugging, improvements in DevTools, and how you can use them to reliably debug your apps.",
-        type: "lecture",
-      },
-      {
-        time_start: "13.00",
-        time_end: "14.00",
-        title:
-          "Creatividad en la era de la AI ¿Existe realmente la posibilidad de ser original?",
-        subtitle: "Juan Real / Alix Martínez",
-        description:
-          "En esta charla profundizaremos en analíticas, anécdotas, caminos, herramientas prácticas y personas detrás del #EX, hablando concretamente del sector Tech.",
-        type: "lecture",
-      },
-      {
-        time_start: "12.00",
-        time_end: "14.00",
-        title: "API testing con herramienta CI/CD",
-        subtitle: "Francisco Guerrero",
-        description:
-          "En esta charla, Fran Guerrero explorará 3 puntos clave en la automatización de pruebas API con herramientas habituales como Postman: es decir, la creación de pruebas automatizadas desde Postman, cómo ejecutar tus recopilaciones de solicitudes y sus pruebas automatizadas usando Docker, así como los contenedores adecuados.para ellos y cómo las pruebas de API se integran en una canalización de CI / CD de una manera sencilla usando GitlabCI.",
-        type: "workshop",
-      },
-    ],
+    end: "11.10",
+    kind: "nobreak",
+    start: "9.15",
+    title: "Y ahora, ¿qué? - el taller interactivo",
+    description:
+      "En este taller serán los y las asistentes quienes deciden en qué temas se profundizará, a medida que avancemos en las distintas áreas a tener en cuenta cuando buscas trabajo tech.  \n\nCon una introducción de contexto amena y practica, podrás elegir en vivo y en directo si mejorar tu perfil de LinkedIn, practicar que preguntas hacer a ti recruiters y como evaluar si ahora te encuentras en un lugar con perspectivas de crecimiento.",
+    location: "Sala Talleres 2",
+    subtitle: "Irene Morgado",
+    type: "workshop",
   },
   {
-    type: "break",
-    events: [
-      {
-        time_start: "14.00",
-        time_end: "15.30",
-        title: "🥘 Almuerzo",
-        subtitle: "¡Prepárate para la paella!",
-      },
-    ],
+    end: "11.10",
+    kind: "nobreak",
+    start: "10.15",
+    title: "Effective Android App Monitoring in Production",
+    description:
+      "Your feature is complete and ready to be shipped to production. Now you can forget about it completely and move onto the next thing, right? Actually the fun begins when your feature reaches your users. Do they use it? And do they use it as you expected? What kind of issues are they experiencing? \n\nIn this session, we’ll discuss how to monitor Android apps in production to ensure they stand resilient and ready for the challenges of the real world. \n\nYou’ll learn how to design and report relevant events that matter to you and your team. Also, how to define KPIs (key performance indicators), processes and strategies for keeping a vigilant eye on user interactions, errors and app performance, by using tools like New Relic and Firebase. \n\nYou’ll see from real world examples how to track, detect and address production issues before they escalate. \n\nLevel up your app observability, delight your users and deliver with confidence with these tips. ",
+    location: "Auditorio",
+    subtitle: "Alejandra Stamato",
+    type: "lecture",
   },
   {
-    type: "no-break",
-    events: [
-      {
-        time_start: "15.30",
-        time_end: "16.30",
-        title:
-          "El presente y el futuro inminente del frontend: Perspectivas y predicciones",
-        subtitle: "Bezael / Leifer",
-        description:
-          "En esta charla dinámica, exploraremos las tendencias actuales y las previsiones futuras del desarrollo frontend. Con un enfoque especial en los frameworks, herramientas y técnicas emergentes, analizaremos cómo estas innovaciones están redefiniendo las capacidades y responsabilidades del desarrollo frontend.",
-        type: "lecture",
-      },
-      {
-        time_start: "16.30",
-        time_end: "17.30",
-        title: "¿Salesforce developer? ¿Quééé?",
-        subtitle: "Alba Rivas",
-        description:
-          "En esta sesión os contaré a qué se dedica un Salesforce Developer, veremos qué lenguajes y herramientas se utilizan para crear aplicaciones en Salesforce, y, desde mi experiencia personal, os contaré las ventajas y retos que os podéis encontrar en el camino.",
-        type: "lecture",
-      },
-      {
-        time_start: "15.30",
-        time_end: "17.30",
-        title: "ML API Skills",
-        subtitle: "Albert Sunyer",
-        description:
-          "In this game you will combine Vision API, Translation API, and Natural Language API, analyze images with the Vision API, perform text analysis with the Cloud Natural Language API, and use Kubernetes and Cloud Vision API to classify images from Reddit's /r/aww subreddit and displayed the results in a web app.",
-        type: "workshop",
-      },
-    ],
+    end: "11.10",
+    kind: "nobreak",
+    start: "10.15",
+    title:
+      "From Zero to AI Hero: Building Custom Solutions for Gmail, Drive & More",
+    description:
+      "Ready to build AI-powered solutions for Google Workspace? This session is your comprehensive guide. \n\nWe'll cover the essential tools, APIs, and best practices for developing extensions that seamlessly integrate with Gmail, Drive, Sheets, and more apps. ",
+    location: "Track 2",
+    subtitle: "Chanel Greco",
+    type: "lecture",
   },
   {
-    type: "break",
-    events: [
-      {
-        time_start: "17.30",
-        time_end: "17.45",
-        title: "☕ Coffee break",
-        subtitle: "Último tirón",
-      },
-    ],
+    end: "12.00",
+    kind: "break",
+    start: "11.15",
+    title: "☕ Coffee break",
+    description: undefined,
+    location: undefined,
+    subtitle: "Recarguemos las pilas",
+    type: undefined,
   },
   {
-    type: "no-break",
-    events: [
-      {
-        time_start: "17.45",
-        time_end: "18.45",
-        title: "A developer journey",
-        subtitle: "Irene M. Morgado",
-        description:
-          '¿Sabes qué además de la UX existe toda una ciencia detrás de la Experiencia de Developers y otras personas que trabajan en empresas tech? Si tu empresa "presume" de cuidar bien a quienes trabajan en ella, seguro que tiene expertas y expertos en #EX(Employee Xperience) que trabajan para que tu día a día y la cultura de tu organización sea un éxito...o deberían',
-        type: "lecture",
-      },
-    ],
+    end: "12.55",
+    kind: "nobreak",
+    start: "12.00",
+    title:
+      "Síndrome del impostor y cómo vencerlo con la inteligencia artificial",
+    description:
+      "Apasionada por la tecnología, la mente humana y su asociación práctica en el mundo del emprendimiento. \n\nMi investigación se ha centrado en la intersección entre la ansiedad, el estrés psicosomático y la programación, explorando cómo estos factores impactan en el rendimiento y bienestar de los profesionales tecnológicos. \n\nBusco colaborar en proyectos que integren de manera innovadora la tecnología, la psicología y el emprendimiento, con el objetivo de impulsar soluciones creativas y humanas en el mundo digital. ",
+    location: "Auditorio",
+    subtitle: "Mariana Rolfo",
+    type: "lecture",
   },
   {
-    type: "break",
-    events: [
-      {
-        time_start: "18.45",
-        time_end: "19.00",
-        title: "Sorteo y despedida",
-        subtitle: "¡Hasta el año que viene!",
-      },
-    ],
+    end: "12.55",
+    kind: "nobreak",
+    start: "12.00",
+    title:
+      "Componetización eficiente: clave para un desarrollo frontend sostenible",
+    description:
+      "En esta charla, exploraremos la importancia de desarrollar componentes de manera eficiente para asegurar la sostenibilidad en el desarrollo frontend. \n\nA través de ejemplos prácticos con React y Vue, discutiremos las mejores prácticas para crear componentes reutilizables y mantenibles. \n\nAbordaremos principios clave como la separación de responsabilidades, la modularidad y la consistencia en el diseño de sistemas.  \n\nAdemás, veremos cómo una correcta componentización puede mejorar la escalabilidad, el rendimiento y la colaboración en equipos de desarrollo. ",
+    location: "Track 2",
+    subtitle: "Manu Rodríguez",
+    type: "lecture",
+  },
+  {
+    end: "13.55",
+    kind: "nobreak",
+    start: "12.00",
+    title: "Web Performance Testing",
+    description:
+      "Que la Web Performance es un tema que impacta a la experiencia de usuarias/os, al posicionamiento SEO y, por tanto, a las visitas, y a las métricas de negocio, es una realidad. Conocer las métricas de Web Performance más relevantes y poder testearlas en cada pase que hacemos a producción nos ahorrarán muchos problemas. \n\nEn este taller te contaremos cómo configurar e implementar un sistema automatizado para testear la Web Performance con Lighthouse CI, así como analizar las Core Web Vitals con Cypress/Playwright/Puppeteer y conseguir así no degradar la UX de nuestro producto. ",
+    location: "Sala Talleres 1",
+    subtitle: "Joan León",
+    type: "workshop",
+  },
+  {
+    end: "13.55",
+    kind: "nobreak",
+    start: "12.00",
+    title: "Setup your mesh with Istio and Kiali",
+    description:
+      "En este taller los asistentes aprenderan a configurar Istio con Kiali y a como convivir con este entorno, aprenderan que les aporta y los beneficios que se obtienen a nivel de seguridad y observabilidad. ",
+    location: "Sala Talleres 2",
+    subtitle: "Alberto Gutiérrez y Josune Córdoba",
+    type: "workshop",
+  },
+  {
+    end: "15.30",
+    kind: "break",
+    start: "14.00",
+    title: "Almuerzo",
+    description: undefined,
+    location: "Almuerzo",
+    subtitle: "¡Prepárate para la paella!",
+    type: undefined,
+  },
+  {
+    end: "16.25",
+    kind: "nobreak",
+    start: "15.30",
+    title: "Diseño y evaluación de sistemas guiados por pruebas de rendimiento",
+    description:
+      "Introducción al diseño de sistemas teniendo en cuenta distintos requisitos y cómo optimizarlos y evolucionarlos basándonos en pruebas de rendimiento.  \n\nVeremos cómo proponer y probar soluciones, monitorizarlas, organizar nuestro código y evitar optimizaciones prematuras. \n\nTambién veremos cómo preparar nuestros sistemas para que escalen automáticamente y cómo presentar los resultados y mejoras en un lenguaje de negocio. ",
+    location: "Auditorio",
+    subtitle: "Ramón Lence",
+    type: "lecture",
+  },
+  {
+    end: "16.25",
+    kind: "nobreak",
+    start: "15.30",
+    title: "Una mirada profunda a los asistentes de IA en tu móvil",
+    description:
+      "Descubre las bases de prompt engineering y como la IA puede ser una pieza clave para tus usuarios en el desarrollo de aplicaciones móviles. ",
+    location: "Track 2",
+    subtitle: "David San Martín",
+    type: "lecture",
+  },
+  {
+    end: "17.25",
+    kind: "nobreak",
+    start: "15.30",
+    title: "Agile Product Management. Product Discovery",
+    description:
+      "Product discovery and its place it agile product management. Product discovery is an important process for building the product, as it is the process of understanding customers' needs and business context. ",
+    location: "Sala Talleres 1",
+    subtitle: "Alina Sazonova",
+    type: "workshop",
+  },
+  {
+    end: "17.25",
+    kind: "nobreak",
+    start: "15.30",
+    title: "DDD+Refactoring: Enriquece tu dominio en pequeños pasos",
+    description:
+      "Taller sobre fundamentos de Domain driven design (táctico) y Refactoring. ",
+    location: "Sala Talleres 2",
+    subtitle: "Pedro Pardal",
+    type: "workshop",
+  },
+  {
+    end: "17.25",
+    kind: "nobreak",
+    start: "16.30",
+    title: "Generative AI y Firebase para crear tu web app",
+    description:
+      "En esta charla, exploraremos cómo las últimas herramientas de inteligencia artificial, desde Gemini API hasta Genkit, están revolucionando el desarrollo de aplicaciones modernas, permitiéndonos construirlas de manera más rápida y sencilla. \n\nAprenderemos a implementar estas poderosas tecnologías utilizando Firebase en aplicaciones web. Además, realizaremos demostraciones de live coding en vivo, donde veremos paso a paso cómo integrar estas herramientas para optimizar tus proyectos. \n\nDescubramos cómo la IA generativa puede transformar tu flujo de trabajo y llevar tus aplicaciones al siguiente nivel. ",
+    location: "Auditorio",
+    subtitle: "Laura Morinigo",
+    type: "lecture",
+  },
+  {
+    end: "17.45",
+    kind: "break",
+    start: "17.30",
+    title: "☕ Coffee break",
+    description: undefined,
+    location: undefined,
+    subtitle: "Último empujón",
+    type: undefined,
+  },
+  {
+    end: "18.40",
+    kind: "nobreak",
+    start: "17.45",
+    title: "¿Qué es un Tech Lead?",
+    description:
+      "Tech Leads, Staffs, Principal y puestos similares se alcanzan en una empresa una vez alcanzada cierta seniority.Sin embargo llegar a esos puestos requiere de mucho más que ser bueno técnicamente. \n\nEstas expectativas son a menudo ambiguas y poco definidas, en esta charla veremos en profundidad y con ejemplos cuáles son las expectativas que todas las empresas tienen para  estas posiciones. ",
+    location: "Auditorio",
+    subtitle: "Félix López",
+    type: "lecture",
+  },
+  {
+    end: "19.00",
+    kind: "break",
+    start: "18.45",
+    title: "✨ CLAUSURA",
+    description: undefined,
+    location: "Auditorio",
+    subtitle: "¡Sorpresas!",
+    type: undefined,
   },
 ];
 
@@ -755,7 +805,7 @@ Por Biznaga fest han pasado grandes expertos que trabajan en las principales emp
   tickets,
   sponsors,
   speakers,
-  schedules,
+  schedule,
   raffles,
   events,
   footerLinks: [
