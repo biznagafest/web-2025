@@ -33,18 +33,13 @@ function hasEvent(speakerName: string): boolean {
           }}
         >
           <div>
-            <div class="flex flex-col gap-2 p-1 md:p-4">
+            <div class="flex flex-col gap-2">
               <div
                 class="px-4 pt-4 flex flex-row gap-1 text-xs font-semibold flex-wrap"
                 class:list={{
                   hidden: item.kind === "break",
                 }}
               >
-                {item.location && (
-                  <span class="border rounded-full px-2 py-1 text-gray-500 border-gray-500 dark:text-gray-400 dark:border-gray-400">
-                    {item.location}
-                  </span>
-                )}
                 {item.type !== undefined && (
                   <span class="border rounded-full px-2 py-1 text-gray-500 border-gray-500 dark:text-gray-400 dark:border-gray-400">
                     {item.type === "lecture"
@@ -52,6 +47,25 @@ function hasEvent(speakerName: string): boolean {
                       : item.type === "workshop"
                         ? "Taller"
                         : ""}
+                  </span>
+                )}
+                {item.language && (
+                  <span class="border rounded-full px-2 py-1 text-gray-500 border-gray-500 dark:text-gray-400 dark:border-gray-400">
+                    {item.language === "Español"
+                      ? "🇪🇸"
+                      : item.language === "English"
+                        ? "🇬🇧"
+                        : item.language}
+                  </span>
+                )}
+                {item.topic && (
+                  <span class="border rounded-full px-2 py-1 text-gray-500 border-gray-500 dark:text-gray-400 dark:border-gray-400">
+                    {item.topic}
+                  </span>
+                )}
+                {item.location && (
+                  <span class="border rounded-full px-2 py-1 text-gray-500 border-gray-500 dark:text-gray-400 dark:border-gray-400">
+                    {item.location}
                   </span>
                 )}
               </div>

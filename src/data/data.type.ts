@@ -137,6 +137,8 @@ export interface ScheduleItem {
   subtitle?: Nullish<string>;
   description?: Nullish<string>;
   location?: Nullish<string>;
+  language?: Nullish<string>;
+  topic?: Nullish<string>;
 }
 
 export type Data = {
