@@ -177,63 +177,8 @@ const cmsHostname = import.meta.env.CMS_URL;
 const cmsEndpoint = `${cmsHostname}/info`;
 
 export async function getDataFromCms(): Promise<Data> {
-  let data: Data;
-
-  try {
-    const response = await axios.get<CmsResponse>(cmsEndpoint);
-    data = mapCmsResponseToDate(response.data);
-  } catch (error) {
-    const failOverData: Data = {
-      title: "BiznagaFest",
-      date: new Date(),
-      description: "",
-      callForPapers: {
-        isEnabled: false,
-        title: "",
-        url: "",
-      },
-      events: [],
-      faq: [],
-      footerLinks: [],
-      previousEditions: [],
-      raffles: [],
-      schedule: [],
-      speakers: [],
-      sponsors: [],
-      sponsorsDossier: {
-        enabled: false,
-      },
-      team: {
-        organizers: [],
-        staff: [],
-      },
-      tickets: [],
-      ticketsUrl: "",
-      venue: {
-        title: "",
-        description: "",
-        address: "",
-        city: "",
-        mapUrl: "",
-        pictures: [],
-      },
-      welcomeBanner: {
-        isEnabled: false,
-      },
-      lastEdition: {
-        gallery: [],
-      },
-      companyTicketsNotice: {
-        enabled: false,
-        title: "",
-        description: "",
-      },
-    };
-
-    data = failOverData;
-  }
-
-  return data;
+  const response = await axios.get<CmsResponse>(cmsEndpoint);
+  return mapCmsResponseToDate(response.data);
 }
 
 function mapCmsResponseToDate(response: CmsResponse): Data {
