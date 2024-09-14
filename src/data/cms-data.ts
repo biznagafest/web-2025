@@ -34,6 +34,8 @@ interface ScheduleItem {
   subtitle: Nullable<string>;
   description: Nullable<string>;
   location: Nullable<string>;
+  language: Nullable<string>;
+  topic: Nullable<string>;
 }
 
 interface CompanyTicketsNotice {
@@ -348,6 +350,8 @@ function mapCmsResponseToDate(response: CmsResponse): Data {
       location: scheduleItem.location || undefined,
       subtitle: scheduleItem.subtitle || undefined,
       type: scheduleItem.type || undefined,
+      language: scheduleItem.language || undefined,
+      topic: scheduleItem.topic || undefined,
     })),
     // TODO (David): Add the following properties to the CMS
     raffles: [],
