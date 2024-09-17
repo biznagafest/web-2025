@@ -23,6 +23,12 @@ interface CmsResponse {
   events: Event[];
   CompanyTicketsNotice: CompanyTicketsNotice;
   schedule: ScheduleItem[];
+  raffles: Raffleitem[];
+}
+
+interface Raffleitem {
+  description: string;
+  picture: Picture;
 }
 
 interface ScheduleItem {
@@ -44,7 +50,7 @@ interface CompanyTicketsNotice {
   description: string;
 }
 
-type Socials = {
+type Socials = Nullable<{
   twitter: Nullable<string>;
   youtube: Nullable<string>;
   linkedin: Nullable<string>;
@@ -56,7 +62,7 @@ type Socials = {
   instagram: Nullable<string>;
   devto: Nullable<string>;
   twitch: Nullable<string>;
-} | null;
+}>;
 
 interface Venue {
   title: string;
@@ -65,7 +71,7 @@ interface Venue {
   map_url: string;
   city: string;
   how_to_arrive: HowToArrive;
-  pictures: any[];
+  pictures: Picture[];
 }
 
 interface HowToArrive {
@@ -298,8 +304,10 @@ function mapCmsResponseToDate(response: CmsResponse): Data {
       language: scheduleItem.language || undefined,
       topic: scheduleItem.topic || undefined,
     })),
-    // TODO (David): Add the following properties to the CMS
-    raffles: [],
+    raffles: response.raffles.map((raffle) => ({
+      description: raffle.description,
+      picture: prependHostnameToUrl(raffle.picture.url),
+    })),
   };
 }
 

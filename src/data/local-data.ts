@@ -629,7 +629,7 @@ const faq = [
 
 const raffles = [
   {
-    url: "/fallback/person.png",
+    picture: "/fallback/person.png",
     description: `¡La fiesta de clausura se acerca! 🚀 En nuestro Kahoot tech, no solo te divertirás, sino que también tendrás la oportunidad de ganar libros de programación increíbles que impulsarán tu conocimiento en el mundo de la tecnología. 📚  
 
 Si eres un entusiasta de la tecnología, este evento es simplemente imprescindible. 💻🎉 Imagina una tarde llena de emoción, risas y desafíos mientras compites con otros amantes de la tecnología en un Kahoot que pondrá a prueba tus conocimientos y habilidades. Pero eso no es todo, ¡también hay premios en juego!  
