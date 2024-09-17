@@ -81,8 +81,8 @@ export interface FAQ {
 }
 
 export interface Raffle {
-  url: string;
   description: string;
+  picture: string;
 }
 
 export interface PreviousEdition {

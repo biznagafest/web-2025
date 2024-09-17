@@ -25,12 +25,14 @@ const { raffle, isEven } = Astro.props;
   >
     <Image
       class="w-full aspect-square object-cover sm:w-1/2 bg-green-50"
-      src={raffle.url}
+      src={raffle.picture}
       alt="Raffle image"
       height={500}
       width={500}
     />
-    <div class="flex flex-col sm:justify-center sm:w-1/2 px-4 gap-4">
+    <div
+      class="flex flex-col sm:justify-center sm:w-1/2 px-4 gap-4 [&>h1]:text-2xl [&>h1]:font-bold"
+    >
       <RichText text={raffle.description} />
     </div>
   </div>
