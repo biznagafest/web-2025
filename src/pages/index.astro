@@ -145,6 +145,37 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
     )
   }
   {
+    !!DATA.hallOfFame.length && (
+      <section
+        id="hallOfFame"
+        class="bg-blue-50 dark:bg-green-800 dark:bg-opacity-30 text-dark-background dark:text-light-background"
+      >
+        <div class="wrapper flex flex-col gap-16 px-6 ">
+          <AnimatedOnViewportEnter animation="animate__animated animate__fadeInLeft">
+            <h2 class="text-3xl font-bold text-center md:text-left">
+              Han pasado por aquí
+            </h2>
+          </AnimatedOnViewportEnter>
+
+          <ul class="flex flex-row gap-2 flex-wrap items-stretch justify-center">
+            {DATA.hallOfFame.map((speaker) => (
+              <li class="flex-1 sm:flex-grow-0 min-w-fit bg-white dark:bg-dark-background flex flex-col gap-2 px-10 py-8 rounded-md bg-center bg-cover relative overflow-hidden select-none pointer-events-none">
+                <div
+                  class="w-full h-full absolute left-0 top-0 opacity-40 bg-no-repeat bg-center bg-cover"
+                  style={"background-image: url(" + speaker.picture + ")"}
+                />
+                <span class="text-center text-black dark:text-white font-extrabold z-10 drop-shadow-md">
+                  {speaker.name}
+                </span>
+                <span class="text-center text-sm z-10">{speaker.edition}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+  {
     DATA.callForPapers.isEnabled && (
       <section class="bg-blue-50 dark:bg-green-800 dark:bg-opacity-30 text-dark-background dark:text-light-background py-10 grid place-items-center">
         <a

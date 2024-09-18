@@ -2,6 +2,10 @@
 import { Image } from "astro:assets";
 import { DATA } from "../data/data";
 import DarkModeToggleButton from "./DarkModeToggleButton.astro";
+
+const featuredSponsors = DATA.sponsors.filter(
+  (sponsor) => sponsor.tier === "gold" && sponsor.hasFeaturedPage,
+);
 ---
 
 <nav
@@ -81,6 +85,19 @@ import DarkModeToggleButton from "./DarkModeToggleButton.astro";
             </a>
           </li>
         )
+      }
+      {
+        featuredSponsors.map((sponsor) => (
+          <li class="mx-auto">
+            <a
+              aria-label={`Go to ${sponsor.name} Page`}
+              href={`/sponsor/${sponsor.name}#top`}
+              class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+            >
+              Meet {sponsor.name}
+            </a>
+          </li>
+        ))
       }
       <li
         class="mx-auto cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
