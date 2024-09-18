@@ -829,4 +829,5 @@ Por Biznaga fest han pasado grandes expertos que trabajan en las principales emp
     es: "/documents/dossier-sponsors-es.pdf",
   },
   callForPapers,
+  hallOfFame: [],
 } as const satisfies Readonly<Data>;

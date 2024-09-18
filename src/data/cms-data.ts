@@ -24,6 +24,13 @@ interface CmsResponse {
   CompanyTicketsNotice: CompanyTicketsNotice;
   schedule: ScheduleItem[];
   raffles: Raffleitem[];
+  hall_of_fame: HallOfFameitem[];
+}
+
+interface HallOfFameitem {
+  name: string;
+  edition: string;
+  picture: Picture;
 }
 
 interface Raffleitem {
@@ -307,6 +314,11 @@ function mapCmsResponseToDate(response: CmsResponse): Data {
     raffles: response.raffles.map((raffle) => ({
       description: raffle.description,
       picture: prependHostnameToUrl(raffle.picture.url),
+    })),
+    hallOfFame: response.hall_of_fame.map((hallOfFameItem) => ({
+      name: hallOfFameItem.name,
+      edition: hallOfFameItem.edition,
+      picture: prependHostnameToUrl(hallOfFameItem.picture.url),
     })),
   };
 }

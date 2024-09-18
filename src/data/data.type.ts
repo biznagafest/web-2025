@@ -141,6 +141,12 @@ export interface ScheduleItem {
   topic?: Nullish<string>;
 }
 
+export interface HallOfFameitem {
+  name: string;
+  edition: string;
+  picture: string;
+}
+
 export type Data = {
   title: string;
   date: Date;
@@ -181,4 +187,5 @@ export type Data = {
   raffles: ReadonlyArray<Raffle>;
   welcomeBanner: WelcomeBanner;
   callForPapers: CallForPapers;
+  hallOfFame: ReadonlyArray<HallOfFameitem>;
 };
