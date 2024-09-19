@@ -25,17 +25,25 @@ interface CmsResponse {
   schedule: ScheduleItem[];
   raffles: Raffleitem[];
   hall_of_fame: HallOfFameitem[];
+  tshirt: Tshirt;
+}
+
+interface Tshirt {
+  type: "image" | "video";
+  title: Nullable<string>;
+  subtitle: Nullable<string>;
+  asset: MediaFile;
 }
 
 interface HallOfFameitem {
   name: string;
   edition: string;
-  picture: Picture;
+  picture: MediaFile;
 }
 
 interface Raffleitem {
   description: string;
-  picture: Picture;
+  picture: MediaFile;
 }
 
 interface ScheduleItem {
@@ -78,7 +86,7 @@ interface Venue {
   map_url: string;
   city: string;
   how_to_arrive: HowToArrive;
-  pictures: Picture[];
+  pictures: MediaFile[];
 }
 
 interface HowToArrive {
@@ -99,10 +107,10 @@ interface SponsorDossier {
 
 interface LastEdition {
   video_url: Nullable<string>;
-  gallery: Picture[];
+  gallery: MediaFile[];
 }
 
-interface Picture {
+interface MediaFile {
   url: string;
 }
 
@@ -133,7 +141,7 @@ interface Team {
   position: string;
   description: string;
   socials: Socials;
-  picture: Picture;
+  picture: MediaFile;
 }
 
 interface Event {
@@ -152,7 +160,7 @@ interface Speaker {
   description: Nullable<string>;
   position: Nullable<string>;
   socials: Socials;
-  picture: Picture;
+  picture: MediaFile;
 }
 
 interface Sponsor {
@@ -163,7 +171,7 @@ interface Sponsor {
   description: Nullable<string>;
   socials: Nullable<Socials>;
   job_offers: JobOffer[];
-  picture: Picture;
+  picture: MediaFile;
 }
 
 interface JobOffer {
@@ -320,6 +328,12 @@ function mapCmsResponseToDate(response: CmsResponse): Data {
       edition: hallOfFameItem.edition,
       picture: prependHostnameToUrl(hallOfFameItem.picture.url),
     })),
+    tshirt: {
+      type: response.tshirt.type,
+      title: response.tshirt.title || undefined,
+      subtitle: response.tshirt.subtitle || undefined,
+      url: prependHostnameToUrl(response.tshirt.asset.url),
+    },
   };
 }
 
