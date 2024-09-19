@@ -830,4 +830,10 @@ Por Biznaga fest han pasado grandes expertos que trabajan en las principales emp
   },
   callForPapers,
   hallOfFame: [],
+  tshirt: {
+    type: "video",
+    title: "Camiseta 2024",
+    subtitle: "Hasta el 31 de septiembre",
+    url: "/camiseta2.mp4",
+  },
 } as const satisfies Readonly<Data>;

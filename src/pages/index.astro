@@ -311,6 +311,32 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
             </div>
           </AnimatedOnViewportEnter>
 
+          {DATA.tshirt && (
+            <div class="flex flex-col gap-8 lg:gap-2 lg:flex-row items-center justify-between bg-yellow-200 rounded-lg p-8">
+              <div class="flex flex-col items-center gap-2">
+                {DATA.tshirt.title && (
+                  <h4 class="text-xl md:text-2xl lg:text-3xl font-bold text-center">
+                    {DATA.tshirt.title}
+                  </h4>
+                )}
+                {DATA.tshirt.subtitle && (
+                  <span class="text-md md:text-lg lg:text-xl text-center">
+                    {DATA.tshirt.subtitle}
+                  </span>
+                )}
+              </div>
+              <div class="ml-auto rounded-md overflow-hidden max-w-sm border-green-600 border-4 md:border-8 mx-auto lg:mx-0">
+                <video
+                  class="w-full aspect-square"
+                  src={DATA.tshirt.url}
+                  autoplay
+                  loop
+                  muted
+                />
+              </div>
+            </div>
+          )}
+
           {!!DATA.companyTicketsNotice.enabled && (
             <Notice>
               <div class="max-w-lg rounded-md w-fit p-4 flex flex-col gap-5 px-6 bg-blue-50 dark:bg-green-800 dark:bg-opacity-30 text-dark-background dark:text-light-background [&>p]:text-md md:[&>p]:text-lg">

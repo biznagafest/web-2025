@@ -147,6 +147,13 @@ export interface HallOfFameitem {
   picture: string;
 }
 
+export interface Tshirt {
+  type: "video" | "image";
+  title?: Nullish<string>;
+  subtitle?: Nullish<string>;
+  url: string;
+}
+
 export type Data = {
   title: string;
   date: Date;
@@ -188,4 +195,5 @@ export type Data = {
   welcomeBanner: WelcomeBanner;
   callForPapers: CallForPapers;
   hallOfFame: ReadonlyArray<HallOfFameitem>;
+  tshirt?: Nullish<Tshirt>;
 };
