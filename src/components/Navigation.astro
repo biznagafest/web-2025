@@ -218,14 +218,14 @@ const featuredSponsors = DATA.sponsors.filter(
 </script>
 
 <style>
-  @media not all and (max-width: 501px) {
+  @media (min-width: 501px) {
     .drawer-open-transition {
       transition-duration: 500ms;
       transform: translate(0, 0);
     }
   }
 
-  @media not all and (min-width: 500px) {
+  @media (max-width: 500px) {
     .drawer-open-transition {
       opacity: 1;
       transform: translate(0, 0);
