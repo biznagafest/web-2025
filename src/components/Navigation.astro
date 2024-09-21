@@ -14,7 +14,9 @@ const featuredSponsors = DATA.sponsors.filter(
   items-center justify-between w-full mx-auto max-w-[2000px] px-8 py-5 md:px-16 md:py-10 text-lg text-dark-background dark:text-light-background
   bg-white dark:bg-dark-background"
 >
-  <div class="w-full max-w-[150px] sm:max-w-[180px] md:max-w-[200px] max-xl:z-50">
+  <div
+    class="w-full max-w-[150px] sm:max-w-[180px] md:max-w-[200px] max-xl:z-30"
+  >
     <a aria-label="Go to Home Page" href="/#top" class="h-10">
       <Image
         src="/logo.svg"
@@ -28,8 +30,7 @@ const featuredSponsors = DATA.sponsors.filter(
   </div>
   <div
     id="menu"
-    class="
-    w-full md:w-fot max-w-[700px]
+    class="w-full md:w-fot max-w-[700px]
     h-full
     ml-auto
     max-xl:fixed max-xl:top-0 max-xl:right-0 max-xl:z-40 max-xl:p-4
@@ -39,11 +40,11 @@ const featuredSponsors = DATA.sponsors.filter(
     max-xl:duration-0"
     tabindex="-1"
   >
-  <ul
+    <ul
       class="flex justify-evenly
       xl:gap-2 max-xl:gap-8
       max-xl:mt-28
-      text-sm max-xl:flex-col xl:flex-row font-bold max-xl:gap-8"
+      text-sm max-xl:flex-col xl:flex-row font-bold"
     >
       {
         !!DATA.schedule.length && (
@@ -131,54 +132,82 @@ const featuredSponsors = DATA.sponsors.filter(
     </button>
   </div>
 </nav>
+<div
+  id="drawer-menu-backdrop"
+  aria-hidden="true"
+  class="hidden bg-gray-900/50 dark:bg-dark-background-40 fixed inset-0 z-30"
+>
+</div>
 <script>
-   function toggleMenu(button: Element , menu: Element) {
-      const isOpen = !!button.attributes.getNamedItem("expanded");
+  function isMenuOpen(button: Element) {
+    return !!button.attributes.getNamedItem("expanded");
+  }
 
-      if (isOpen) {
-        closeMenu(button, menu);
-      } else {
-        openMenu(button, menu);      
-      }
+  function toggleMenu(button: Element, menu: Element, backdrop: Element) {
+    if (isMenuOpen(button)) {
+      closeMenu(button, menu, backdrop);
+    } else {
+      openMenu(button, menu, backdrop);
     }
+  }
 
-    function openMenu(button: Element, menu: Element) {
-      menu?.classList.remove("max-xl:hidden");
-      menu?.classList.remove("drawer-close-transition");
-      menu?.classList.add("drawer-open-transition");
+  function openMenu(button: Element, menu: Element, backdrop: Element) {
+    backdrop?.classList.remove("hidden");
 
-      menu?.setAttribute("aria-modal", "true");
-      menu?.setAttribute("role", "dialog");
+    menu?.classList.remove("max-xl:hidden");
+    menu?.classList.remove("drawer-close-transition");
+    menu?.classList.add("drawer-open-transition");
 
-      button.innerHTML = `<i class="ph ph-x text-3xl"></i>`;
-      button.setAttribute("expanded", "true");
+    menu?.setAttribute("aria-modal", "true");
+    menu?.setAttribute("role", "dialog");
+
+    button.innerHTML = `<i class="ph ph-x text-3xl"></i>`;
+    button.setAttribute("expanded", "true");
+
+    if (window.innerWidth <= 1280) {
+      document.body.classList.add("overflow-hidden");
     }
+  }
 
-    function closeMenu(button: Element, menu: Element) {
-      menu?.classList.add("drawer-close-transition");
-      menu?.classList.remove("drawer-open-transition");
+  function closeMenu(button: Element, menu: Element, backdrop: Element) {
+    backdrop?.classList.add("hidden");
 
-      menu?.removeAttribute("aria-modal");
-      menu?.removeAttribute("role");
+    menu?.classList.add("drawer-close-transition");
+    menu?.classList.remove("drawer-open-transition");
 
-      button.removeAttribute("expanded");
-      button.innerHTML = `<i class="ph ph-list text-3xl"></i>`;
+    menu?.removeAttribute("aria-modal");
+    menu?.removeAttribute("role");
+
+    button.removeAttribute("expanded");
+    button.innerHTML = `<i class="ph ph-list text-3xl"></i>`;
+
+    if (window.innerWidth <= 1280) {
+      document.body.classList.remove("overflow-hidden");
     }
+  }
 
   function listenDrawerButton() {
     const button = document.querySelector("#menu-button"); // Hamburger Icon
     const menu = document.querySelector("#menu"); // Menu
-    if (!menu || !button) return
+    const backdrop = document.querySelector("#drawer-menu-backdrop"); // Menu
+    if (!menu || !button || !backdrop) return;
     button?.addEventListener("click", () => {
-      toggleMenu(button, menu);
+      toggleMenu(button, menu, backdrop);
     });
 
-    document.querySelectorAll("nav ul > li > a").forEach((elem) => 
+    document.querySelectorAll("nav ul > li > a").forEach((elem) =>
       elem.addEventListener("click", () => {
-        closeMenu(button, menu);
-      }
-  )); // Menu
+        closeMenu(button, menu, backdrop);
+      }),
+    ); // Menu
 
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1280 && isMenuOpen(button)) {
+        closeMenu(button, menu, backdrop);
+      }
+    }); // On resize with open drawer
+
+    backdrop.addEventListener("click", () => closeMenu(button, menu, backdrop));
   }
 
   function init() {
@@ -189,23 +218,27 @@ const featuredSponsors = DATA.sponsors.filter(
 </script>
 
 <style>
-  @media not all and (max-width: 501px) {
-      .drawer-open-transition {
-        transition-duration: 500ms;
-        transform: translate(0, 0);
-      }
+  @media (min-width: 501px) {
+    .drawer-open-transition {
+      transition-duration: 500ms;
+      transform: translate(0, 0);
+    }
   }
 
-  @media not all and (min-width: 500px) {
+  @media (max-width: 500px) {
     .drawer-open-transition {
-        opacity: 1;
-        transform: translate(0, 0);
-        transition: opacity 0.3s ease-in-out, transform 0ms ease-in-out;
+      opacity: 1;
+      transform: translate(0, 0);
+      transition:
+        opacity 0.3s ease-in-out,
+        transform 0ms ease-in-out;
     }
 
     .drawer-close-transition {
-        opacity: 0;
-        transition: opacity 0.25s ease-in-out, transform 0ms ease-in-out 0.25s;
+      opacity: 0;
+      transition:
+        opacity 0.25s ease-in-out,
+        transform 0ms ease-in-out 0.25s;
     }
   }
 </style>
