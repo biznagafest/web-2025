@@ -27,10 +27,10 @@ const { member, index, kind } = Astro.props;
       width={200}
     />
   </a>
-  <p
+  <h3
     transition:name={`name-${kind}-${member.name}`}
     class="w-full text-2xl font-semibold text-center text-dark-background dark:text-light-background p-2"
   >
     {member.name}
-</p>
+</h3>
 </article>
