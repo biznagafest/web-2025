@@ -31,6 +31,7 @@ const featuredSponsors = DATA.sponsors.filter(
     class="
     w-full md:w-fot max-w-[700px]
     h-full
+    ml-auto
     max-xl:fixed max-xl:top-0 max-xl:right-0 max-xl:z-40 max-xl:p-4
     max-xl:overflow-y-auto
     transition-transform max-xl:translate-x-full
@@ -123,10 +124,10 @@ const featuredSponsors = DATA.sponsors.filter(
     </ul>
   </div>
 
-  <div class="flex justify-evenly gap-2 xl:hidden z-40">
+  <div class="flex justify-evenly gap-2 z-40">
     <DarkModeToggleButton />
     <button id="menu-button">
-      <i class="ph ph-list text-3xl"></i>
+      <i class="ph ph-list text-3xl xl:hidden"></i>
     </button>
   </div>
 </nav>
