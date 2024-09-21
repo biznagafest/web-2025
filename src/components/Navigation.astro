@@ -10,9 +10,13 @@ const featuredSponsors = DATA.sponsors.filter(
 
 <nav
   id="top"
-  class="flex flex-wrap items-center justify-between w-full mx-auto max-w-[2000px] px-8 py-5 md:px-16 md:py-10 text-lg text-dark-background dark:text-light-background"
+  class="flex flex-wrap
+  items-center justify-between w-full mx-auto max-w-[2000px] px-8 py-5 md:px-16 md:py-10 text-lg text-dark-background dark:text-light-background
+  bg-white dark:bg-dark-background"
 >
-  <div class="w-full max-w-[150px] sm:max-w-[180px] md:max-w-[200px]">
+  <div
+    class="w-full max-w-[150px] sm:max-w-[180px] md:max-w-[200px] max-xl:z-30"
+  >
     <a aria-label="Go to Home Page" href="/#top" class="h-10">
       <Image
         src="/logo.svg"
@@ -21,26 +25,33 @@ const featuredSponsors = DATA.sponsors.filter(
         height="40"
         width="200"
         loading="eager"
-        />
+      />
     </a>
   </div>
-  <svg class="h-6 w-6 cursor-pointer xl:hidden block"> </svg>
-  <button id="menu-button" class="aspect-square block xl:hidden">
-    <i class="ph ph-list text-3xl"></i>
-  </button>
   <div
-    class="hidden py-3 xl:py-0 w-full xl:flex xl:items-center xl:w-auto"
     id="menu"
+    class="w-full md:w-fot max-w-[700px]
+    h-full
+    ml-auto
+    max-xl:fixed max-xl:top-0 max-xl:right-0 max-xl:z-40 max-xl:p-4
+    max-xl:overflow-y-auto
+    transition-transform max-xl:translate-x-full
+    max-xl:bg-white max-xl:dark:bg-dark-background
+    max-xl:duration-0"
+    tabindex="-1"
   >
     <ul
-      class="flex justify-evenly gap-2 text-sm flex-col lg:flex-row font-bold"
+      class="flex justify-evenly
+      xl:gap-2 max-xl:gap-8
+      max-xl:mt-28
+      text-sm max-xl:flex-col xl:flex-row font-bold"
     >
       {
         !!DATA.schedule.length && (
           <li class="mx-auto">
             <a
               aria-label="Go to Schedule"
-              href="#schedule"
+              href="/#schedule"
               class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
             >
               Schedule
@@ -111,35 +122,123 @@ const featuredSponsors = DATA.sponsors.filter(
           type="button">Comprar entradas</a
         >
       </li>
-
-      <li class="grid place-content-center">
-        <DarkModeToggleButton />
-      </li>
     </ul>
   </div>
+
+  <div class="flex justify-evenly gap-2 z-40">
+    <DarkModeToggleButton />
+    <button id="menu-button" class="xl:hidden">
+      <i class="ph ph-list text-3xl"></i>
+    </button>
+  </div>
 </nav>
+<div
+  id="drawer-menu-backdrop"
+  aria-hidden="true"
+  class="hidden bg-gray-900/50 dark:bg-dark-background-40 fixed inset-0 z-30"
+>
+</div>
 <script>
-  function listenBurgerButton() {
+  function isMenuOpen(button: Element) {
+    return !!button.attributes.getNamedItem("expanded");
+  }
+
+  function toggleMenu(button: Element, menu: Element, backdrop: Element) {
+    if (isMenuOpen(button)) {
+      closeMenu(button, menu, backdrop);
+    } else {
+      openMenu(button, menu, backdrop);
+    }
+  }
+
+  function openMenu(button: Element, menu: Element, backdrop: Element) {
+    backdrop?.classList.remove("hidden");
+
+    menu?.classList.remove("max-xl:hidden");
+    menu?.classList.remove("drawer-close-transition");
+    menu?.classList.add("drawer-open-transition");
+
+    menu?.setAttribute("aria-modal", "true");
+    menu?.setAttribute("role", "dialog");
+
+    button.innerHTML = `<i class="ph ph-x text-3xl"></i>`;
+    button.setAttribute("expanded", "true");
+
+    if (window.innerWidth <= 1280) {
+      document.body.classList.add("overflow-hidden");
+    }
+  }
+
+  function closeMenu(button: Element, menu: Element, backdrop: Element) {
+    backdrop?.classList.add("hidden");
+
+    menu?.classList.add("drawer-close-transition");
+    menu?.classList.remove("drawer-open-transition");
+
+    menu?.removeAttribute("aria-modal");
+    menu?.removeAttribute("role");
+
+    button.removeAttribute("expanded");
+    button.innerHTML = `<i class="ph ph-list text-3xl"></i>`;
+
+    if (window.innerWidth <= 1280) {
+      document.body.classList.remove("overflow-hidden");
+    }
+  }
+
+  function listenDrawerButton() {
     const button = document.querySelector("#menu-button"); // Hamburger Icon
     const menu = document.querySelector("#menu"); // Menu
+    const backdrop = document.querySelector("#drawer-menu-backdrop"); // Menu
+    if (!menu || !button || !backdrop) return;
     button?.addEventListener("click", () => {
-      menu?.classList.toggle("hidden");
-      const isOpen = button.attributes.getNamedItem("expanded");
-
-      if (isOpen) {
-        button.removeAttribute("expanded");
-        button.innerHTML = `<i class="ph ph-list text-3xl"></i>`;
-        return;
-      } else {
-        button.setAttribute("expanded", "true");
-        button.innerHTML = `<i class="ph ph-x text-3xl"></i>`;
-      }
+      toggleMenu(button, menu, backdrop);
     });
+
+    document.querySelectorAll("nav ul > li > a").forEach((elem) =>
+      elem.addEventListener("click", () => {
+        closeMenu(button, menu, backdrop);
+      }),
+    ); // Menu
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1280 && isMenuOpen(button)) {
+        closeMenu(button, menu, backdrop);
+      }
+    }); // On resize with open drawer
+
+    backdrop.addEventListener("click", () => closeMenu(button, menu, backdrop));
   }
 
   function init() {
-    listenBurgerButton();
+    listenDrawerButton();
   }
 
   document.addEventListener("astro:page-load", init);
 </script>
+
+<style>
+  @media (min-width: 501px) {
+    .drawer-open-transition {
+      transition-duration: 500ms;
+      transform: translate(0, 0);
+    }
+  }
+
+  @media (max-width: 500px) {
+    .drawer-open-transition {
+      opacity: 1;
+      transform: translate(0, 0);
+      transition:
+        opacity 0.3s ease-in-out,
+        transform 0ms ease-in-out;
+    }
+
+    .drawer-close-transition {
+      opacity: 0;
+      transition:
+        opacity 0.25s ease-in-out,
+        transform 0ms ease-in-out 0.25s;
+    }
+  }
+</style>
