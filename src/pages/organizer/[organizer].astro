@@ -32,6 +32,7 @@ const organizerData = DATA.team.organizers[Number(organizer)];
             class="w-full max-w-[300px] mx-auto rounded-md border-8 border-blue-600 dark:border-blue-600 aspect-square object-cover"
             src={organizerData.picture}
             alt={`Picture of ${organizerData.name}`}
+            loading="eager"
             height={300}
             width={300}
           />
