@@ -41,7 +41,7 @@ function hasEvent(speakerName: string): boolean {
                 }}
               >
                 {item.type !== undefined && (
-                  <span class="border rounded-full px-2 py-1 text-gray-500 border-gray-500 dark:text-gray-400 dark:border-gray-400">
+                  <span class="border rounded-full px-2 py-1 text-gray-700 border-gray-500 dark:text-gray-400 dark:border-gray-400">
                     {item.type === "lecture"
                       ? "Charla"
                       : item.type === "workshop"
@@ -50,7 +50,7 @@ function hasEvent(speakerName: string): boolean {
                   </span>
                 )}
                 {item.language && (
-                  <span class="border rounded-full px-2 py-1 text-gray-500 border-gray-500 dark:text-gray-400 dark:border-gray-400">
+                  <span class="border rounded-full px-2 py-1 text-gray-700 border-gray-500 dark:text-gray-400 dark:border-gray-400">
                     {item.language === "Español"
                       ? "🇪🇸"
                       : item.language === "English"
@@ -59,12 +59,12 @@ function hasEvent(speakerName: string): boolean {
                   </span>
                 )}
                 {item.topic && (
-                  <span class="border rounded-full px-2 py-1 text-gray-500 border-gray-500 dark:text-gray-400 dark:border-gray-400">
+                  <span class="border rounded-full px-2 py-1 text-gray-700 border-gray-500 dark:text-gray-400 dark:border-gray-400">
                     {item.topic}
                   </span>
                 )}
                 {item.location && (
-                  <span class="border rounded-full px-2 py-1 text-gray-500 border-gray-500 dark:text-gray-400 dark:border-gray-400">
+                  <span class="border rounded-full px-2 py-1 text-gray-700 border-gray-500 dark:text-gray-400 dark:border-gray-400">
                     {item.location}
                   </span>
                 )}
@@ -90,7 +90,7 @@ function hasEvent(speakerName: string): boolean {
                     {item.title}
                   </span>
                   {item.subtitle && (
-                    <span class="text-xs md:text-sm font-semibold text-gray-500 dark:text-gray-400">
+                    <span class="text-xs md:text-sm font-semibold text-gray-700 dark:text-gray-400">
                       {item.subtitle}
                     </span>
                   )}
