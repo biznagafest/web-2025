@@ -5,6 +5,6 @@
 - [x] Seggregate sponsors by tier
 - [x] Check maybe bugged AnimateOnViewport
 - [x] Add organizers section
-- [ ] Add Call for papers button if theres no speakers
-- [ ] Add slider with pictures of past editions
+- [x] Add Call for papers button if theres no speakers
+- [x] Add slider with pictures of past editions
 - [x] Add schedule component
