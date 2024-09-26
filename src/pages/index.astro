@@ -29,6 +29,7 @@ const sponsors: Record<SponsorTier, (ISponsor & { index: number })[]> = {
   gold: [],
   silver: [],
   bronze: [],
+  communitySponsor: [],
   community: [],
   food: [],
   media: [],
@@ -60,8 +61,8 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
         animation="animate__animated animate__fadeInUp animate__delay-1s"
       >
         <span class="text-md font-bold"
-          >{`${DATA.venue.city}, ${formatDate(DATA.date)}`}</span
-        >
+          >{`${DATA.venue.city}, ${formatDate(DATA.date)}`}
+        </span>
       </AnimatedOnViewportEnter>
       <div class="relative">
         <svg
@@ -232,6 +233,18 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
               </h3>
               <article class="flex flex-row flex-wrap gap-8 justify-center align-middle px-6">
                 {sponsors.bronze.map((sponsor) => (
+                  <Sponsor sponsor={sponsor} />
+                ))}
+              </article>
+            </section>
+          )}
+          {!!sponsors.communitySponsor.length && (
+            <section class="flex flex-col gap-5">
+              <h3 class="text-green-300 dark:text-blue-200 text-3xl font-semibold text-center">
+                Community Sponsors
+              </h3>
+              <article class="flex flex-row flex-wrap gap-8 justify-center align-middle px-6">
+                {sponsors.communitySponsor.map((sponsor) => (
                   <Sponsor sponsor={sponsor} />
                 ))}
               </article>
