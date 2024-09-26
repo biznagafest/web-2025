@@ -127,7 +127,7 @@ const featuredSponsors = DATA.sponsors.filter(
 
   <div class="flex justify-evenly gap-2 z-40">
     <DarkModeToggleButton />
-    <button id="menu-button" class="xl:hidden">
+    <button id="menu-button" class="xl:hidden" aria-label="Abrir menú">
       <i class="ph ph-list text-3xl"></i>
     </button>
   </div>
@@ -163,7 +163,7 @@ const featuredSponsors = DATA.sponsors.filter(
 
     button.innerHTML = `<i class="ph ph-x text-3xl"></i>`;
     button.setAttribute("expanded", "true");
-
+    button.setAttribute("aria-label", "Cerrar menú");
     if (window.innerWidth <= 1280) {
       document.body.classList.add("overflow-hidden");
     }
@@ -180,6 +180,7 @@ const featuredSponsors = DATA.sponsors.filter(
 
     button.removeAttribute("expanded");
     button.innerHTML = `<i class="ph ph-list text-3xl"></i>`;
+    button.setAttribute("aria-label", "Abrir menú");
 
     if (window.innerWidth <= 1280) {
       document.body.classList.remove("overflow-hidden");
