@@ -40,6 +40,7 @@ export type SponsorTier =
   | "gold"
   | "silver"
   | "bronze"
+  | "communitySponsor"
   | "media"
   | "food"
   | "community"
