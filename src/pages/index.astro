@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import { DATA } from "../data/data";
 import Speaker from "../components/Speaker.astro";
@@ -161,9 +162,12 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
           <ul class="flex flex-row gap-2 flex-wrap items-stretch justify-center">
             {DATA.hallOfFame.map((speaker) => (
               <li class="flex-1 sm:flex-grow-0 min-w-fit bg-white dark:bg-dark-background flex flex-col gap-2 px-10 py-8 rounded-md bg-center bg-cover relative overflow-hidden select-none pointer-events-none">
-                <div
-                  class="w-full h-full absolute left-0 top-0 opacity-40 bg-no-repeat bg-center bg-cover"
-                  style={"background-image: url(" + speaker.picture + ")"}
+                <Image
+                  src={speaker.picture}
+                  alt=""
+                  inferSize={true}
+                  class="absolute top-0 left-0 w-full h-full object-cover opacity-40"
+                  loading="lazy"
                 />
                 <span class="text-center text-black dark:text-white font-extrabold z-10 drop-shadow-md">
                   {speaker.name}
