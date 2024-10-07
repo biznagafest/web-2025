@@ -10,126 +10,136 @@ const featuredSponsors = DATA.sponsors.filter(
 
 <nav
   id="top"
-  class="flex flex-wrap
-  items-center justify-between w-full mx-auto max-w-[2000px] px-8 py-5 md:px-16 md:py-10 text-lg text-dark-background dark:text-light-background
-  bg-white dark:bg-dark-background"
+  class="flex flex-col gap-4 items-center w-full mx-auto max-w-[2000px] px-8 py-5 md:px-16 md:py-10 text-lg text-dark-background dark:text-light-background bg-white dark:bg-dark-background"
 >
-  <div
-    class="w-full max-w-[150px] sm:max-w-[180px] md:max-w-[200px] max-xl:z-30"
-  >
-    <a aria-label="Go to Home Page" href="/#top" class="h-10">
-      <Image
-        src="/logo.svg"
-        alt={`Logo of ${DATA.title}`}
-        class="brightness-100 dark:invert"
-        height="40"
-        width="200"
-        loading="eager"
-      />
-    </a>
-  </div>
-  <div
-    id="menu"
-    class="w-full md:w-fot max-w-[700px]
-    h-full
-    ml-auto
-    max-xl:fixed max-xl:top-0 max-xl:right-0 max-xl:z-40 max-xl:p-4
-    max-xl:overflow-y-auto
-    transition-transform max-xl:translate-x-full
-    max-xl:bg-white max-xl:dark:bg-dark-background
-    max-xl:duration-0"
-    tabindex="-1"
-  >
-    <ul
-      class="flex justify-evenly
-      xl:gap-2 max-xl:gap-8
-      max-xl:mt-28
-      text-sm max-xl:flex-col xl:flex-row font-bold"
+  <div class="flex flex-row gap-2 items-center justify-between w-full">
+    <div
+      class="w-full max-w-[150px] sm:max-w-[180px] md:max-w-[200px] max-xl:z-30"
     >
-      {
-        !!DATA.schedule.length && (
-          <li class="mx-auto">
-            <a
-              aria-label="Go to Schedule"
-              href="/#schedule"
-              class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
-            >
-              Schedule
-            </a>
-          </li>
-        )
-      }
-      {
-        !!DATA.speakers.length && (
-          <li class="mx-auto">
-            <a
-              aria-label="Go to Speakers"
-              href="/#speakers"
-              class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
-            >
-              Speakers
-            </a>
-          </li>
-        )
-      }
-      {
-        !!DATA.raffles.length && (
-          <li class="mx-auto">
-            <a
-              aria-label="Go to Raffles Page"
-              href="/raffles#top"
-              class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
-            >
-              Sorteos
-            </a>
-          </li>
-        )
-      }
-      {
-        !!DATA.faq.length && (
-          <li class="mx-auto">
-            <a
-              aria-label="Go to FAQ"
-              href="/#faq"
-              class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
-            >
-              FAQ
-            </a>
-          </li>
-        )
-      }
-      {
-        featuredSponsors.map((sponsor) => (
-          <li class="mx-auto">
-            <a
-              aria-label={`Go to ${sponsor.name} Page`}
-              href={`/sponsor/${sponsor.name}#top`}
-              class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
-            >
-              Meet {sponsor.name}
-            </a>
-          </li>
-        ))
-      }
-      <li
-        class="mx-auto cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+      <a aria-label="Go to Home Page" href="/#top" class="h-10">
+        <Image
+          src="/logo.svg"
+          alt={`Logo of ${DATA.title}`}
+          class="brightness-100 dark:invert"
+          height="40"
+          width="200"
+          loading="eager"
+        />
+      </a>
+    </div>
+    <div
+      id="menu"
+      class="w-full md:w-fot max-w-[700px] h-full ml-auto max-xl:fixed max-xl:top-0 max-xl:right-0 max-xl:z-40 max-xl:p-4 max-xl:overflow-y-auto transition-transform max-xl:translate-x-full max-xl:bg-white max-xl:dark:bg-dark-background max-xl:duration-0"
+      tabindex="-1"
+    >
+      <ul
+        class="flex justify-evenly xl:gap-2 max-xl:gap-8 max-xl:mt-28 text-sm max-xl:flex-col xl:flex-row font-bold"
       >
+        {
+          !!DATA.schedule.length && (
+            <li class="mx-auto">
+              <a
+                aria-label="Go to Schedule"
+                href="/#schedule"
+                class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+              >
+                Schedule
+              </a>
+            </li>
+          )
+        }
+        {
+          !!DATA.speakers.length && (
+            <li class="mx-auto">
+              <a
+                aria-label="Go to Speakers"
+                href="/#speakers"
+                class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+              >
+                Speakers
+              </a>
+            </li>
+          )
+        }
+        {
+          !!DATA.raffles.length && (
+            <li class="mx-auto">
+              <a
+                aria-label="Go to Raffles Page"
+                href="/raffles#top"
+                class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+              >
+                Sorteos
+              </a>
+            </li>
+          )
+        }
+        {
+          !!DATA.faq.length && (
+            <li class="mx-auto">
+              <a
+                aria-label="Go to FAQ"
+                href="/#faq"
+                class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+              >
+                FAQ
+              </a>
+            </li>
+          )
+        }
+        {
+          featuredSponsors.map((sponsor) => (
+            <li class="mx-auto">
+              <a
+                aria-label={`Go to ${sponsor.name} Page`}
+                href={`/sponsor/${sponsor.name}#top`}
+                class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+              >
+                Meet {sponsor.name}
+              </a>
+            </li>
+          ))
+        }
+        <li
+          class="mx-auto cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+        >
+          <a
+            aria-label="Buy Tickets"
+            href={DATA.ticketsUrl}
+            target="_blank"
+            class="text-white p-2 rounded-lg bg-green-600 hover:bg-green-400 dark:bg-blue-600 dark:hover:bg-blue-400 transition-colors"
+            type="button">Comprar entradas</a
+          >
+        </li>
+        <li class="grid place-items-center">
+          <DarkModeToggleButton />
+        </li>
+      </ul>
+    </div>
+
+    <div class="flex justify-evenly gap-2 z-40">
+      <div>
         <a
           aria-label="Buy Tickets"
           href={DATA.ticketsUrl}
           target="_blank"
-          class="text-white p-2 rounded-lg bg-green-600 hover:bg-green-400 dark:bg-blue-600 dark:hover:bg-blue-400 transition-colors"
+          class="text-sm hidden sm:block text-white p-2 rounded-lg bg-green-600 hover:bg-green-400 dark:bg-blue-600 dark:hover:bg-blue-400 transition-colors"
           type="button">Comprar entradas</a
         >
-      </li>
-    </ul>
+      </div>
+      <button id="menu-button" class="xl:hidden" aria-label="Abrir menú">
+        <i class="ph ph-list text-3xl"></i>
+      </button>
+    </div>
   </div>
-
-  <div class="flex justify-evenly gap-2 z-40">
-    <DarkModeToggleButton />
-    <button id="menu-button" class="xl:hidden" aria-label="Abrir menú">
-      <i class="ph ph-list text-3xl"></i>
-    </button>
+  <div>
+    <a
+      aria-label="Buy Tickets"
+      href={DATA.ticketsUrl}
+      target="_blank"
+      class="text-sm sm:hidden text-white p-2 rounded-lg bg-green-600 hover:bg-green-400 dark:bg-blue-600 dark:hover:bg-blue-400 transition-colors"
+      type="button">Comprar entradas</a
+    >
   </div>
 </nav>
 <div
@@ -230,16 +240,12 @@ const featuredSponsors = DATA.sponsors.filter(
     .drawer-open-transition {
       opacity: 1;
       transform: translate(0, 0);
-      transition:
-        opacity 0.3s ease-in-out,
-        transform 0ms ease-in-out;
+      transition: opacity 0.3s ease-in-out, transform 0ms ease-in-out;
     }
 
     .drawer-close-transition {
       opacity: 0;
-      transition:
-        opacity 0.25s ease-in-out,
-        transform 0ms ease-in-out 0.25s;
+      transition: opacity 0.25s ease-in-out, transform 0ms ease-in-out 0.25s;
     }
   }
 </style>
