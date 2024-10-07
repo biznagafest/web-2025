@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import RichText from "../../components/RichText.astro";
+import Socials from "../../components/Socials.astro";
+import { DATA } from "../../data/data";
+import Layout from "../../layouts/Layout.astro";
+
+export function getStaticPaths() {
+  return DATA.hosts.map((_, index) => ({
+    params: { host: index },
+  }));
+}
+
+const { host } = Astro.params;
+
+const hostData = DATA.hosts[Number(host)];
+
+if (!hostData) {
+  return Astro.redirect("/");
+}
+---
+
+<Layout
+  title={`${hostData.name} | ${DATA.title}`}
+  description={hostData.description}
+  lang="es"
+>
+  <main class="flex flex-col gap-6 min-h-screen wrapper">
+    <aside class="px-6">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-[2fr_4fr] gap-4 md:gap-6 lg:gap-12 w-full"
+      >
+        <section class="w-full flex-grow flex flex-col gap-3 mx-auto">
+          <Image
+            transition:name={`picture-host-${host}`}
+            class="w-full max-w-[300px] mx-auto rounded-md border-8 border-blue-600 dark:border-blue-600 aspect-square object-cover"
+            src={hostData.picture}
+            alt={`Picture of ${hostData.name}`}
+            height={300}
+            width={300}
+          />
+          <Socials
+            socials={hostData.socials}
+            class="text-4xl text-dark-background dark:text-light-background"
+          />
+        </section>
+        <div class="flex flex-col gap-4">
+          <h1
+            transition:name={`name-host-${host}`}
+            class="text-6xl md:text-8xl font-bold"
+          >
+            {hostData.name}
+          </h1>
+          <h2
+            class="text-2xl font-semibold text-orange-800 dark:text-orange-600"
+          >
+            {hostData.position}
+          </h2>
+          <div class="flex flex-col gap-4 text-xl">
+            <RichText text={hostData.description} />
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+</Layout>

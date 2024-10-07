@@ -23,6 +23,14 @@ export type Speaker = {
   picture: string;
 };
 
+export type Host = {
+  name: string;
+  position?: Nullish<string>;
+  description?: Nullish<string>;
+  socials?: Socials;
+  picture: string;
+};
+
 export interface TeamMember {
   name: string;
   position?: Nullish<string>;
@@ -182,6 +190,7 @@ export type Data = {
     description: string;
   };
   speakers: ReadonlyArray<Speaker>;
+  hosts: ReadonlyArray<Host>;
   schedule: ReadonlyArray<ScheduleItem>;
   team: Team;
   sponsors: ReadonlyArray<Sponsor>;
