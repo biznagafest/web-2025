@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import type { Host } from "../data/data.type";
+interface Props {
+  host: Host;
+  index: number;
+}
+
+const { host, index } = Astro.props;
+---
+
+<article
+  class="w-full max-w-[300px] h-fit flex flex-col align-middle justify-center"
+>
+  <a
+    aria-label={`Go to ${host.name}'s profile`}
+    transition:name={`picture-host-${index}`}
+    href={`/host/${index}#top`}
+    class="w-[200px] h-[200px] block rounded-full shadow-md hover:shadow-lg transition-shadow duration-500 ease-in-out overflow-hidden mx-auto"
+  >
+    <Image
+      class="object-cover select-none mx-auto aspect-square w-[200px] h-[200px] hover:scale-110 transition-transform duration-500 ease-in-out"
+      src={host.picture}
+      alt={`Picture of ${host.name}`}
+      height={200}
+      width={200}
+    />
+  </a>
+  <h3
+    transition:name={`name-host-${index}`}
+    class="w-full text-2xl font-semibold text-center text-dark-background dark:text-light-background p-2"
+  >
+    {host.name}
+  </h3>
+</article>

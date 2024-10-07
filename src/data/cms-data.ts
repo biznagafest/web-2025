@@ -18,6 +18,7 @@ interface CmsResponse {
   previous_editions: PreviousEdition[];
   team: Team[];
   speakers: Speaker[];
+  hosts: Host[];
   sponsors: Sponsor[];
   tickets: Ticket[];
   events: Event[];
@@ -163,6 +164,14 @@ interface Speaker {
   picture: MediaFile;
 }
 
+interface Host {
+  name: string;
+  description: Nullable<string>;
+  position: Nullable<string>;
+  socials: Socials;
+  picture: MediaFile;
+}
+
 interface Sponsor {
   name: string;
   tier: SponsorTier;
@@ -232,6 +241,13 @@ function mapCmsResponseToDate(response: CmsResponse): Data {
       description: speaker.description || undefined,
       position: speaker.position || undefined,
       socials: mapSocialsToData(speaker.socials),
+    })),
+    hosts: response.hosts.map((host) => ({
+      name: host.name,
+      picture: prependHostnameToUrl(host.picture.url),
+      description: host.description || undefined,
+      position: host.position || undefined,
+      socials: mapSocialsToData(host.socials),
     })),
     sponsors: response.sponsors.map((sponsor) => ({
       name: sponsor.name,
