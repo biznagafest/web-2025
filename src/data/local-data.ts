@@ -157,8 +157,7 @@ Also, he is Flutter and Dart GDE and Co- Organizer of Flutter Berlin community.`
   },
 ] as const satisfies ReadonlyArray<Speaker>;
 
-export const hosts = [
-] as const satisfies ReadonlyArray<Host>;
+export const hosts = [] as const satisfies ReadonlyArray<Host>;
 
 export const schedule: ScheduleItem[] = [
   {
@@ -836,6 +835,7 @@ Por Biznaga fest han pasado grandes expertos que trabajan en las principales emp
   callForPapers,
   hallOfFame: [],
   tshirt: {
+    enabled: true,
     type: "video",
     title: "Camiseta 2024",
     subtitle: "Hasta el 31 de septiembre",

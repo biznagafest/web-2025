@@ -208,10 +208,10 @@ const cmsEndpoint = `${cmsHostname}/info`;
 
 export async function getDataFromCms(): Promise<Data> {
   const response = await axios.get<CmsResponse>(cmsEndpoint);
-  return mapCmsResponseToDate(response.data);
+  return mapCmsResponseToData(response.data);
 }
 
-function mapCmsResponseToDate(response: CmsResponse): Data {
+function mapCmsResponseToData(response: CmsResponse): Data {
   return {
     title: response.title,
     date: new Date(response.date),
@@ -344,12 +344,15 @@ function mapCmsResponseToDate(response: CmsResponse): Data {
       edition: hallOfFameItem.edition,
       picture: prependHostnameToUrl(hallOfFameItem.picture.url),
     })),
-    tshirt: {
-      type: response.tshirt.type,
-      title: response.tshirt.title || undefined,
-      subtitle: response.tshirt.subtitle || undefined,
-      url: prependHostnameToUrl(response.tshirt.asset.url),
-    },
+    tshirt:
+      response.tshirt != undefined
+        ? {
+            type: response.tshirt.type,
+            title: response.tshirt.title || undefined,
+            subtitle: response.tshirt.subtitle || undefined,
+            url: prependHostnameToUrl(response.tshirt.asset.url),
+          }
+        : undefined,
   };
 }
 
