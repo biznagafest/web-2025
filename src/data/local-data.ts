@@ -157,8 +157,7 @@ Also, he is Flutter and Dart GDE and Co- Organizer of Flutter Berlin community.`
   },
 ] as const satisfies ReadonlyArray<Speaker>;
 
-export const hosts = [
-] as const satisfies ReadonlyArray<Host>;
+export const hosts = [] as const satisfies ReadonlyArray<Host>;
 
 export const schedule: ScheduleItem[] = [
   {
