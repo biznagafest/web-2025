@@ -16,13 +16,62 @@ export interface Props {
 const { title, lang, description = "" } = Astro.props;
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang={lang}>
   <CommonHead title={title} description={description} />
   <body
     class="bg-light-background dark:bg-dark-background text-dark-background dark:text-light-background"
   >
-    {DATA.welcomeBanner.isEnabled && <Notice />}
+    {
+      DATA.welcomeBanner.isEnabled && (
+        <Notice>
+          <div class="bg-blue-100 dark:bg-green-900 dark:bg-opacity-30">
+            <div class="wrapper px-6 flex flex-col gap-10">
+              <h3 class="text-xl sm:text-2xl md:text-4xl font-bold text-center">
+                ✨¡Hola a todos los asombrosos asistentes del BiznagaFest
+                2024!✨
+              </h3>
+
+              <div class="flex flex-col gap-5 text-lg">
+                <p>
+                  ¡La emoción está en el aire y el evento está en pleno apogeo!
+                  Estamos viendo charlas inspiradoras, participando en talleres
+                  innovadores y construyendo conexiones increíbles en este
+                  epicentro de tecnología.
+                </p>
+                <p>
+                  ¿Pero sabes qué es aún más emocionante? La próxima edición del
+                  BiznagaFest. Sí, lo has oído bien. La diversión no termina
+                  aquí. La próxima edición será aún más grandiosa, con
+                  conferencias aún más fascinantes, talleres aún más
+                  interactivos y oportunidades de networking aún más valiosas.
+                </p>
+                <p>
+                  ¿Por qué esperar? Compra tu entrada para el próximo
+                  BiznagaFest ahora mismo. No te pierdas la oportunidad de ser
+                  parte de este viaje increíblemente enriquecedor en el mundo de
+                  la tecnología.
+                </p>
+                <p class="font-semibold">
+                  ¡Compra tus entradas ahora y prepárate para un futuro lleno de
+                  innovación y descubrimientos en el BiznagaFest del próximo
+                  año! ¡Nos vemos allí! 🚀
+                </p>
+              </div>
+
+              <a
+                target="_blank"
+                title="Comprar entradas"
+                class="text-light-background bg-blue-600 hover:bg-blue-400 dark:bg-green-600 dark:hover:bg-green-400 w-fit px-5 py-2 rounded-md transition-colors"
+                href="https://www.eventbrite.es/e/entradas-biznagafest-2025-1052728016837"
+              >
+                Comprar entradas
+              </a>
+            </div>
+          </div>
+        </Notice>
+      )
+    }
     <div class="overflow-hidden min-h-screen flex flex-col justify-between">
       <div>
         <Navigation />
