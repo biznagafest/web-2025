@@ -1,0 +1,22 @@
+{
+  "headers": [
+    {
+      "source": "${CMS_URL}/uploads/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/(.*\\.(jpg|jpeg|gif|png|svg|webp|mp4|pdf|ttf))",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    }
+  ]
+}
