@@ -571,7 +571,7 @@ export const LOCALDATA: Data = {
       },
       {
         name: "David Rojo",
-        position: "Software Developer, Max Gain Development",
+        position: "Specialist Software Engineer, Vodafone",
         description:
           "Es un desarrollador de software especializado en tecnologías web como NestJs y Angular.  \n\nCon gran interes en la comunidad y en proyectos open source.",
         socials: {
@@ -591,7 +591,7 @@ export const LOCALDATA: Data = {
       },
       {
         name: "Daniel Olivet",
-        position: "Desarrollador Backend, Avaibook",
+        position: "Desarrollador Backend, Check-In Scan",
         description:
           "Desarrollador de software malagueño.  \n\nEstudió ASIR y por afición pura acabó desarrollando webs.  \n\nEspecializado en entornos LAMP, con gran interés en nuevas tecnologías y en clean code.  ",
         socials: {
