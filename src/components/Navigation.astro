@@ -29,7 +29,7 @@ const featuredSponsors = DATA.sponsors.filter(
     </div>
     <div
       id="menu"
-      class="w-full md:w-fot max-w-[700px] h-full ml-auto max-xl:fixed max-xl:top-0 max-xl:right-0 max-xl:z-40 max-xl:p-4 max-xl:overflow-y-auto transition-transform max-xl:translate-x-full max-xl:bg-white max-xl:dark:bg-dark-background max-xl:duration-0"
+      class="w-full md:w-fit max-w-[700px] h-full ml-auto max-xl:fixed max-xl:top-0 max-xl:right-0 max-xl:z-40 max-xl:p-4 max-xl:overflow-y-auto transition-transform max-xl:translate-x-full max-xl:bg-white max-xl:dark:bg-dark-background max-xl:duration-0"
       tabindex="-1"
     >
       <ul
@@ -265,12 +265,16 @@ const featuredSponsors = DATA.sponsors.filter(
     .drawer-open-transition {
       opacity: 1;
       transform: translate(0, 0);
-      transition: opacity 0.3s ease-in-out, transform 0ms ease-in-out;
+      transition:
+        opacity 0.3s ease-in-out,
+        transform 0ms ease-in-out;
     }
 
     .drawer-close-transition {
       opacity: 0;
-      transition: opacity 0.25s ease-in-out, transform 0ms ease-in-out 0.25s;
+      transition:
+        opacity 0.25s ease-in-out,
+        transform 0ms ease-in-out 0.25s;
     }
   }
 </style>
