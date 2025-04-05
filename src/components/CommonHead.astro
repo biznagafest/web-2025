@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
@@ -14,7 +14,7 @@ const { image = "/favicon.svg", description, title } = Astro.props;
 ---
 
 <head>
-  <ViewTransitions />
+  <ClientRouter />
   <!-- Animate.css CDN -->
   <link
     rel="stylesheet"
