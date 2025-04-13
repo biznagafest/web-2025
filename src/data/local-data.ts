@@ -527,7 +527,9 @@ export const LOCALDATA: Data = {
     // },
   ],
   sponsorsDossier: {
-    enabled: false,
+    enabled: true,
+    en: "/uploads/dossier-sponsors-en.pdf",
+    es: "/uploads/dossier-sponsors-es.pdf",
   },
   team: {
     organizers: [
