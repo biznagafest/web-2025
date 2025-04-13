@@ -15,6 +15,7 @@ import Carousel from "../components/Carousel.astro";
 import RichText from "../components/RichText.astro";
 import Schedule from "../components/Schedule.astro";
 import Host from "../components/Host.astro";
+import SponsorForm from "../components/integrations/preact/components/SponsorForm";
 
 function formatDate(date: Date) {
   const formatter = new Intl.DateTimeFormat("es-ES", {
@@ -327,11 +328,30 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
               </article>
             </section>
           )}
+        </div>
+      </section>
+    )
+  }
+  {
+    DATA.sponsorsDossier.enabled && (
+      <section
+        id="callForSponsors"
+        class="p-10 flex flex-col gap-4 text-dark-background dark:text-light-background wrapper"
+      >
+        <h3 class="text-green-300 dark:text-green-200 text-3xl font-semibold text-center">
+          Patrocina el evento
+        </h3>
+        <div class="flex flex-col gap-10">
           <SponsorDossier
             dossier={DATA.sponsorsDossier}
             class="mx-auto w-fit flex flex-col gap-2 items-center"
           />
+          <p class="text-center text-light-background">
+            Si quieres patrocinar el evento, puedes ponerte en contacto a través
+            de este formulario.
+          </p>
         </div>
+        <SponsorForm className="flex flex-col gap-4" client:idle />
       </section>
     )
   }

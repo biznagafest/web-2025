@@ -29,12 +29,25 @@ const featuredSponsors = DATA.sponsors.filter(
     </div>
     <div
       id="menu"
-      class="w-full md:w-fit max-w-[700px] h-full ml-auto max-xl:fixed max-xl:top-0 max-xl:right-0 max-xl:z-40 max-xl:p-4 max-xl:overflow-y-auto transition-transform max-xl:translate-x-full max-xl:bg-white max-xl:dark:bg-dark-background max-xl:duration-0"
+      class="w-full md:w-fit max-w-[900px] h-full ml-auto max-xl:fixed max-xl:top-0 max-xl:right-0 max-xl:z-40 max-xl:p-4 max-xl:overflow-y-auto transition-transform max-xl:translate-x-full max-xl:bg-white max-xl:dark:bg-dark-background max-xl:duration-0"
       tabindex="-1"
     >
       <ul
         class="flex justify-evenly xl:gap-2 max-xl:gap-8 max-xl:mt-28 text-sm max-xl:flex-col xl:flex-row font-bold"
       >
+        {
+          !!DATA.sponsorsDossier.enabled && (
+            <li class="mx-auto">
+              <a
+                aria-label="Go to Sponsors Dossier"
+                href="/#callForSponsors"
+                class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
+              >
+                <span class="animate-bounce">Quiero patrocinar</span>
+              </a>
+            </li>
+          )
+        }
         {
           !!DATA.schedule.length && (
             <li class="mx-auto">
