@@ -1,3 +1,4 @@
+import { CMS_URL } from "astro:env/client";
 import type { Nullable } from "../utils/nullable";
 import type { Data, SponsorTier } from "./data.type";
 import axios from "axios";
@@ -202,7 +203,7 @@ interface Perk {
   description: string;
 }
 
-const cmsHostname = import.meta.env.CMS_URL;
+const cmsHostname = CMS_URL;
 
 const cmsEndpoint = `${cmsHostname}/info`;
 
