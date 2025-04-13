@@ -70,25 +70,23 @@ export default function SponsorForm({ className }: { className?: string }) {
           onChange={(e) => updateFormProperty("message", e.currentTarget.value)}
         />
       </div>
-      <div className="flex gap-2">
-        <button
-          className={`px-10 py-2 text-xl rounded-md w-[200px] text-white  dark:text-black ${
-            status === "loading"
-              ? "bg-green-50 cursor-not-allowed"
-              : "bg-green-600 dark:bg-green-200 hover:bg-green-500 dark:hover:bg-green-300 cursor-pointer"
-          }`}
-          type="submit"
-          disabled={status === "loading"}
-        >
-          {status === "loading" ? (
-            <div class="grid place-items-center">
-              <Spinner className="fill-green-600" />
-            </div>
-          ) : (
-            "Submit"
-          )}
-        </button>
-      </div>
+      <button
+        className={`self-center md:self-start px-10 py-2 text-xl rounded-md w-[200px] text-white dark:text-black ${
+          status === "loading"
+            ? "bg-green-50 cursor-not-allowed"
+            : "bg-green-600 dark:bg-green-200 hover:bg-green-500 dark:hover:bg-green-300 cursor-pointer"
+        }`}
+        type="submit"
+        disabled={status === "loading"}
+      >
+        {status === "loading" ? (
+          <div class="grid place-items-center">
+            <Spinner className="fill-green-600" />
+          </div>
+        ) : (
+          "Enviar"
+        )}
+      </button>
       {status === "error" && (
         <p className="text-red-500 text-sm mt-2">
           Ha ocurrido un error al enviar el mensaje. Por favor, inténtalo de
