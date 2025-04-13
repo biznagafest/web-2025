@@ -62,6 +62,7 @@ export class MailTransporterFactory {
         },
         sendMail: async (options) => {
           return new Promise((resolve, reject) => {
+            console.log("Sending email...");
             transporter.sendMail(
               {
                 from: options.from,
