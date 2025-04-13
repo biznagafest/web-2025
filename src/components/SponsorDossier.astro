@@ -11,7 +11,7 @@ const { dossier } = Astro.props;
 
 {
   dossier.enabled && (
-    <section class:list={[Astro.props.class]}>
+    <article class:list={[Astro.props.class]}>
       <a
         href={dossier.es}
         target="_blank"
@@ -29,7 +29,7 @@ const { dossier } = Astro.props;
       >
         View sponsorship dossier.
       </a>
-    </section>
+    </article>
   )
 }
 <style>

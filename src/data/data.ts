@@ -1,6 +1,5 @@
+import { USE_CMS } from "astro:env/client";
 import { getDataFromCms } from "./cms-data";
 import { LOCALDATA } from "./local-data";
 
-const useCms = import.meta.env.USE_CMS;
-
-export const DATA = useCms ? await getDataFromCms() : LOCALDATA;
+export const DATA = USE_CMS ? await getDataFromCms() : LOCALDATA;
