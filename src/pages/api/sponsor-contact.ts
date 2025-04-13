@@ -41,7 +41,7 @@ export const POST: APIRoute<{
       user: MAIL_USERNAME,
     });
 
-    transporter.sendMail({
+    await transporter.sendMail({
       from: "biznagafest@gmail.com",
       to: "biznagafest@gmail.com",
       subject: `[SPONSOR CONTACT]: ${name} (${email})`,
@@ -50,6 +50,7 @@ export const POST: APIRoute<{
 
     transporter.close();
   } catch (error) {
+    console.error("Error sending email:", error);
     transporter?.close();
 
     return new Response(
