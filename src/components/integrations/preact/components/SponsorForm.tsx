@@ -74,7 +74,7 @@ export default function SponsorForm({ className }: { className?: string }) {
         className={`self-center md:self-start px-10 py-2 text-xl rounded-md w-[200px] text-white dark:text-black ${
           status === "loading"
             ? "bg-green-50 cursor-not-allowed"
-            : "bg-green-600 dark:bg-green-200 hover:bg-green-500 dark:hover:bg-green-300 cursor-pointer"
+            : "bg-green-700 dark:bg-green-200 hover:bg-green-500 dark:hover:bg-green-300 cursor-pointer"
         }`}
         type="submit"
         disabled={status === "loading"}
