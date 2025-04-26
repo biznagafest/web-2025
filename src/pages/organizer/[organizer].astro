@@ -14,6 +14,10 @@ export function getStaticPaths() {
 const { organizer } = Astro.params;
 
 const organizerData = DATA.team.organizers[Number(organizer)];
+
+if (!organizerData) {
+  return Astro.redirect("/");
+}
 ---
 
 <Layout
