@@ -6,9 +6,9 @@ export const LOCALDATA: Data = {
   description:
     'El BiznagaFest es <u>el gran evento IT de la Costa del Sol</u> para las comunidades "Google developers" de España, que se reúnen para ofrecer conferencias y workshops sobre Devops, Backend, Frontend, Chatbots, IA, Blockchain y soft skills.\n\nEn su edición anterior asisitieron más de 700 personas a las 12 horas de ponencias y talleres.\n\nPor BiznagaFest han pasado grandes expertos que trabajan en las principales empresas tecnológicas nacionales e internacionales, como Google, Virus Total, Deloitte, Red Hat, Docker, Chainalysis, Sngular, entre otros.',
   callForPapers: {
-    isEnabled: false,
+    isEnabled: true,
     title: "C4P Is Open!",
-    url: "https://docs.google.com/forms/d/e/1FAIpQLSdnl1WtSoc45u4H7OGJ-mGsq5iWB5T4GoKQotL2g8iJhJAYvQ/viewform",
+    url: "https://forms.gle/Z4qGvVs1Y8eFMrNZA",
   },
   faq: [
     {
