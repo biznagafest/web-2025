@@ -116,7 +116,7 @@ export const LOCALDATA: Data = {
     {
       name: "Carmen Ansio",
       picture: "/uploads/carmen-ansio.jpg",
-      description: `Mi nombre es Carmen Ansio y soy freelance UX Engineer.\nHe trabajado en compañías increíbles diseñando e implementando productos digitales desde hace más de 10 años.\nAdemás formo parte del programa de Google GDE y comparto mi pasión sobre diseño y desarrollo web a diario en redes. Actualmente imparto formaciones y consultorías enfocadas en formación para perfiles de diseño y desarrollo web.\n\n`,
+      description: `Mi nombre es Carmen Ansio y soy freelance UX Engineer.\n\nHe trabajado en compañías increíbles diseñando e implementando productos digitales desde hace más de 10 años.\n\nAdemás formo parte del programa de Google GDE y comparto mi pasión sobre diseño y desarrollo web a diario en redes. Actualmente imparto formaciones y consultorías enfocadas en formación para perfiles de diseño y desarrollo web.\n\n`,
       position: "Design Engineer, LottieFiles",
       socials: {
         twitter: "https://twitter.com/carmenansio",
