@@ -1,14 +1,6 @@
 import type { APIRoute } from "astro";
-import {
-  GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET,
-  GOOGLE_REFRESH_TOKEN,
-  MAIL_USERNAME,
-} from "astro:env/server";
-import {
-  MailTransporterFactory,
-  type Transporter,
-} from "../../services/mail-transporter.factory";
+import { Resend } from "resend";
+import { RESEND_API_KEY } from "astro:env/server";
 
 export const POST: APIRoute<{
   name: string;
@@ -23,48 +15,31 @@ export const POST: APIRoute<{
 
   if (!name || !email || !message) {
     return new Response(
-      JSON.stringify({
-        message: "Missing required fields",
-      }),
+      JSON.stringify({ message: "Missing required fields" }),
       { status: 400 },
     );
   }
 
-  let transporter: Transporter | undefined;
+  const resend = new Resend(RESEND_API_KEY);
 
-  try {
-    transporter = await MailTransporterFactory.create({
-      type: "gmail",
-      clientId: GOOGLE_CLIENT_ID,
-      clientSecret: GOOGLE_CLIENT_SECRET,
-      refreshToken: GOOGLE_REFRESH_TOKEN,
-      user: MAIL_USERNAME,
+  const { data, error } = await resend.emails.send({
+    from: "sponsors@biznagafest.com",
+    to: "biznagafest@gmail.com",
+    subject: `[SPONSOR CONTACT]: ${name} (${email})`,
+    html: `<p>${message}</p>`,
+  });
+
+  if (error) {
+    console.error({ error });
+    return new Response(JSON.stringify({ message: "Failed to send email" }), {
+      status: 500,
     });
-
-    await transporter.sendMail({
-      from: "biznagafest@gmail.com",
-      to: "biznagafest@gmail.com",
-      subject: `[SPONSOR CONTACT]: ${name} (${email})`,
-      message: `<p>${message}</p>`,
-    });
-
-    transporter.close();
-  } catch (error) {
-    console.error("Error sending email:", error);
-    transporter?.close();
-
-    return new Response(
-      JSON.stringify({
-        message: "Failed to send email",
-      }),
-      { status: 500 },
-    );
   }
+
+  console.log({ event: "successfully sent mail", memailData: data });
 
   return new Response(JSON.stringify({ success: true }), {
     status: 200,
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
   });
 };

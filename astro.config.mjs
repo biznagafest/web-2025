@@ -8,15 +8,9 @@ import preact from "@astrojs/preact";
 export default defineConfig({
   integrations: [tailwind(), pageInsight(), preact()],
   output: "server",
-  adapter: vercel({
-    webAnalytics: { enabled: true },
-  }),
-  prefetch: {
-    defaultStrategy: "viewport",
-  },
-  experimental: {
-    clientPrerender: true,
-  },
+  adapter: vercel({ webAnalytics: { enabled: true } }),
+  prefetch: { defaultStrategy: "viewport" },
+  experimental: { clientPrerender: true },
   env: {
     schema: {
       USE_CMS: envField.boolean({
@@ -31,22 +25,7 @@ export default defineConfig({
         context: "client",
         url: true,
       }),
-      GOOGLE_CLIENT_ID: envField.string({
-        optional: false,
-        access: "secret",
-        context: "server",
-      }),
-      GOOGLE_CLIENT_SECRET: envField.string({
-        optional: false,
-        access: "secret",
-        context: "server",
-      }),
-      GOOGLE_REFRESH_TOKEN: envField.string({
-        optional: false,
-        access: "secret",
-        context: "server",
-      }),
-      MAIL_USERNAME: envField.string({
+      RESEND_API_KEY: envField.string({
         optional: false,
         access: "secret",
         context: "server",
