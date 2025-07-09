@@ -514,6 +514,16 @@ export const LOCALDATA: Data = {
       jobOffers: [],
       picture: "/uploads/google_8411834263.png",
     },
+    {
+      name: "PwC",
+      tier: "silver",
+      url: "https://www.pwc.es/",
+      hasFeaturedPage: false,
+      description: undefined,
+      socials: undefined,
+      jobOffers: [],
+      picture: "/uploads/PwC-logo.svg",
+    },
     // {
     //   name: "GDG Sevilla",
     //   tier: "community",
