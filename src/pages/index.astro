@@ -395,13 +395,22 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
                 )}
               </div>
               <div class="ml-auto rounded-md overflow-hidden max-w-sm border-green-600 dark:border-green-900 border-4 md:border-8 mx-auto lg:mx-0">
-                <video
-                  class="w-full aspect-square"
-                  src={DATA.tshirt.url}
-                  autoplay
-                  loop
-                  muted
-                />
+                {DATA.tshirt.type === "image" ? (
+                  <img
+                    class="w-full aspect-square"
+                    src={DATA.tshirt.url}
+                    alt={DATA.tshirt.title ?? "T-shirt"}
+                    loading="lazy"
+                  />
+                ) : (
+                  <video
+                    class="w-full aspect-square"
+                    src={DATA.tshirt.url}
+                    autoplay
+                    loop
+                    muted
+                  />
+                )}
               </div>
             </div>
           )}
