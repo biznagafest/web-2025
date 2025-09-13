@@ -722,7 +722,20 @@ export const LOCALDATA: Data = {
         "- **Línea 1** (Andalucía Tech - El Perchel) - Parada Hospital Clínico.",
     },
   },
-  tickets: [],
+  tickets: [
+    {
+      name: "Entrada General",
+      perks: [
+        "Acceso a todas las charlas y actividades",
+        "Zona de networking",
+        "Catering incluido",
+      ],
+      price: 0,
+      url: "https://www.eventbrite.com/e/entrada-general-tickets-123456789",
+      isSoldOut: false,
+      notice: "Las entradas son limitadas, ¡asegúrate de conseguir la tuya!",
+    },
+  ],
   events: [],
   companyTicketsNotice: {
     enabled: false,
@@ -799,5 +812,10 @@ export const LOCALDATA: Data = {
       picture: "/uploads/1724772190528_c9907ca3ec.jpg",
     },
   ],
-  tshirt: undefined,
+  tshirt: {
+    type: "image",
+    url: "/uploads/biznagafest-swag.png",
+    title: "No te quedes sin tu camiseta!",
+    subtitle: "Consigue la camiseta oficial del evento.",
+  },
 } as const satisfies Readonly<Data>;
