@@ -17,14 +17,14 @@ const { raffle, isEven } = Astro.props;
   }}
 >
   <div
-    class="wrapper flex-col flex gap-8 sm:gap-4"
+    class="wrapper flex-col flex gap-8 sm:gap-4 items-center"
     class:list={{
       "sm:flex-row": !isEven,
       "sm:flex-row-reverse": isEven,
     }}
   >
     <Image
-      class="w-full aspect-square object-cover sm:w-1/2 bg-green-50"
+      class="w-full aspect-square object-cover sm:w-1/2 bg-green-50 max-h-[500px]"
       src={raffle.picture}
       alt="Raffle image"
       height={500}
