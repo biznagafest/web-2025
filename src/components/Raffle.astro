@@ -17,10 +17,10 @@ const { raffle, isEven } = Astro.props;
   }}
 >
   <div
-    class="wrapper flex-col flex gap-8 sm:gap-4 items-center"
+    class="wrapper flex-col flex gap-16 md:gap-8 items-center"
     class:list={{
-      "sm:flex-row": !isEven,
-      "sm:flex-row-reverse": isEven,
+      "md:flex-row": !isEven,
+      "md:flex-row-reverse": isEven,
     }}
   >
     <Image
@@ -31,7 +31,7 @@ const { raffle, isEven } = Astro.props;
       width={500}
     />
     <div
-      class="flex flex-col sm:justify-center sm:w-1/2 px-4 gap-4 [&>h1]:text-2xl [&>h1]:font-bold"
+      class="flex flex-col sm:justify-center sm:w-1/2 px-4 gap-4 [&>h1]:text-3xl [&>h1]:font-bold [&>h4]:text-2xl [&>h5]:text-xl"
     >
       <RichText text={raffle.description} />
     </div>
