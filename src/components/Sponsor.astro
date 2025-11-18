@@ -56,6 +56,7 @@ const { initialWidth, afterLoadWidth } = sponsorWitdths[sponsor.tier];
   aria-label={`Visit ${sponsor.name}'s website`}
   transition:name={sponsor.name}
   href={sponsor.hasFeaturedPage ? `/sponsor/${sponsor.name}#top` : sponsor.url}
+  data-umami-event="sponsor_link_click"
   class="transition-all grid place-content-center hover:scale-105 duration-300 ease-in-out grayscale hover:grayscale-0"
 >
   <Image

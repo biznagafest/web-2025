@@ -17,6 +17,7 @@ const { speaker, index } = Astro.props;
     aria-label={`Go to ${speaker.name}'s profile`}
     transition:name={`picture-speaker-${index}`}
     href={`/speaker/${index}#top`}
+    data-umami-event="speaker_profile_click"
     class="w-[200px] h-[200px] mx-auto block rounded-full shadow-md overflow-hidden"
   >
     <Image

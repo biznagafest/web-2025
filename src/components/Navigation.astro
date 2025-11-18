@@ -16,7 +16,7 @@ const featuredSponsors = DATA.sponsors.filter(
     <div
       class="w-full max-w-[150px] sm:max-w-[180px] md:max-w-[200px] max-xl:z-30"
     >
-      <a aria-label="Go to Home Page" href="/#top" class="h-10">
+      <a aria-label="Go to Home Page" href="/#top" data-umami-event="nav_logo_click" class="h-10">
         <Image
           src="/logo.svg"
           alt={`Logo of ${DATA.title}`}
@@ -41,6 +41,7 @@ const featuredSponsors = DATA.sponsors.filter(
               <a
                 aria-label="Go to Sponsors Dossier"
                 href="/#callForSponsors"
+                data-umami-event="sponsor_cta_click"
                 class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
               >
                 <span class="animate-bounce">Quiero patrocinar</span>
@@ -54,6 +55,7 @@ const featuredSponsors = DATA.sponsors.filter(
               <a
                 aria-label="Go to Schedule"
                 href="/#schedule"
+                data-umami-event="nav_schedule_click"
                 class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
               >
                 Schedule
@@ -67,6 +69,7 @@ const featuredSponsors = DATA.sponsors.filter(
               <a
                 aria-label="Go to Speakers"
                 href="/#speakers"
+                data-umami-event="nav_speakers_click"
                 class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
               >
                 Speakers
@@ -80,6 +83,7 @@ const featuredSponsors = DATA.sponsors.filter(
               <a
                 aria-label="Go to Raffles Page"
                 href="/raffles#top"
+                data-umami-event="nav_raffles_click"
                 class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
               >
                 Sorteos
@@ -93,6 +97,7 @@ const featuredSponsors = DATA.sponsors.filter(
               <a
                 aria-label="Go to FAQ"
                 href="/#faq"
+                data-umami-event="nav_faq_click"
                 class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
               >
                 FAQ
@@ -106,6 +111,7 @@ const featuredSponsors = DATA.sponsors.filter(
               <a
                 aria-label={`Go to ${sponsor.name} Page`}
                 href={`/sponsor/${sponsor.name}#top`}
+                data-umami-event="nav_sponsor_click"
                 class="px-3 h-full cursor-pointer grid place-content-center hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg w-fit"
               >
                 Meet {sponsor.name}
@@ -120,6 +126,7 @@ const featuredSponsors = DATA.sponsors.filter(
             aria-label="Buy Tickets"
             href={DATA.ticketsUrl}
             target="_blank"
+            data-umami-event="buy_tickets_click"
             class="text-white p-2 rounded-lg bg-green-600 hover:bg-green-400 dark:bg-blue-600 dark:hover:bg-blue-400 transition-colors"
             type="button">Comprar entradas</a
           >
@@ -136,11 +143,12 @@ const featuredSponsors = DATA.sponsors.filter(
           aria-label="Buy Tickets"
           href={DATA.ticketsUrl}
           target="_blank"
+          data-umami-event="buy_tickets_click"
           class="text-sm hidden sm:block xl:hidden text-white p-2 rounded-lg bg-green-600 hover:bg-green-400 dark:bg-blue-600 dark:hover:bg-blue-400 transition-colors"
           type="button">Comprar entradas</a
         >
       </div>
-      <button id="menu-button" class="xl:hidden" aria-label="Abrir menú">
+      <button id="menu-button" class="xl:hidden" data-umami-event="menu_toggle_click" aria-label="Abrir menú">
         <i class="ph ph-list text-3xl"></i>
       </button>
     </div>
@@ -150,6 +158,7 @@ const featuredSponsors = DATA.sponsors.filter(
       aria-label="Buy Tickets"
       href={DATA.ticketsUrl}
       target="_blank"
+      data-umami-event="buy_tickets_click"
       class="text-sm sm:hidden text-white p-2 rounded-lg bg-green-600 hover:bg-green-400 dark:bg-blue-600 dark:hover:bg-blue-400 transition-colors"
       type="button">Comprar entradas</a
     >
