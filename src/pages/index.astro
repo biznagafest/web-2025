@@ -214,6 +214,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
           class="animate-bounce w-fit px-3 py-2 rounded-md text-xl bg-blue-600 hover:bg-blue-500 text-white dark:bg-green-300 dark:text-black dark:hover:bg-green-200 cursor-pointer"
           href={DATA.callForPapers.url}
           target="_blank"
+          data-umami-event="call_for_papers_click"
         >
           {DATA.callForPapers.title}
         </a>
@@ -352,6 +353,7 @@ for (const [index, sponsor] of Object.entries(DATA.sponsors)) {
             <a
               class="font-semibold text-green-400"
               href="mailto:biznagafest@gmail.com"
+              data-umami-event="sponsor_email_contact"
             >
               biznagafest@gmail.com
             </a>

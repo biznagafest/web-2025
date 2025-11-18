@@ -15,7 +15,7 @@ const { data } = Astro.props;
   {
     data.map((faq: FAQ) => (
       <li class:list={["flex", "flex-col", "accordion-item"]}>
-        <header class="accordion-header rounded-lg flex flex-row justify-between align-middle cursor-pointer gap-x-2 p-4 select-none">
+        <header class="accordion-header rounded-lg flex flex-row justify-between align-middle cursor-pointer gap-x-2 p-4 select-none" data-umami-event="faq_item_toggle">
           <span class="text-xl">{faq.title}</span>
           <span class="grid grid-cols-1 place-content-center">
             <i class="ph ph-caret-down transition-transform duration-150" />

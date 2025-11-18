@@ -13,7 +13,7 @@ import Socials from "./Socials.astro";
   >
     <div class="flex flex-col items-center">
       <div class="w-full max-w-[250px] md:max-w-[300px] mx-auto">
-        <a aria-label="Go to Home Page" href="/#top" class="w-full h-full">
+        <a aria-label="Go to Home Page" href="/#top" data-umami-event="footer_logo_click" class="w-full h-full">
           <Image
             src="/logo.svg"
             alt="Logo of Biznagafest"
@@ -33,6 +33,7 @@ import Socials from "./Socials.astro";
             aria-label={`Go to ${link.title} Page`}
             class="grid grid-cols-1 place-content-center font-semibold"
             href={`${link.href}#top`}
+            data-umami-event="footer_link_click"
           >
             {link.title}
           </a>
@@ -48,7 +49,7 @@ import Socials from "./Socials.astro";
           <ul class="flex flex-row flex-wrap gap-3 align-middle justify-center md:justify-start">
             {DATA.previousEditions.map((prevEd) => (
               <li>
-                <a aria-label={`Go to ${prevEd.name} Page`} href={prevEd.url}>
+                <a aria-label={`Go to ${prevEd.name} Page`} href={prevEd.url} data-umami-event="footer_previous_edition_click">
                   {prevEd.name}
                 </a>
               </li>

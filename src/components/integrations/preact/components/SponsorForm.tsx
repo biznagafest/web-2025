@@ -77,6 +77,7 @@ export default function SponsorForm({ className }: { className?: string }) {
             : "bg-green-700 dark:bg-green-200 hover:bg-green-500 dark:hover:bg-green-300 cursor-pointer"
         }`}
         type="submit"
+        data-umami-event="sponsor_form_submit"
         disabled={status === "loading"}
       >
         {status === "loading" ? (

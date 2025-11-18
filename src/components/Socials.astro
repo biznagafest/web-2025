@@ -19,6 +19,7 @@ const { socials } = Astro.props;
           aria-label="Link to Devto"
           target="_blank"
           href={socials?.devto}
+          data-umami-event="social_devto_click"
         >
           <i class:list={["ph", "ph-dev-to-logo", Astro.props.class]} />
         </a>
@@ -33,6 +34,7 @@ const { socials } = Astro.props;
           aria-label="Link to Github"
           target="_blank"
           href={socials?.github}
+          data-umami-event="social_github_click"
         >
           <i class:list={["ph", "ph-github-logo", Astro.props.class]} />
         </a>
@@ -47,6 +49,7 @@ const { socials } = Astro.props;
           aria-label="Link to Instagram"
           target="_blank"
           href={socials?.instagram}
+          data-umami-event="social_instagram_click"
         >
           <i class:list={["ph", "ph-instagram-logo", Astro.props.class]} />
         </a>
@@ -61,6 +64,7 @@ const { socials } = Astro.props;
           aria-label="Link to Linkedin"
           target="_blank"
           href={socials?.linkedin}
+          data-umami-event="social_linkedin_click"
         >
           <i class:list={["ph", "ph-linkedin-logo", Astro.props.class]} />
         </a>
@@ -75,6 +79,7 @@ const { socials } = Astro.props;
           aria-label="Send a Mail"
           target="_blank"
           href={`mailto:${socials?.mail}`}
+          data-umami-event="social_email_click"
         >
           <i class:list={["ph", "ph-envelope", Astro.props.class]} />
         </a>
@@ -89,6 +94,7 @@ const { socials } = Astro.props;
           aria-label="Link to Mastodon"
           target="_blank"
           href={socials?.mastodon}
+          data-umami-event="social_mastodon_click"
         >
           <i class:list={["ph", "ph-at", Astro.props.class]} />
         </a>
@@ -103,6 +109,7 @@ const { socials } = Astro.props;
           aria-label="Link to Medium"
           target="_blank"
           href={socials?.medium}
+          data-umami-event="social_medium_click"
         >
           <i class:list={["ph", "ph-book-open", Astro.props.class]} />
         </a>
@@ -117,6 +124,7 @@ const { socials } = Astro.props;
           aria-label="Link to Twitch"
           target="_blank"
           href={socials?.twitch}
+          data-umami-event="social_twitch_click"
         >
           <i class:list={["ph", "ph-twitch-logo", Astro.props.class]} />
         </a>
@@ -131,6 +139,7 @@ const { socials } = Astro.props;
           aria-label="Link to Twitter"
           target="_blank"
           href={socials?.twitter}
+          data-umami-event="social_twitter_click"
         >
           <i class:list={["ph", "ph-x-logo", Astro.props.class]} />
         </a>
@@ -145,6 +154,7 @@ const { socials } = Astro.props;
           aria-label="Link to Website"
           target="_blank"
           href={socials?.website}
+          data-umami-event="social_website_click"
         >
           <i class:list={["ph", "ph-globe", Astro.props.class]} />
         </a>
@@ -159,6 +169,7 @@ const { socials } = Astro.props;
           aria-label="Link to Youtube"
           target="_blank"
           href={socials?.youtube}
+          data-umami-event="social_youtube_click"
         >
           <i class:list={["ph", "ph-youtube-logo", Astro.props.class]} />
         </a>

@@ -15,6 +15,7 @@ const { dossier } = Astro.props;
       <a
         href={dossier.es}
         target="_blank"
+        data-umami-event="sponsor_dossier_download_es"
         class="p-1 md:p-2 rounded-full border border-dark-background dark:border-gray-300 flex flex-row gap-1 md:gap-3 items-center highlighted"
       >
         <i class=" grid ph ph-file-arrow-down aspect-square w-[32px] md:w-[32px]  border border-dark-background dark:border-gray-300 text-dark-background dark:text-gray-300 rounded-full place-items-center" />
@@ -25,6 +26,7 @@ const { dossier } = Astro.props;
       <a
         href={dossier.en}
         target="_blank"
+        data-umami-event="sponsor_dossier_download_en"
         class="w-fit text-xs md:text-sm lg:text-md text-dark-background dark:text-gray-400"
       >
         View sponsorship dossier.
