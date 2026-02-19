@@ -1,6 +1,6 @@
 import { defineConfig, envField } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import node from "@astrojs/node";
 import pageInsight from "astro-page-insight";
 import preact from "@astrojs/preact";
 
@@ -8,7 +8,7 @@ import preact from "@astrojs/preact";
 export default defineConfig({
   integrations: [tailwind(), pageInsight(), preact()],
   output: "server",
-  adapter: vercel({ webAnalytics: { enabled: true } }),
+  adapter: node({ mode: "standalone" }),
   prefetch: { defaultStrategy: "viewport" },
   experimental: { clientPrerender: true },
   env: {
